@@ -1,0 +1,13 @@
+{
+    "manifest_version": 2,
+    "name": "Headlines",
+    "description": "Replace your new tab page with a minimal news based on sources you choose.",
+    "version": "0.1",
+    "browser_action": {
+        "default_icon": "./icons/icon.png"
+    },
+    "chrome_url_overrides" : {
+      "newtab": "index.html"
+    },
+    "author": "Juwan Petty <jchpetty@gmail.com> (juwanpetty.com)"
+  }
