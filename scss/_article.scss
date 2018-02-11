@@ -32,8 +32,6 @@
     box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
     transition: box-shadow 150ms; 
 
-    a {text-decoration: none;}
-
     * {margin: 0;}
 
     @media screen and (min-width: 750px) {
@@ -47,20 +45,24 @@
     a {
         display: block;
         height: 100%;
+        text-decoration: none;
 
         &:visited {
-            .article__image__container, .article__details {
-                opacity: 0.5;
+            .article__title, .article__description {
+                color: #AEAEAE;
             }
         }
-    }
+        
+        &:hover {
+            .article__title {
+                color: #007AFF;
+            }
+        }
 
+    }
+    
     &:hover {
         box-shadow: 0 0 0 5px #D7D7DB;
-      
-        .article__title {
-            color: #007AFF;
-        }
     }
 }
 
@@ -101,7 +103,7 @@
 .article__title {
     font-size: 14px;
     font-weight: 500;
-    line-height: 135%;
+    line-height: 140%;
     color: $primary-text;
     cursor: pointer;
 
