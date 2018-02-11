@@ -1,11 +1,13 @@
 const body = document.querySelector('body');
 const sidebar = document.querySelector('.js-sidebar');
 const sidebarIcon = document.querySelector('.js-menu');
+const sidebarFooter = document.querySelector('.sidebar__footer');
 const openButton = document.querySelector('.js-open');
 const closeButton = document.querySelector('.js-close');
 const doneButton = document.querySelector('.js-done');
 const sourceContainer = document.querySelector('.js-sources');
 const articlesContainer = document.querySelector('.js-articles');
+
 
 let inputList;
 
@@ -14,6 +16,7 @@ feather.replace();
 sidebarIcon.addEventListener('click', () => {
   sidebarIcon.classList.toggle("sidebar-open");
   sidebar.classList.toggle("hidden");
+  sidebarFooter.classList.toggle("hidden");
 
   updateSources();
 });
@@ -21,13 +24,7 @@ sidebarIcon.addEventListener('click', () => {
 doneButton.addEventListener('click', () => {
   sidebarIcon.classList.toggle("sidebar-open");
   sidebar.classList.toggle("hidden");
-
-  updateSources();
-});
-
-doneButton.addEventListener('click', () => {
-  sidebarIcon.classList.toggle("sidebar-open");
-  sidebar.classList.toggle("hidden");
+  sidebarFooter.classList.toggle("hidden");
 
   updateSources();
 });
@@ -36,6 +33,7 @@ body.addEventListener('click', () => {
   if (!(sidebar.classList.contains('hidden'))) {
     sidebarIcon.classList.toggle("sidebar-open");
     sidebar.classList.toggle("hidden");
+    sidebarFooter.classList.toggle("hidden");
 
     updateSources();
   }
@@ -171,6 +169,9 @@ function populateArticles(sources) {
 
       let img = document.createElement('img');
       img.src = articles[i].urlToImage;
+    
+      if (articles[i].urlToImage == null) { img.src = "http://via.placeholder.com/300"; } // placeholder if no image path exists
+    
       img.setAttribute('class', 'article__image');
       img.setAttribute('alt', `image for "${articles[i].title}"`);
 
@@ -181,16 +182,18 @@ function populateArticles(sources) {
       articleSource.setAttribute('class', 'article__source');
       articleSource.textContent = articles[i].source.name;
 
+      if (articles[i].source.name === null) { articleSource.textContent = ""; }
+
       let articleOverflow = document.createElement('div');
       articleOverflow.setAttribute('class', 'article__overflow');
 
       let articleTitle = document.createElement('h3');
       articleTitle.setAttribute('class', 'article__title');
-      articleTitle.textContent = articles[i].title;
+      articleTitle.innerHTML = articles[i].title;
 
       let articleDescription = document.createElement('p');
       articleDescription.setAttribute('class', 'article__description');
-      articleDescription.textContent = articles[i].description;
+      articleDescription.innerHTML = articles[i].description;
 
       articlesContainer.appendChild(articleItem);
       articleItem.appendChild(articleLink);
@@ -229,43 +232,39 @@ function setSources() {
 }
 
 function updateSources() {
-  let formSources = [];
-  let storedSources = localStorage.getItem('sources').split(',');
-  let isSame = true;
+  let formSourcesArray = [];
+  let storedSources = localStorage.getItem('sources');
+  inputList = document.querySelectorAll('.source__input');
 
   for (let i = 0; i < inputList.length; i++) {
 
     // if there is a match (id) set checked=true and break
     if (inputList[i].checked == true) {
-      formSources.push(inputList[i].id);
+      formSourcesArray.push(inputList[i].id);
     }
     
   }
 
-  let sourcesString = storedSources.join(',');
+  // there is more or less sources checked in the form
+  if ((formSourcesArray.length != storedSources.split(',').length)) {
+    storedSources = formSourcesArray.join(',');
+    update(storedSources);
+  } else {
+    // check to see if the saved string contains sources from the checked form
+    for (let i = 0; i < formSourcesArray.length; i++) {
+
+      if ( !(storedSources.includes(formSourcesArray[i])) ) {
+        storedSources = formSourcesArray.join(',');
+        update(storedSources);
+      }
+
+    }
+  }
 
   function update(sources) {
     localStorage.setItem('sources', sources);
     articlesContainer.innerHTML = "";
     populateArticles(sources);
-  }
-
-  // there is more or less sources checked in the form
-  if ((formSources.length != storedSources.length)) {
-    sourcesString = formSources.join(',');
-    update(sourcesString);
-  } else {
-    // check to see if the saved string contains sources from the checked form
-    for (let i = 0; i < formSources.length; i++) {
-
-      if ( !(sourcesString.includes(formSources[i])) ) {
-        sourcesString = formSources.join(',');
-        update(sourcesString);
-      }
-
-      break;
-
-    }
   }
 }
 
