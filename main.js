@@ -8,45 +8,40 @@ const doneButton = document.querySelector('.js-done');
 const sourceContainer = document.querySelector('.js-sources');
 const articlesContainer = document.querySelector('.js-articles');
 
-
 let inputList;
 
 feather.replace();
 
-sidebarIcon.addEventListener('click', () => {
-  sidebarIcon.classList.toggle("sidebar-open");
-  sidebar.classList.toggle("hidden");
-  sidebarFooter.classList.toggle("hidden");
+// adding click events to .js-menu and .js-done
+let clickElements = document.querySelectorAll('.js-done, .js-menu');
+for (let i = 0; i < clickElements.length; i++) {
+  clickElements[i].addEventListener("click", function() {
+    toggleSidebar();
+  });
+}
 
-  updateSources();
-});
-
-doneButton.addEventListener('click', () => {
-  sidebarIcon.classList.toggle("sidebar-open");
-  sidebar.classList.toggle("hidden");
-  sidebarFooter.classList.toggle("hidden");
-
-  updateSources();
-});
-
+// this will only execute when the sidebar is open
 body.addEventListener('click', () => {
-  if (!(sidebar.classList.contains('hidden'))) {
-    sidebarIcon.classList.toggle("sidebar-open");
-    sidebar.classList.toggle("hidden");
-    sidebarFooter.classList.toggle("hidden");
-
-    updateSources();
+  if (!(sidebar.classList.contains('hidden'))) { // toggle sidebar ONLY when it does not contain class of 'hidden'
+    toggleSidebar();
   }
 });
 
-sidebarIcon.addEventListener('click', (e) => {
-  e.stopPropagation(); // this stops the event from bubbling up to the body
-});
+// this stops the event from bubbling up to the body
+let sidebarElements = document.querySelectorAll('.js-sidebar, .js-menu');
+for (let i = 0; i < sidebarElements.length; i++) {
+  sidebarElements[i].addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+}
 
+function toggleSidebar() {
+  sidebarIcon.classList.toggle("sidebar-open");
+  sidebar.classList.toggle("hidden");
+  sidebarFooter.classList.toggle("hidden");
 
-sidebar.addEventListener('click', (e) => {
-  e.stopPropagation(); // this stops the event from bubbling up to the body
-});
+  updateSources();
+}
 
 // limit the number of checkboxes that can be checked (limit = 20)
 sourceContainer.addEventListener('change', (e) => {
@@ -236,13 +231,12 @@ function updateSources() {
   let storedSources = localStorage.getItem('sources');
   inputList = document.querySelectorAll('.source__input');
 
+  // gather a list of all the checked sources
   for (let i = 0; i < inputList.length; i++) {
-
     // if there is a match (id) set checked=true and break
     if (inputList[i].checked == true) {
       formSourcesArray.push(inputList[i].id);
     }
-    
   }
 
   // there is more or less sources checked in the form
@@ -252,12 +246,11 @@ function updateSources() {
   } else {
     // check to see if the saved string contains sources from the checked form
     for (let i = 0; i < formSourcesArray.length; i++) {
-
+      // if any checkbox checked on the form is not in the key/value in localstorage 
       if ( !(storedSources.includes(formSourcesArray[i])) ) {
         storedSources = formSourcesArray.join(',');
         update(storedSources);
       }
-
     }
   }
 
@@ -270,9 +263,9 @@ function updateSources() {
 
 
 function populateStorage() {
-  // get a list of all the the sources
   let sources = [];
   
+  // get a list of all the the sources
   for (i = 0; i < inputList.length; i++) {
     sources.push(inputList[i].id);
   }
@@ -280,8 +273,10 @@ function populateStorage() {
   // shuffle the array
   sources.shuffle();
 
+  // grabs the first three indexes from the random array of sources
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < inputList.length; j++) {
+      // if the one of the first three sources matches a source, set its checked to true on the page
       if (inputList[j].id == sources[i]) {
         inputList[j].checked = true;
         break;
