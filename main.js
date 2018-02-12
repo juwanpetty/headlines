@@ -165,7 +165,12 @@ function populateArticles(sources) {
       let img = document.createElement('img');
       img.src = articles[i].urlToImage;
     
-      if (articles[i].urlToImage == null) { img.src = "http://via.placeholder.com/300"; } // placeholder if no image path exists
+      if (articles[i].urlToImage == null) { img.src = "assets/placeholder.jpg"; } // placeholder if no image path exists
+
+      // waits to load image to check its attributes
+      img.addEventListener("load", () => {
+        if (img.naturalWidth <= 1) { img.src = "assets/placeholder.jpg"; } // displays placeholder if img is 1px (IGN)
+      });
     
       img.setAttribute('class', 'article__image');
       img.setAttribute('alt', `image for "${articles[i].title}"`);
