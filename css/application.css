@@ -604,6 +604,12 @@ nav {
     /* Non-prefixed version, currently
      supported by Chrome and Opera */ }
 
+.attribution {
+  color: #AEAEAE; }
+  .attribution a {
+    text-decoration: none;
+    color: #4188E5; }
+
 .search {
   position: absolute;
   top: 0;
