@@ -4,4 +4,4 @@
 
 Available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/headlines/ecgmdohhjabfepiagglidampbkfmmlcm/related?authuser=2).
 
-![Headlines Screenshot](assets/screenshot.png)
+![Headlines Screenshot](assets/screenshot.jpg)
