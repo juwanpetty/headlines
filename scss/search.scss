@@ -15,11 +15,11 @@
 
         button {
             position: absolute;
-            top: 0;
-            right: 0;
+            top: 1px;
+            right: 1px;
 
             width: 40px;
-            height: 36px;
+            height: 33.5px;
 
             display: flex;
             align-items: center;
@@ -28,7 +28,7 @@
             background: #FFFFFF;
             cursor: pointer;
 
-            border: 1px solid rgba(12, 12, 13, 0.1);
+            border: none;
             border-radius: 0 3px 3px 0;
             border-left: none;
             
@@ -85,7 +85,6 @@
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(12, 12, 13, 0.1);
     border-radius: 3px 0 0 3px;
     border-right: none;
 }
