@@ -1,7 +1,6 @@
 $primary-text: #2B2B2B;
 $secondary-text: #999999;
 $border-color: #D7D7DB;
-
 $accent-color: #007AFF;
 
 @import 'normalize';
@@ -67,6 +66,7 @@ button.btn {
     background-color: #F9F9FA;
     border: 1px solid #B1B1B3;
     border-radius: 4px;
+    font-size: 14px;
     color: inherit;
     cursor: pointer;
     margin-bottom: 15px;
