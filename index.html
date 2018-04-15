@@ -4,57 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>New Tab</title>
+    <title>Headlines</title>
 
     <link rel="stylesheet" href="css/application.css">
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 </head>
 <body>
     <nav>
-        <div class="js-menu">
-            <i data-feather="settings" class="js-open"></i>
-            <i data-feather="x" class="js-close"></i>
-        </div>
     </nav>
 
     <main>
-        <div class="search">
-            <form method="get" action="http://www.google.com/search?q=">
-                <div class="search__wrapper">
-                    <input type="text" class="searchbar" value="" placeholder="Search the Web" name="q" autocomplete="off">
-                    <div class="search__icon"><i data-feather="search"></i></div>
-                    <button type="submit"><i data-feather="arrow-right"></i></button>
-                </div>
-            </form>
-        </div>
-
-        <section class="section">
-            <div class="section__wrapper">
-                <ul class="articles js-articles">
-                    <!-- articles go here -->
-                </ul>
-            </div>
-        </section>
     </main>
-
-    <aside class="js-sidebar hidden">
-        <form action="">
-            <div class="sidebar__header">
-                <h3 class="sidebar__title">Sources</h3>
-                <p class="sidebar__subtitle">Choose what you see on the page.</p>
-            </div>
-
-            <div class="js-sources">
-                <!-- sources go here -->
-            </div>
-
-            <p class="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
-        </form>
-    </aside>
-
-    <div class="sidebar__footer hidden">
-        <button type="button" class="btn action js-done">Done</button>
-    </div>
 
     <script src="main.js"></script>
 </body>
