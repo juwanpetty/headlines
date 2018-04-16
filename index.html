@@ -10,8 +10,16 @@
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 </head>
 <body>
+    <!-- SVG Sprite Sheet -->
+	<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+		<symbol id="logo-icon" viewBox="0 0 28 28">
+            <g id="Canvas" fill="none"><g id="Group 3.1"><g id="Rectangle 2"><rect width="28" height="28" rx="2" fill="#007AFF"/></g><g id="H"><path d="M 0 1.76282L 0 0L 5.90978 0L 5.90978 1.76282L 4.38088 2.0633L 4.38088 6.27003L 10.2025 6.27003L 10.2025 2.0633L 8.67356 1.76282L 8.67356 0L 10.2025 0L 13.0544 0L 14.5833 0L 14.5833 1.76282L 13.0544 2.0633L 13.0544 12.53L 14.5833 12.8305L 14.5833 14.5833L 8.67356 14.5833L 8.67356 12.8305L 10.2025 12.53L 10.2025 8.52364L 4.38088 8.52364L 4.38088 12.53L 5.90978 12.8305L 5.90978 14.5833L 0 14.5833L 0 12.8305L 1.5191 12.53L 1.5191 2.0633L 0 1.76282Z" transform="translate(6.7085 6.70834)" fill="white"/></g></g></g>
+		</symbol>
+    </svg> <!-- End SVG Sprite Sheet -->
+
     <nav>
         <div class="logo">
+            <svg><use xlink:href="#logo-icon"></use></svg>
             <h1>Headlines</h1>
         </div>
 
@@ -32,20 +40,40 @@
             <div class="header-action">
                 <p>Free to download on your broswer’s store.</p>
                 <div class="action">
-                    <button class="btn">Add to Chrome</button>
+                    <a href="" class="btn primary">
+                        <img src="assets/icons/google_chrome.png" alt="Google Chrome logo">
+                        Add to Chrome
+                    </a>
                     <div>
-                        <button class="btn">Add to Firefox</button>
+                        <button class="btn">
+                            <img src="assets/icons/firefox.png" alt="Firefox logo">
+                            Add to Firefox
+                        </button>
                         <p class="label">Coming soon to Firefox</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="header-image"></div>
+        <div class="header-image">
+            <img src="assets/preview-cards.png" alt="Preview Card">
+        </div>
     </header>
+
+    <section class="source-logos slider">
+        <div class="slide"><img src="assets/images/polygon.png"></div>
+        <div class="slide"><img src="assets/images/cnn.png"></div>
+        <div class="slide"><img src="assets/images/engadget.png"></div>
+        <div class="slide"><img src="assets/images/the_verge.png"></div>
+        <div class="slide"><img src="assets/images/espn.png"></div>
+        <div class="slide"><img src="assets/images/buzzfeed.png"></div>
+        <div class="slide"><img src="assets/images/nyt.png"></div>
+        <div class="slide"><img src="assets/images/ng.png"></div>
+    </section>
 
     <section class="specs">
         <ul class="specs-list">
             <li class="specs-item">
+                <i data-feather="sun"></i>
                 <h3>Weather</h3>
                 <p>
                     Headlines provides accurate and 
@@ -53,6 +81,7 @@
                 </p>
             </li>
             <li class="specs-item">
+                <i data-feather="search"></i>
                 <h3>Search</h3>
                 <p>
                     Headlines provides accurate and 
@@ -60,6 +89,7 @@
                 </p>
             </li>
             <li class="specs-item">
+                <i data-feather="clock"></i>
                 <h3>Screensaver</h3>
                 <p>
                     Headlines provides accurate and 
@@ -72,7 +102,10 @@
     <section class="action">
         <h3>Get it now for free</h3>
         <div>
-            <button class="btn">Add to Chrome</button>
+            <a href="" class="btn primary">
+                <img src="assets/icons/google_chrome.png" alt="Google Chrome logo">
+                Add to Chrome
+            </a>
             <p class="label">Coming soon to Firefox</p>
         </div>
     </section>
@@ -87,6 +120,8 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

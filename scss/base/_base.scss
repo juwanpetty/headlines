@@ -29,21 +29,34 @@ a {
 }
 
 svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     color: $primary-icon;
 }
 
-button {
+a.btn, button {
+    display: block;
     width: 213px;
     height: 36px;
-    padding: 0 36px;
-    color: $secondary-text;
     background: $button-bg;
     border-radius: 3px;
+    margin-bottom: 12px;
     border: 1px solid $button-border;
+    @include flex(center, center);
+    color: $secondary-text;
+    font-family: "Inter UI", -apple-system, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
 
-    svg {
+    &.primary {
+        border: 2px solid $accent-color;
+        background: $accent-color-secondary;
+        cursor: pointer;
+    }
+
+    img {
         margin-right: 1rem;
+        width: 18px;
+        height: 18px;
     }
 }

@@ -6,6 +6,8 @@ nav {
     padding-bottom: 5rem;
 
     .logo {
+        @include flex(center, flex-start);
+
         svg {
             width: 28px;
             height: 28px;
