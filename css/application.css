@@ -659,12 +659,12 @@ footer {
     footer .footer-links a:not(:last-child) {
       margin-right: 1rem; }
 
-section.slider {
+section.carousel .slider {
   height: 36px;
   margin-bottom: 7rem; }
-  section.slider .slide {
+  section.carousel .slider .slide {
     width: 100%; }
-    section.slider .slide img {
+    section.carousel .slider .slide img {
       width: 150px;
       object-fit: contain;
       object-position: center center;
@@ -720,5 +720,67 @@ section.action {
     align-items: center;
     justify-content: center;
     flex-direction: column; }
+
+.attribution {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem; }
+  .attribution a {
+    color: #007AFF; }
+
+@media screen and (max-width: 990px) {
+  header {
+    grid-template-columns: 1fr; }
+    header .header-content {
+      max-width: 490px; }
+    header .header-image {
+      display: none; }
+
+  footer {
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start; } }
+@media screen and (max-width: 535px) {
+  header .header-content h1.header-title {
+    font-size: 2rem; }
+  header .header-content .header-action .action {
+    grid-template-columns: 1fr;
+    grid-row-gap: 1rem; }
+    header .header-content .header-action .action > div {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start; }
+
+  footer .footer-links {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column; }
+    footer .footer-links a:not(:last-child) {
+      margin-bottom: 1rem; } }
+@media screen and (max-width: 890px) {
+  section.specs .specs-list {
+    grid-template-columns: 1fr;
+    grid-row-gap: 2rem; }
+    section.specs .specs-list .specs-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start; }
+      section.specs .specs-list .specs-item p {
+        text-align: left;
+        max-width: 300px; }
+
+  section.action {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start; }
+    section.action > div {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start; } }
+@media screen and (max-width: 600px) {
+  section.carousel {
+    display: none; } }
 
 /*# sourceMappingURL=application.css.map */

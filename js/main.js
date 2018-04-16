@@ -1,6 +1,6 @@
 feather.replace();
 
-$('.source-logos').slick({
+$('.slider').slick({
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
