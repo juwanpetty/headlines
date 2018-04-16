@@ -5,6 +5,7 @@ $('.source-logos').slick({
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1000,
+    draggable: false,
     arrows: false,
     dots: false,
         pauseOnHover: false,
