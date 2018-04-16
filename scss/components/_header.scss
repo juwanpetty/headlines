@@ -1,0 +1,42 @@
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3rem;
+    margin-bottom: 9rem;
+
+    .header-content {
+        .header-title {
+            color: $primary-text;
+            font-size: 3rem;
+            font-weight: 500;
+            margin-bottom: 4rem;
+            line-height: 125%;
+        }
+
+        .header-subtitle {
+            line-height: 155%;
+            margin-bottom: 3rem;
+        }
+
+        .header-action {
+            & > p {
+                margin-bottom: 20px;
+            }
+
+            .action {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 2rem;
+
+                button {
+                    margin-bottom: 12px;
+                }
+
+                & > div {
+                    @include flex(center, center);
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

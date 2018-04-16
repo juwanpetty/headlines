@@ -1,0 +1,56 @@
+@import url('https://rsms.me/inter/inter-ui.css');
+
+html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-family: "Inter UI", -apple-system, sans-serif;
+}
+
+h1 {
+    font-family: "Inter UI", -apple-system, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 135%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-transform: none;
+}
+
+h2 {
+    font-family: "Inter UI", -apple-system, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 105%;
+    margin-bottom: 5px;
+    text-transform: none;
+}
+
+h3 {
+    font-family: "Inter UI", -apple-system, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0px;
+    margin-bottom: 5px;
+}
+
+p {
+    font-family: "Inter UI", -apple-system, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.60;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-transform: none;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 400;
+    color: $secondary-text;
+}

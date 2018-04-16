@@ -1,0 +1,19 @@
+footer {
+    @include flex(center, space-between);
+    padding-bottom: 36px;
+    padding-top: 5rem;
+
+    p > a.bold {
+        color: $primary-text;
+    }
+
+    .footer-links {
+        a {
+            color: $secondary-text;
+
+            &:not(:last-child) {
+                margin-right: 1rem;
+            }
+        }
+    }
+}

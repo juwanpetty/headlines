@@ -1,0 +1,45 @@
+section.specs {
+    margin-bottom: 5rem;
+
+    ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 8rem;
+
+        svg {
+            margin-bottom: 1rem;
+            fill: $primary-icon;
+        }
+
+        h3 {
+            color: $primary-text;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            line-height: 155%;
+            color: $secondary-text;
+        }
+    }
+}
+
+section.action {
+    @include flex(center, center);
+    flex-direction: column;
+
+    h3 {
+        color: $primary-text;
+        margin-bottom: 20px;
+    }
+
+    button {
+        margin-bottom: 12px;
+    }
+
+    & > div {
+        @include flex(center, center);
+        flex-direction: column;
+    }
+}

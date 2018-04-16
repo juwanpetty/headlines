@@ -1,0 +1,49 @@
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+  
+*, *:before, *:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;  
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    width: 90%;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+ol,ul,li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+svg {
+    width: 18px;
+    height: 18px;
+    color: $primary-icon;
+}
+
+button {
+    width: 213px;
+    height: 36px;
+    padding: 0 36px;
+    color: $secondary-text;
+    background: $button-bg;
+    border-radius: 3px;
+    border: 1px solid $button-border;
+
+    svg {
+        margin-right: 1rem;
+    }
+}
