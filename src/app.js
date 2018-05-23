@@ -1,3 +1,5 @@
+import './scss/application.scss';
+
 const body = document.querySelector('body');
 const sidebar = document.querySelector('.js-sidebar');
 const sidebarIcon = document.querySelector('.js-menu');
