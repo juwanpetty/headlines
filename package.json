@@ -2,7 +2,7 @@
   "name": "headlines",
   "version": "0.0.21",
   "description": "Replace your new tab page with the latest news based on the sources you choose.",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {},
   "repository": {
     "type": "git",
