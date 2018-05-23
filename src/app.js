@@ -271,7 +271,7 @@ function populateStorage() {
   let sources = [];
   
   // get a list of all the the sources
-  for (i = 0; i < inputList.length; i++) {
+  for (let i = 0; i < inputList.length; i++) {
     sources.push(inputList[i].id);
   }
   
@@ -290,7 +290,7 @@ function populateStorage() {
   }
 
   // grap random sources from sidebar (3 max)
-  newSources = `${sources[0]},${sources[1]},${sources[2]}`;
+  let newSources = `${sources[0]},${sources[1]},${sources[2]}`;
 
   // set the localstorage sources key/value pair
   localStorage.setItem('sources', newSources);

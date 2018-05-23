@@ -9,14 +9,29 @@ module.exports = {
         path: dist,
         filename: 'bundle.js'
     },
+    devtool: "source-map",
     module: {
         rules: [{
+            loader: 'babel-loader',
+            test: /\.js$/,
+            exclude: /node_modules/
+          }, {
             test: /\.scss$/,
-            use: [
-                'style-loader',
-                'css-loader',
-                'sass-loader'
-            ]
+            use: [{
+                loader: "style-loader"
+            }, {
+                loader: "css-loader", options: {
+                    sourceMap: true
+                }
+            }, {
+                loader: "sass-loader", options: {
+                    sourceMap: true
+                }
+            }]
         }]
+    },
+    devServer: {
+        contentBase: dist,
+        port: 3000
     }
 };
