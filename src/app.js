@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import HeadlinesApp from './components/HeadlinesApp'
+
 import 'normalize.scss/normalize.scss';
 import './styles/style.scss';
 
 import './icons';
+
+
+ReactDOM.render(<HeadlinesApp />, document.getElementById('app'));
 
 const body = document.querySelector('body');
 const sidebar = document.querySelector('.js-sidebar');
