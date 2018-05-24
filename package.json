@@ -4,8 +4,8 @@
   "description": "Replace your new tab page with the latest news based on the sources you choose.",
   "main": "app.js",
   "scripts": {
-    "build": "webpack --mode=development",
-    "start:dev": "npm run build && webpack-dev-server --mode=development"
+    "build": "webpack",
+    "dev-server": "webpack-dev-server --mode=development"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,10 @@
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "feather-icons": "^4.7.3",
+    "normalize.scss": "^0.1.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
   }
 }

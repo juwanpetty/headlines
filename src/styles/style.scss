@@ -1,30 +1,13 @@
-$primary-text: #2B2B2B;
-$secondary-text: #999999;
-$border-color: #D7D7DB;
-$accent-color: #007AFF;
+@import './base/variables';
+@import './base/typography';
+@import './base/base';
 
-@import 'normalize';
+@import 'components/article';
+@import 'components/navigation';
+@import 'components/search';
+@import 'components/sidebar';
 
-html {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
-*, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-}
-
-@import 'typography';
-
-body {
-    position: relative;
-    font-family: -apple-system, 'Inter UI', sans-serif;
-    color: $primary-text;
-    background: #f9f9fa;
-}
 
 main {
     position: relative;
@@ -56,11 +39,7 @@ svg {
     }
 }
 
-ol, ul, li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+
 
 button.btn {
     background-color: #F9F9FA;
@@ -79,8 +58,3 @@ button.btn {
         color: #FFF;
     }
 }
-
-@import 'nav';
-@import 'sidebar';
-@import 'search';
-@import 'article';

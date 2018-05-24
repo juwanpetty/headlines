@@ -1,0 +1,24 @@
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    font-family: -apple-system, 'Inter UI', sans-serif;
+    color: $primary-text;
+    background: #f9f9fa;
+}
+
+ol, ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

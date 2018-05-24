@@ -1,4 +1,10 @@
-import './scss/application.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import 'normalize.scss/normalize.scss';
+import './styles/style.scss';
+
+import './icons';
 
 const body = document.querySelector('body');
 const sidebar = document.querySelector('.js-sidebar');
@@ -10,7 +16,6 @@ const articlesContainer = document.querySelector('.js-articles');
 
 let inputList;
 
-feather.replace();
 
 // adding click events to .js-menu and .js-done
 let clickElements = document.querySelectorAll('.js-done, .js-menu');
