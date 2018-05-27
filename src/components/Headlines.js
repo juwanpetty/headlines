@@ -7,6 +7,8 @@ import Sidebar from './Sidebar'
 
 export default class Headlines extends React.Component {
     render() {
+        const sources = ['ign', 'the-verge', 'cnn'];
+
         return (
             <div>
                 <Header />
@@ -16,7 +18,7 @@ export default class Headlines extends React.Component {
                     <Article />
                 </div>
                 
-                <Sidebar />
+                <Sidebar sources={sources} />
             </div>
         );
     }
