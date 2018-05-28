@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from './Header'
 import Search from './Search'
-import Article from './Article'
+import Articles from './Articles'
 import Sidebar from './Sidebar'
 
 export default class Headlines extends React.Component {
@@ -35,7 +35,7 @@ export default class Headlines extends React.Component {
 
                 <div>
                     <Search />
-                    <Article />
+                    <Articles sources={this.state.sources} />
                 </div>
                 
                 <Sidebar 
