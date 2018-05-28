@@ -19,7 +19,11 @@ export default class Sidebar extends React.Component {
                     </div>
 
                     <div>
-                        <Sources sources={this.props.sources} />
+                        <Sources 
+                            sources={this.props.sources} 
+                            handleDeleteSource={this.props.handleDeleteSource}
+                            handleAddSource={this.props.handleAddSource}
+                        />
                         <Settings />
                     </div>
 

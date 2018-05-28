@@ -6,9 +6,29 @@ import Article from './Article'
 import Sidebar from './Sidebar'
 
 export default class Headlines extends React.Component {
-    render() {
-        const sources = ['ign', 'the-verge', 'cnn'];
+    constructor(props) {
+        super(props);
+        this.handleAddSource = this.handleAddSource.bind(this)
+        this.handleDeleteSource = this.handleDeleteSource.bind(this)
+        this.state = {
+            sources : ['bloomberg', 'business-insider', 'fortune'],
+            userSettings: {}
+        };
+    }
 
+    handleAddSource(sourceToAdd) {
+        this.setState((prevState) => ({ 
+            sources: prevState.sources.concat(sourceToAdd) 
+        }));
+    };
+
+    handleDeleteSource(sourceToRemove) {
+        this.setState((prevState) => ({
+            sources: prevState.sources.filter((source) => sourceToRemove !== source)
+        }));
+    };
+    
+    render() {
         return (
             <div>
                 <Header />
@@ -18,7 +38,11 @@ export default class Headlines extends React.Component {
                     <Article />
                 </div>
                 
-                <Sidebar sources={sources} />
+                <Sidebar 
+                    sources={this.state.sources}
+                    handleAddSource={this.handleAddSource}
+                    handleDeleteSource={this.handleDeleteSource}
+                />
             </div>
         );
     }

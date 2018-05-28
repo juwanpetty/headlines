@@ -8,7 +8,7 @@ export default class Sources extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            sources: []
+            loadedSources: []
         };
     }
 
@@ -18,7 +18,7 @@ export default class Sources extends React.Component {
             .then((result) => {
                 this.setState({
                     isLoaded: true,
-                    sources: result.sources
+                    loadedSources: result.sources
                 });
             }, (error) => {
                 this.setState({
@@ -37,7 +37,7 @@ export default class Sources extends React.Component {
     
     render() {
         let filteredSources;
-        const { error, isLoaded, sources } = this.state;
+        const { error, isLoaded, loadedSources } = this.state;
         const categories = ['business', 'entertainment', 'technology', 
                             'general', 'science', 'sports', 'health'];
 
@@ -48,17 +48,11 @@ export default class Sources extends React.Component {
         } else {
             return (
                 <div className="js-sources">
-                    <div>
-                        {
-                            this.props.sources.map(source => <p key={source}>{source}</p>)
-                        }
-                    </div>
-
                     {
                         // go through each category
                         categories.map((category, index) => { 
                             // only use the sources with matching categories
-                            filteredSources = sources.filter((sources) => {
+                            filteredSources = loadedSources.filter((sources) => {
                                 return sources.category == category;
                             });
     
@@ -68,7 +62,13 @@ export default class Sources extends React.Component {
                                     <div className="source__group">
                                         { 
                                             filteredSources.map((source, index) => {
-                                                return <Source key={index} source={source} /> 
+                                                return <Source 
+                                                        key={index} 
+                                                        source={source} 
+                                                        isChecked={this.props.sources.includes(source.id)}
+                                                        handleDeleteSource={this.props.handleDeleteSource}
+                                                        handleAddSource={this.props.handleAddSource}
+                                                        />
                                             })
                                         }
                                     </div>
