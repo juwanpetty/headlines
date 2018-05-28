@@ -13,7 +13,7 @@ export default class Articles extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`https://newsapi.org/v2/top-headlines?sources=ign&apiKey=9e0f251af2d2433793804d01f677f4ba`)
+        fetch(`https://newsapi.org/v2/top-headlines?sources=the-verge&apiKey=9e0f251af2d2433793804d01f677f4ba`)
             .then(res => res.json())
             .then((result) => {
                 this.setState({
@@ -30,7 +30,6 @@ export default class Articles extends React.Component {
 
     render() {
         const { error, isLoaded, loadedArticles } = this.state;
-        console.log(loadedArticles);
 
         if (error) {
             return <div>Error: {error.message}</div>;
@@ -38,13 +37,17 @@ export default class Articles extends React.Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <ul className="articles js-articles">
-                    {
-                        loadedArticles.map((article, index) => {
-                            return <Article key={index} article={article} />
-                        })
-                    }
-                </ul>
+                <section className="section">
+                    <div className="section__wrapper">
+                        <ul className="articles js-articles">
+                            {
+                                loadedArticles.map((article, index) => {
+                                    return <Article key={index} article={article} />
+                                })
+                            }
+                        </ul>
+                    </div>
+                </section>
             );
         }
     };
