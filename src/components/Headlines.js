@@ -33,16 +33,16 @@ export default class Headlines extends React.Component {
             <div>
                 <Header />
 
-                <div>
+                <main>
                     <Search />
                     <Articles sources={this.state.sources} />
-                </div>
-                
-                <Sidebar 
-                    sources={this.state.sources}
-                    handleAddSource={this.handleAddSource}
-                    handleDeleteSource={this.handleDeleteSource}
-                />
+                    
+                    <Sidebar 
+                        sources={this.state.sources}
+                        handleAddSource={this.handleAddSource}
+                        handleDeleteSource={this.handleDeleteSource}
+                    />
+                </main>
             </div>
         );
     }
