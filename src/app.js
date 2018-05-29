@@ -6,9 +6,6 @@ import Headlines from './components/Headlines'
 import 'normalize.scss/normalize.scss';
 import './styles/style.scss';
 
-import './icons';
-
-
 ReactDOM.render(<Headlines />, document.getElementById('app'));
 
 // const body = document.querySelector('body');
@@ -299,7 +296,7 @@ ReactDOM.render(<Headlines />, document.getElementById('app'));
 //     }
 //   }
 
-//   // grap random sources from sidebar (3 max)
+//   // grab random sources from sidebar (3 max)
 //   let newSources = `${sources[0]},${sources[1]},${sources[2]}`;
 
 //   // set the localstorage sources key/value pair

@@ -4,15 +4,19 @@ import Sources from './Sources';
 import Settings from './Settings';
 
 export default class Sidebar extends React.Component {
-    handleSubmit(e) {
-        console.log('Form submitted...');
-        e.preventDefault();
+    constructor(props) {
+        super(props);
+        this.fetchArticles = this.fetchArticles.bind(this);
+    }
+
+    fetchArticles() {
+        this.props.fetchArticles(this.props.storedSources.join());
     }
 
     render() {
         return (
             <aside className="js-sidebar">
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     <div className="sidebar__header">
                         <h3 className="sidebar__title">Sources</h3>
                         <p className="sidebar__subtitle">Choose what you see on the page.</p>
@@ -20,7 +24,10 @@ export default class Sidebar extends React.Component {
 
                     <div>
                         <Sources 
-                            sources={this.props.sources} 
+                            sources={this.props.sources}
+                            sourceIsLoaded={this.props.sourceIsLoaded}
+                            sourceError={this.props.sourceError}
+                            storedSources={this.props.storedSources} 
                             handleDeleteSource={this.props.handleDeleteSource}
                             handleAddSource={this.props.handleAddSource}
                         />
@@ -30,7 +37,14 @@ export default class Sidebar extends React.Component {
                     <p className="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
 
                     <div className="sidebar__footer">
-                        <input type="submit" className="btn action js-done" value="Done" />
+                        <button 
+                            type="button" 
+                            className="btn action js-done" 
+                            value="Done" 
+                            onClick={this.fetchArticles}
+                        >
+                        Done
+                        </button>
                     </div>
                 </form>
             </aside>

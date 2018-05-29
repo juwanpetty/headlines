@@ -7,11 +7,20 @@ export default class Source extends React.Component {
     }
 
     handleIsChecked(e) {
-        // if false then remove method else add method
-        if (e.target.checked) {
-            this.props.handleAddSource(e.target.id);
+        // if there is only one source left AND it's been unchecked
+        if (this.props.storedSources.length == 1 && e.target.checked == false) {
+            // don't allow checkbox to be unchecked
+            
+            e.target.checked = true;
+        } else if (this.props.storedSources.length == 20 && e.target.checked == true) {
+            e.target.checked = false;
         } else {
-            this.props.handleDeleteSource(e.target.id);
+            // if true then add method else delete method
+            if (e.target.checked) {
+                this.props.handleAddSource(e.target.id);
+            } else {
+                this.props.handleDeleteSource(e.target.id);
+            }
         }
     }
 
