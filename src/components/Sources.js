@@ -22,9 +22,6 @@ export default class Sources extends React.Component {
         } else {
             return (
                 <div className="js-sources">
-                    { // ONLY FOR TESTING
-                        this.props.storedSources.map((source, index) => <p key={index} style={{display: 'inline-block', marginRight: '10px'}}>{source}</p>)
-                    }
                     {
                         // go through each category
                         categories.map((category, index) => { 

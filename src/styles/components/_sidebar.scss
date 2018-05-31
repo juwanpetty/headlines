@@ -33,11 +33,12 @@
     border-left: 1px solid #D7D7DB;
     box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
 
+    transform: translateX(0);
     transition: 0.1s cubic-bezier(0, 0, 0, 1);
     transition-property: transform;
 
     &.hidden {
-        transform: translate(400px);
+        transform: translateX(400px);
     }
 
     p {font-size: 14px;}
@@ -68,11 +69,12 @@
     border-top: 1px solid #D7D7DB;
     padding: 1rem 40px;
 
+    transform: translateX(0);
     transition: 0.1s cubic-bezier(0, 0, 0, 1);
     transition-property: transform;
 
     &.hidden {
-        transform: translate(400px);
+        transform: translateX(400px);
     }
 }
 
