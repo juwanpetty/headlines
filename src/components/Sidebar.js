@@ -41,7 +41,6 @@ export default class Sidebar extends React.Component {
                                 handleDeleteSource={this.props.handleDeleteSource}
                                 handleAddSource={this.props.handleAddSource}
                             />
-                            <Settings />
                         </div>
 
                         <p className="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
