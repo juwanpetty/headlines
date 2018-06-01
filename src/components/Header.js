@@ -17,7 +17,6 @@ export default class Header extends React.Component {
         return (
             <nav>
                 <div 
-                    className="js-menu"
                     className={this.props.isSidebarOpen ? "js-menu sidebar-open" : "js-menu"}
                     onClick={this.toggleSidelines}
                 >

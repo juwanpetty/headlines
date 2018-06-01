@@ -6,16 +6,11 @@ const startCase = require('lodash/startcase');
 export default class Article extends React.Component {
     constructor(props) {
         super(props);
-        this.checkImage = this.checkImage.bind(this);
+        this.checkImageSize = this.checkImageSize.bind(this);
         this.relativeTime = this.relativeTime.bind(this);
     }
 
-    checkImage(e) {
-        // placeholder if no image path exists
-        if (e.target.src === null) {
-            return e.target.src = "assets/placeholder.jpg";
-        }
-
+    checkImageSize(e) {
         // displays placeholder if img is 1px (IGN)
         if (e.target.naturalWidth <= 1) {
             return e.target.src = "assets/placeholder.jpg";
@@ -28,14 +23,22 @@ export default class Article extends React.Component {
     }
 
     render() {
-        const { source, title, description, url, urlToImage, author, publishedAt } = this.props.article;
+        const { source, title, description, url, author, publishedAt } = this.props.article;
+        let { urlToImage } = this.props.article;
+        let articleImage = urlToImage;
+
+        if (urlToImage == null) {
+            console.log('');
+            urlToImage = "assets/placeholder.jpg";
+        }
 
         return (
             <li className="article__item">
                 <a href={url}>
                     <div className="article__image__container">
-                        <img className="article__image" onLoad={this.checkImage} src={urlToImage} alt={title} />
+                        <img onLoad={this.checkImageSize} src={urlToImage} alt={title} className={articleImage ? "article__image" : "article__image image-border"} />
                     </div>
+
                     <div className="article__details">
                         <p className="article__source">{source.name}</p>
                         <div className="article__overflow">
@@ -43,7 +46,7 @@ export default class Article extends React.Component {
                             <p className="article__description">{description}</p>
                         </div>
                         <div className="article__social">
-                            <p>{startCase(this.relativeTime(publishedAt))} {author ? ' — ' + author : ""}</p>
+                            <p>{startCase(this.relativeTime(publishedAt))} {!author || author.length > 20 ? "" : ' — ' + author }</p>
                         </div>
                     </div>
                 </a>
