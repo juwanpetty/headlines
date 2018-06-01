@@ -37,7 +37,7 @@
             border-left: none;
             
             &:hover {
-                background: #EDEDF0;
+                background: $lightgray;
             }
         }
     }
@@ -55,13 +55,14 @@
 
     border-radius: 3px;
 
-    border: 1px solid rgba(12, 12, 13, 0.1);
-    box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
+    outline: none;
+    border: 1px solid $lightgray;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.01);
 
     transition: box-shadow 75ms;
 
     &:focus {
-        box-shadow: 0 0 0 3px #007AFF;
+        box-shadow: 0 0 0 3px $blue;
     }
 }
 

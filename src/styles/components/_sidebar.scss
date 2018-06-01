@@ -8,7 +8,7 @@
     pointer-events: visible;
 
     &:hover {
-        background: #EDEDF0;
+        background: $lightgray;
     }
 
     .js-close {display: none;}
@@ -30,7 +30,7 @@
     overflow-y: scroll;
 
     background: #FFFFFF;
-    border-left: 1px solid #D7D7DB;
+    border-left: 1px solid $lightgray;
     box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
 
     transform: translateX(0);
@@ -65,8 +65,8 @@
     align-items: flex-start;
     justify-content: flex-end;
 
-    background: #F9F9FA;
-    border-top: 1px solid #D7D7DB;
+    background: $offwhite;
+    border-top: 1px solid $lightgray;
     padding: 1rem 40px;
 
     transform: translateX(0);
@@ -96,8 +96,8 @@
         opacity: 0;
 
         &:checked + label {
-            background: #0060DF;
-            border: solid 1px #0060DF;
+            background: $blue;
+            border: solid 1px $blue;
             color: #FFF;
         }
     }
@@ -109,9 +109,9 @@
         padding: 10px 30px;
 
         font-size: 16px;
-        border: 1px solid #E6E6E6;
+        border: 1px solid $lightgray;
         border-radius: 4px;
-        background-color: #F9F9FA;
+        background-color: $offwhite;
         cursor: pointer;
         
         // no highlighting
@@ -127,7 +127,7 @@
 }
 
 .attribution {
-    color: #AEAEAE;
+    color: $darkgray;
 
     a {
         text-decoration: none;

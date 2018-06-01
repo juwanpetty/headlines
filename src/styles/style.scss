@@ -29,7 +29,7 @@ svg {
 
     fill: none;
 
-    stroke: $secondary-text;
+    stroke: $gray;
     stroke-width: 2;
     stroke-linejoin: round;
     stroke-linecap: round;
@@ -42,8 +42,8 @@ svg {
 
 
 button.btn {
-    background-color: #F9F9FA;
-    border: 1px solid #B1B1B3;
+    background-color: $offwhite;
+    border: 1px solid $lightgray;
     border-radius: 4px;
     font-size: 14px;
     color: inherit;
@@ -53,8 +53,8 @@ button.btn {
     white-space: nowrap;
 
     &.action {
-        background: #0060DF;
-        border: solid 1px #0060DF;
-        color: #FFF;
+        background: $blue;
+        border: solid 1px $blue;
+        color: white;
     }
 }

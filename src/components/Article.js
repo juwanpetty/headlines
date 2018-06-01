@@ -30,7 +30,7 @@ export default class Article extends React.Component {
                     <div className="article__details">
                         <p className="article__source">{source.name}</p>
                         <div className="article__overflow">
-                            <h3 className="article__title">{title}</h3>
+                            <h3 className="article__title" dangerouslySetInnerHTML={{ __html: title }}></h3>
                             <p className="article__description">{description}</p>
                         </div>
                     </div>
