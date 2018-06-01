@@ -27,9 +27,9 @@ export default class Article extends React.Component {
         let { urlToImage } = this.props.article;
         let articleImage = urlToImage;
 
-        if (urlToImage == null) {
+        if (urlToImage === null || urlToImage === 'self') {
             console.log('');
-            urlToImage = "assets/placeholder.jpg";
+            urlToImage = "./assets/placeholder.jpg";
         }
 
         return (
