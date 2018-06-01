@@ -1,6 +1,7 @@
 import React from 'react';
 
 const relativeDate = require('relative-date');
+const startCase = require('lodash/startcase');
 
 export default class Article extends React.Component {
     constructor(props) {
@@ -22,8 +23,6 @@ export default class Article extends React.Component {
     }
 
     relativeTime(publishedAt) {
-        console.log('TIIMMME IS THE KEYWORD');
-
         var time = new Date(publishedAt).getTime();
         return (relativeDate(time));
     }
@@ -44,7 +43,7 @@ export default class Article extends React.Component {
                             <p className="article__description">{description}</p>
                         </div>
                         <div className="article__social">
-                            <p>{this.relativeTime(publishedAt)} {' — ' + author}</p>
+                            <p>{startCase(this.relativeTime(publishedAt))} {author ? ' — ' + author : ""}</p>
                         </div>
                     </div>
                 </a>
