@@ -6,8 +6,8 @@ export default class Search extends React.Component {
             <div className="search">
                 <form method="get" action="http://www.google.com/search?q=">
                     <div className="search__wrapper">
-                        <input type="text" className="searchbar" placeholder="Search the Web" name="q" autoComplete="off" />
-                        <div className="search__icon"><i data-feather="search"></i></div>
+                        <input type="text" className="searchbar" placeholder="Search the Web" name="q" autoComplete="off" id="search" />
+                        <label className="search__icon" htmlFor="search"><i data-feather="search"></i></label>
                         <button type="submit"><i data-feather="arrow-right"></i></button>
                     </div>
                 </form>
