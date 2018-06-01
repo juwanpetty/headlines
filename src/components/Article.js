@@ -1,9 +1,12 @@
 import React from 'react';
 
+const relativeDate = require('relative-date');
+
 export default class Article extends React.Component {
     constructor(props) {
         super(props);
         this.checkImage = this.checkImage.bind(this);
+        this.relativeTime = this.relativeTime.bind(this);
     }
 
     checkImage(e) {
@@ -18,8 +21,15 @@ export default class Article extends React.Component {
         }
     }
 
+    relativeTime(publishedAt) {
+        console.log('TIIMMME IS THE KEYWORD');
+
+        var time = new Date(publishedAt).getTime();
+        return (relativeDate(time));
+    }
+
     render() {
-        const { source, title, description, url, urlToImage } = this.props.article;
+        const { source, title, description, url, urlToImage, author, publishedAt } = this.props.article;
 
         return (
             <li className="article__item">
@@ -32,6 +42,9 @@ export default class Article extends React.Component {
                         <div className="article__overflow">
                             <h3 className="article__title" dangerouslySetInnerHTML={{ __html: title }}></h3>
                             <p className="article__description">{description}</p>
+                        </div>
+                        <div className="article__social">
+                            <p>{this.relativeTime(publishedAt)} {' — ' + author}</p>
                         </div>
                     </div>
                 </a>
