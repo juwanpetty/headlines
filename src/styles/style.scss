@@ -2,10 +2,12 @@
 @import './base/typography';
 @import './base/base';
 
-@import 'components/article';
+@import 'components/articles';
+@import 'components/buttons';
 @import 'components/navigation';
 @import 'components/search';
 @import 'components/sidebar';
+@import 'components/sources';
 
 
 
@@ -13,48 +15,12 @@ main {
     position: relative;
 
     width: 100%;
-    max-width: 900px;
+    max-width: 90.0rem;
     margin: 0 auto;
-    min-height: calc(100vh - 7rem);
+    min-height: calc(100vh - 11.2rem);
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-svg {
-    width: 20px;
-    height: 20px;
-
-    fill: none;
-
-    stroke: $gray;
-    stroke-width: 2;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-
-    &.cursor {
-        cursor: pointer;
-    }
-}
-
-
-
-button.btn {
-    background-color: $offwhite;
-    border: 1px solid $lightgray;
-    border-radius: 4px;
-    font-size: 14px;
-    color: inherit;
-    cursor: pointer;
-    margin-bottom: 15px;
-    padding: 10px 30px;
-    white-space: nowrap;
-
-    &.action {
-        background: $blue;
-        border: solid 1px $blue;
-        color: white;
-    }
 }

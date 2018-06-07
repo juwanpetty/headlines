@@ -1,9 +1,9 @@
 .js-menu {
-    width: 35px;
-    height: 36px;
+    width: 3.5rem;
+    height: 3.6rem;
 
-    padding: 0.5rem 0.5rem 0.25rem;
-    border-radius: 3px;
+    padding: 0.8rem 0.8rem 0.4rem;
+    border-radius: 0.3rem;
     cursor: pointer;
     pointer-events: visible;
 
@@ -24,33 +24,33 @@
     top: 0;
     right: 0;
 
-    width: 400px;
+    width: 40.0rem;
     height: 100vh;
-    padding: 40px;
+    padding: 4.0rem;
     overflow-y: scroll;
 
     background: #FFFFFF;
-    border-left: 1px solid $lightgray;
-    box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
+    border-left: 0.1rem solid $lightgray;
+    box-shadow: 0 0.1rem 0.4rem 0 rgba(12, 12, 13, 0.1);
 
     transform: translateX(0);
     transition: 0.1s cubic-bezier(0, 0, 0, 1);
     transition-property: transform;
 
     &.hidden {
-        transform: translateX(400px);
+        transform: translateX(40.0rem);
     }
 
-    p {font-size: 14px;}
+    p {font-size: 1.4rem;}
 
     form {
         position: relative;
-        padding-bottom: 5rem;
+        padding-bottom: 8.0rem;
     }
 }
 
 .sidebar__title {
-    font-size: 21px;
+    font-size: 2.1rem;
 }
 
 .sidebar__footer {
@@ -58,72 +58,24 @@
     bottom: 0;
     right: 0;
 
-    width: 399px;
-    height: 5rem;
+    width: 39.9rem;
+    height: 8.0rem;
 
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
 
     background: $offwhite;
-    border-top: 1px solid $lightgray;
-    padding: 1rem 40px;
+    border-top: 0.1rem solid $lightgray;
+    padding: 1.6rem 4.0rem;
 
     transform: translateX(0);
     transition: 0.1s cubic-bezier(0, 0, 0, 1);
     transition-property: transform;
 
     &.hidden {
-        transform: translateX(400px);
+        transform: translateX(40.0rem);
     }
-}
-
-.js-sources {
-    h3 {
-        margin: 0;
-        margin-bottom: 1rem;
-
-        font-size: 16px;
-        font-weight: 700;
-    }
-}
-
-.source__group  {
-    margin-bottom: 2rem;
-
-    input {
-        position: absolute;
-        opacity: 0;
-
-        &:checked + label {
-            background: $blue;
-            border: solid 1px $blue;
-            color: #FFF;
-        }
-    }
-
-    label {
-        display: block;
-
-        margin-bottom: 15px;
-        padding: 10px 30px;
-
-        font-size: 16px;
-        border: 1px solid $lightgray;
-        border-radius: 4px;
-        background-color: $offwhite;
-        cursor: pointer;
-        
-        // no highlighting
-        -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome and Opera */
-    }
-
 }
 
 .attribution {
