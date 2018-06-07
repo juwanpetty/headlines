@@ -1,7 +1,5 @@
 import React from 'react';
 
-import WeatherWidget from './WeatherWidget'; 
-
 export default class Header extends React.Component {
     constructor(props) {
         super(props);

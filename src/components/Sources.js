@@ -5,10 +5,6 @@ import React from 'react';
 import Source from './Source';
 
 export default class Sources extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let filteredSources;
         const { sourceError, sourceIsLoaded, sources } = this.props;
