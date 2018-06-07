@@ -12,7 +12,8 @@ export default class Article extends React.Component {
 
     checkImageSize(e) {
         // displays placeholder if img is 1px (IGN)
-        if (e.target.naturalWidth <= 1) {
+        if (e.target.naturalWidth <= 100) {
+            e.target.classList.add('image-border');
             return e.target.src = "assets/placeholder.jpg";
         }
     }
@@ -28,7 +29,6 @@ export default class Article extends React.Component {
         let articleImage = urlToImage;
 
         if (urlToImage === null || urlToImage === 'self') {
-            console.log('');
             urlToImage = "./assets/placeholder.jpg";
         }
 
