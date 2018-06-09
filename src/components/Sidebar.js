@@ -40,9 +40,10 @@ export default class Sidebar extends React.Component {
                                 handleDeleteSource={this.props.handleDeleteSource}
                                 handleAddSource={this.props.handleAddSource}
                             />
+                            
+                            <p className="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
                         </div>
 
-                        <p className="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
                     </form>
                 </aside>
 
