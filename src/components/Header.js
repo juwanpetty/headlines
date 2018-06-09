@@ -1,5 +1,7 @@
 import React from 'react';
 
+import WeatherWidget from './WeatherWidget';
+
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -14,6 +16,8 @@ export default class Header extends React.Component {
     render() {
         return (
             <nav>
+                <WeatherWidget />
+
                 <div 
                     className={this.props.isSidebarOpen ? "js-menu sidebar-open" : "js-menu"}
                     onClick={this.toggleSidelines}
