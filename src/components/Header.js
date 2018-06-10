@@ -16,7 +16,10 @@ export default class Header extends React.Component {
     render() {
         return (
             <nav>
-                <WeatherWidget />
+                <WeatherWidget
+                    showWeather={this.props.showWeather}
+                    weatherUnit={this.props.weatherUnit}
+                />
 
                 <div 
                     className={this.props.isSidebarOpen ? "js-menu sidebar-open" : "js-menu"}

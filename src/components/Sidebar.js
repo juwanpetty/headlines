@@ -39,10 +39,16 @@ export default class Sidebar extends React.Component {
                         <div className="sidebar__navigation">
                             <p 
                                 onClick={() => this.togglePanel('sources')}
-                                className={this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>Sources</p>
+                                className={this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>
+                                <i data-feather="chevron-left" className="navigation__icon navigation__icon--left"></i>
+                                Sources
+                            </p>
                             <p 
                                 onClick={() => this.togglePanel('settings')}
-                                className={!this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>Settings</p>
+                                className={!this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>
+                                Settings
+                                <i data-feather="chevron-right" className="navigation__icon navigation__icon--right"></i>
+                            </p>
                         </div>
 
                         <div className="sidebar__container">
@@ -59,7 +65,13 @@ export default class Sidebar extends React.Component {
                                 <p className="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
                             </div>
 
-                            <Settings sourcesPanel={this.props.sourcesPanel} />
+                            <Settings 
+                                sourcesPanel={this.props.sourcesPanel} 
+                                showWeather={this.props.showWeather}
+                                weatherUnit={this.props.weatherUnit}
+                                toggleShowWeather={this.props.toggleShowWeather}
+                                toggleWeatherUnit={this.props.toggleWeatherUnit}
+                            />
                         </div>
 
                     </form>

@@ -1,6 +1,13 @@
 .weather__widget {
     display: flex;
     padding-top: 1.2rem;
+    opacity: 0.9;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(.07,.95,0,1);
+
+    &--hidden {
+        opacity: 0.01;
+    }
 }
 
 .weather__temperature {

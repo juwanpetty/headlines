@@ -121,9 +121,28 @@
     color: $blue;
     font-weight: 500;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .navigation__icon {
+        stroke: $blue;
+        margin-top: 0.2rem;
+
+        &--left {
+            margin-right: 1.6rem;
+        }
+        
+        &--right {
+            margin-left: 1.6rem;
+        }
+    }
     
     &--selected {
         color: $darkgray;
         cursor: default;
+
+        .navigation__icon {
+            stroke: $darkgray;
+        }
     }
 }

@@ -17,6 +17,8 @@ export default class Headlines extends React.Component {
         this.toggleSidelines = this.toggleSidelines.bind(this)
         this.togglePanel = this.togglePanel.bind(this)
         this.toggleSidelinesOnBodyClick = this.toggleSidelinesOnBodyClick.bind(this)
+        this.toggleShowWeather = this.toggleShowWeather.bind(this)
+        this.toggleWeatherUnit = this.toggleWeatherUnit.bind(this)
         this.state = {
             storedSources: [],
             passedSources: [],
@@ -28,11 +30,31 @@ export default class Headlines extends React.Component {
             articleError: null,
             isSidebarOpen: false,
             userSettings: {},
-            sourcesPanel: true
+            sourcesPanel: true,
+            showWeather: true,
+            weatherUnit: 'us'
         };
     }
 
     componentDidMount() {
+        if (localStorage.showWeather) {
+            if (localStorage.getItem('showWeather') === 'true') {
+                this.setState({ showWeather: true });
+            } else {
+                this.setState({ showWeather: false });
+            }
+        } else {
+            localStorage.setItem('showWeather', true);
+        }
+
+        if (localStorage.weatherUnit) {
+            this.setState({ 
+                weatherUnit: localStorage.getItem('weatherUnit')
+            });
+        } else {
+            localStorage.setItem('weatherUnit', 'us');
+        }
+
         try {
             let storedSources = localStorage.getItem('sources');
             storedSources = storedSources.split(',');
@@ -85,6 +107,14 @@ export default class Headlines extends React.Component {
         if (prevState.storedSources.length !== this.state.storedSources.length) {
             const sources = this.state.storedSources.join();
             localStorage.setItem('sources', sources);
+        }
+
+        if (prevState.showWeather !== this.state.showWeather) {
+            localStorage.setItem('showWeather', this.state.showWeather);
+        }
+
+        if (prevState.weatherUnit !== this.state.weatherUnit) {
+            localStorage.setItem('weatherUnit', this.state.weatherUnit);
         }
     };
 
@@ -160,14 +190,30 @@ export default class Headlines extends React.Component {
 
     togglePanel(panel) {
         if (panel === 'sources') {
-            console.log('sources');
             this.setState({ 
                 sourcesPanel: true 
             });
         } else if (panel === 'settings') {
-            console.log('settings');
             this.setState({ 
                 sourcesPanel: false 
+            });
+        }
+    }
+
+    toggleShowWeather() {
+        this.setState((prevState) => ({ 
+            showWeather: !(prevState.showWeather)
+        }));
+    }
+
+    toggleWeatherUnit(unit) {
+        if (unit === 'si') {
+            this.setState({ 
+                weatherUnit: 'si' 
+            });
+        } else if (unit === 'us') {
+            this.setState({ 
+                weatherUnit: 'us' 
             });
         }
     }
@@ -218,6 +264,8 @@ export default class Headlines extends React.Component {
                 <Header 
                     isSidebarOpen={this.state.isSidebarOpen} 
                     toggleSidelines={this.toggleSidelines}
+                    showWeather={this.state.showWeather}
+                    weatherUnit={this.state.weatherUnit}
                 />
 
                 <main>
@@ -241,6 +289,10 @@ export default class Headlines extends React.Component {
                     toggleSidelines={this.toggleSidelines}
                     togglePanel={this.togglePanel}
                     sourcesPanel={this.state.sourcesPanel}
+                    showWeather={this.state.showWeather}
+                    weatherUnit={this.state.weatherUnit}
+                    toggleShowWeather={this.toggleShowWeather}
+                    toggleWeatherUnit={this.toggleWeatherUnit}
                 />
             </div>
         );
