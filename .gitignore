@@ -1,4 +1,5 @@
-public/
+public/bundle.js
+public/index.html
 
 # scss
 .sass-cache/
