@@ -1,0 +1,14 @@
+.settings__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateX(0);
+    will-change: transform;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(.07,.95,0,1);
+
+    &--hidden {
+        transform: translateX(359px);
+    }
+}

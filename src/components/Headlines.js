@@ -15,9 +15,11 @@ export default class Headlines extends React.Component {
         this.fetchSources = this.fetchSources.bind(this)
         this.fetchArticles = this.fetchArticles.bind(this)
         this.toggleSidelines = this.toggleSidelines.bind(this)
+        this.togglePanel = this.togglePanel.bind(this)
         this.toggleSidelinesOnBodyClick = this.toggleSidelinesOnBodyClick.bind(this)
         this.state = {
             storedSources: [],
+            passedSources: [],
             sources : [],
             sourceIsLoaded: false,
             sourceError: null,
@@ -25,8 +27,8 @@ export default class Headlines extends React.Component {
             articleIsLoaded: false,
             articleError: null,
             isSidebarOpen: false,
-            passedSources: [],
-            userSettings: {}
+            userSettings: {},
+            sourcesPanel: true
         };
     }
 
@@ -156,6 +158,20 @@ export default class Headlines extends React.Component {
         return true;
     }
 
+    togglePanel(panel) {
+        if (panel === 'sources') {
+            console.log('sources');
+            this.setState({ 
+                sourcesPanel: true 
+            });
+        } else if (panel === 'settings') {
+            console.log('settings');
+            this.setState({ 
+                sourcesPanel: false 
+            });
+        }
+    }
+
     fetchSources() {
         fetch(`https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`)
                 .then(res => res.json())
@@ -223,6 +239,8 @@ export default class Headlines extends React.Component {
                     handleAddSource={this.handleAddSource}
                     handleDeleteSource={this.handleDeleteSource}
                     toggleSidelines={this.toggleSidelines}
+                    togglePanel={this.togglePanel}
+                    sourcesPanel={this.state.sourcesPanel}
                 />
             </div>
         );

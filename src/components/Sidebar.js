@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Sources from './Sources';
+import Settings from './Settings';
 
 export default class Sidebar extends React.Component {
     constructor(props) {
@@ -18,6 +19,10 @@ export default class Sidebar extends React.Component {
         e.stopPropagation();
     }
 
+    togglePanel(panel) {
+        this.props.togglePanel(panel);
+    } 
+
     render() {
         return (
             <div>
@@ -31,17 +36,30 @@ export default class Sidebar extends React.Component {
                             <p className="sidebar__subtitle">Choose what you see on the page.</p>
                         </div>
 
-                        <div>
-                            <Sources 
-                                sources={this.props.sources}
-                                sourceIsLoaded={this.props.sourceIsLoaded}
-                                sourceError={this.props.sourceError}
-                                storedSources={this.props.storedSources} 
-                                handleDeleteSource={this.props.handleDeleteSource}
-                                handleAddSource={this.props.handleAddSource}
-                            />
-                            
-                            <p className="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
+                        <div className="sidebar__navigation">
+                            <p 
+                                onClick={() => this.togglePanel('sources')}
+                                className={this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>Sources</p>
+                            <p 
+                                onClick={() => this.togglePanel('settings')}
+                                className={!this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>Settings</p>
+                        </div>
+
+                        <div className="sidebar__container">
+                            <div className={this.props.sourcesPanel ? 'sidebar__container__inner' : 'sidebar__container__inner sidebar__container__inner--hidden'}>
+                                <Sources 
+                                    sources={this.props.sources}
+                                    sourceIsLoaded={this.props.sourceIsLoaded}
+                                    sourceError={this.props.sourceError}
+                                    storedSources={this.props.storedSources} 
+                                    handleDeleteSource={this.props.handleDeleteSource}
+                                    handleAddSource={this.props.handleAddSource}
+                                />
+                                
+                                <p className="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
+                            </div>
+
+                            <Settings sourcesPanel={this.props.sourcesPanel} />
                         </div>
 
                     </form>
