@@ -12,13 +12,20 @@ export default class Headlines extends React.Component {
         super(props);
         this.handleAddSource = this.handleAddSource.bind(this)
         this.handleDeleteSource = this.handleDeleteSource.bind(this)
+
         this.fetchSources = this.fetchSources.bind(this)
         this.fetchArticles = this.fetchArticles.bind(this)
-        this.toggleSidelines = this.toggleSidelines.bind(this)
+
+        this.toggleSidebar = this.toggleSidebar.bind(this)
         this.togglePanel = this.togglePanel.bind(this)
-        this.toggleSidelinesOnBodyClick = this.toggleSidelinesOnBodyClick.bind(this)
+        this.toggleSidebarOnBodyClick = this.toggleSidebarOnBodyClick.bind(this)
+
         this.toggleShowWeather = this.toggleShowWeather.bind(this)
+        this.toggleShowArticles = this.toggleShowArticles.bind(this)
+
         this.toggleWeatherUnit = this.toggleWeatherUnit.bind(this)
+        this.toggleArticleLink = this.toggleArticleLink.bind(this)
+
         this.allowGeolocation = this.allowGeolocation.bind(this)
         this.state = {
             storedSources: [],
@@ -26,14 +33,20 @@ export default class Headlines extends React.Component {
             sources : [],
             sourceIsLoaded: false,
             sourceError: null,
+
             articles: [],
             articleIsLoaded: false,
             articleError: null,
+
             isSidebarOpen: false,
-            userSettings: {},
             sourcesPanel: true,
+
             showWeather: true,
             weatherUnit: 'us',
+
+            showArticles: true,
+            articleLink: 'same-window',
+
             allowGeolocation: true
         };
     }
@@ -49,12 +62,30 @@ export default class Headlines extends React.Component {
             localStorage.setItem('showWeather', true);
         }
 
+        if (localStorage.showArticles) {
+            if (localStorage.getItem('showArticles') === 'true') {
+                this.setState({ showArticles: true });
+            } else {
+                this.setState({ showArticles: false });
+            }
+        } else {
+            localStorage.setItem('showArticles', true);
+        }
+
         if (localStorage.weatherUnit) {
             this.setState({ 
                 weatherUnit: localStorage.getItem('weatherUnit')
             });
         } else {
             localStorage.setItem('weatherUnit', 'us');
+        }
+
+        if (localStorage.articleLink) {
+            this.setState({ 
+                articleLink: localStorage.getItem('articleLink')
+            });
+        } else {
+            localStorage.setItem('articleLink', 'same-window');
         }
 
         try {
@@ -115,8 +146,16 @@ export default class Headlines extends React.Component {
             localStorage.setItem('showWeather', this.state.showWeather);
         }
 
+        if (prevState.showArticles !== this.state.showArticles) {
+            localStorage.setItem('showArticles', this.state.showArticles);
+        }
+
         if (prevState.weatherUnit !== this.state.weatherUnit) {
             localStorage.setItem('weatherUnit', this.state.weatherUnit);
+        }
+
+        if (prevState.articleLink !== this.state.articleLink) {
+            localStorage.setItem('articleLink', this.state.articleLink);
         }
     };
 
@@ -138,7 +177,7 @@ export default class Headlines extends React.Component {
         }));
     };
 
-    toggleSidelines(e) {
+    toggleSidebar(e) {
         e.stopPropagation();
 
         this.setState((prevState) => ({
@@ -154,7 +193,7 @@ export default class Headlines extends React.Component {
         }
     };
 
-    toggleSidelinesOnBodyClick() {
+    toggleSidebarOnBodyClick() {
         // if Sidebar is open, then it has been clicked to be closed
         if (this.state.isSidebarOpen) {
             this.setState((prevState) => ({ 
@@ -208,6 +247,12 @@ export default class Headlines extends React.Component {
         }));
     }
 
+    toggleShowArticles() {
+        this.setState((prevState) => ({ 
+            showArticles: !(prevState.showArticles)
+        }));
+    }
+
     toggleWeatherUnit(unit) {
         if (unit === 'si') {
             this.setState({ 
@@ -216,6 +261,18 @@ export default class Headlines extends React.Component {
         } else if (unit === 'us') {
             this.setState({ 
                 weatherUnit: 'us' 
+            });
+        }
+    }
+
+    toggleArticleLink(action) {
+        if (action === 'new-tab') {
+            this.setState({ 
+                articleLink: 'new-tab' 
+            });
+        } else if (action === 'same-window') {
+            this.setState({ 
+                articleLink: 'same-window' 
             });
         }
     }
@@ -268,10 +325,11 @@ export default class Headlines extends React.Component {
 
     render() {
         return (
-            <div onClick={this.toggleSidelinesOnBodyClick}>
+            <div onClick={this.toggleSidebarOnBodyClick}>
                 <Header 
                     isSidebarOpen={this.state.isSidebarOpen} 
-                    toggleSidelines={this.toggleSidelines}
+                    toggleSidebar={this.toggleSidebar}
+
                     showWeather={this.state.showWeather}
                     weatherUnit={this.state.weatherUnit}
                     allowGeolocation={this.allowGeolocation}
@@ -281,9 +339,13 @@ export default class Headlines extends React.Component {
                     <Search />
                     <Articles 
                         storedSources={this.state.storedSources}
+                        
                         articles={this.state.articles}
                         articleIsLoaded={this.state.articleIsLoaded}
                         articleError={this.state.error}
+
+                        showArticles={this.state.showArticles}
+                        articleLink={this.state.articleLink}
                     />
                 </main>
 
@@ -295,13 +357,22 @@ export default class Headlines extends React.Component {
                     isSidebarOpen={this.state.isSidebarOpen}
                     handleAddSource={this.handleAddSource}
                     handleDeleteSource={this.handleDeleteSource}
-                    toggleSidelines={this.toggleSidelines}
+                    toggleSidebar={this.toggleSidebar}
                     togglePanel={this.togglePanel}
                     sourcesPanel={this.state.sourcesPanel}
-                    showWeather={this.state.showWeather}
+                    
                     weatherUnit={this.state.weatherUnit}
-                    toggleShowWeather={this.toggleShowWeather}
+                    articleLink={this.state.articleLink}
+                    
                     toggleWeatherUnit={this.toggleWeatherUnit}
+                    toggleArticleLink={this.toggleArticleLink}
+                    
+                    showWeather={this.state.showWeather}
+                    toggleShowWeather={this.toggleShowWeather}
+
+                    showArticles={this.state.showArticles}
+                    toggleShowArticles={this.toggleShowArticles}
+
                     allowGeolocation={this.state.allowGeolocation}
                 />
             </div>

@@ -87,7 +87,7 @@ export default class WeatherWidget extends React.Component {
         let weather = this.state.weather;
 
         if (this.state.weatherError) {
-            return <div>Error: {this.state.weatherError}</div>;
+            return <div className={this.props.showWeather ? "weather__widget" : "weather__widget weather__widget--hidden"}>Error: {this.state.weatherError}</div>;
         } else if (!this.state.weatherIsLoaded) {
             return <div className="weather__widget"></div>;
         } else {

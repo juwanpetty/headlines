@@ -38,6 +38,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "feather-icons": "^4.7.3",
+    "feather-icons-react": "^0.2.0",
     "lodash": "^4.17.10",
     "normalize.scss": "^0.1.0",
     "react": "^16.4.0",

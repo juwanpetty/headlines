@@ -34,7 +34,7 @@ export default class Article extends React.Component {
 
         return (
             <li className="article__item">
-                <a href={url}>
+                <a href={url} target={this.props.articleLink === "same-window" ? "_top" : "_blank"}>
                     <div className="article__image__container">
                         <img onLoad={this.checkImageSize} src={urlToImage} alt={title} className={articleImage ? "article__image" : "article__image image-border"} />
                     </div>

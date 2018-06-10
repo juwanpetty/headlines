@@ -1,4 +1,5 @@
 import React from 'react';
+import FeatherIcon from 'feather-icons-react'; 
 
 export default class MessageBar extends React.Component {
     messageBarType(type) {
@@ -23,9 +24,9 @@ export default class MessageBar extends React.Component {
     render() {
         return (
             <div className={this.messageBarType(this.props.type)}>
-                <i data-feather="info" className="message__bar__info"></i>
+                <FeatherIcon icon="info" className="message__bar__info" />
                 <p className="message__bar__message">{this.props.message}</p>
-                <i data-feather="x" style={this.props.type === 'generic' ? {display: 'none'} : undefined} className="message__bar__close"></i>
+                <FeatherIcon icon="x" style={this.props.type === 'generic' ? {display: 'none'} : undefined} className="message__bar__close" />
             </div>
         );
     };

@@ -7,17 +7,17 @@ export default class Articles extends React.Component {
         const { articleError, articleIsLoaded, articles } = this.props;
 
         if (articleError) {
-            return <div>Error: {error.message}</div>;
+            return <div >Error: {error.message}</div>;
         } else if (!articleIsLoaded) {
-            return <div>Loading...</div>;
+            return <div className={this.props.showArticles ? "articles" : "articles articles--hidden"}>Loading...</div>;
         } else {
             return (
                 <section className="section">
                     <div className="section__wrapper">
-                        <ul className="articles js-articles">
+                        <ul className={this.props.showArticles ? "articles" : "articles articles--hidden"}>
                             {
                                 articles.map((article, index) => {
-                                    return <Article key={index} article={article} />
+                                    return <Article key={index} article={article} articleLink={this.props.articleLink} />
                                 })
                             }
                         </ul>

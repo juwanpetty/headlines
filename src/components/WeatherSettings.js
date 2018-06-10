@@ -3,7 +3,7 @@ import React from 'react';
 export default class WeatherSettings extends React.Component {
     render() {
         return (
-            <div className={this.props.allowGeolocation ? "settings" : "settings disable-settings"}>
+            <div className={this.props.allowGeolocation ? "settings" : "settings settings--disable-settings"}>
                 <div className="settings__group">
                     <div className="checkbox">
                         <input type="checkbox" id="weather" checked={this.props.showWeather && this.props.allowGeolocation} onChange={() => this.props.toggleShowWeather()} />

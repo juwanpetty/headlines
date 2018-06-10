@@ -1,16 +1,16 @@
 import React from 'react';
-
+import FeatherIcon from 'feather-icons-react'; 
 import WeatherWidget from './WeatherWidget';
 
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.toggleSidelines = this.toggleSidelines.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
-    toggleSidelines(e) {
+    toggleSidebar(e) {
         e.stopPropagation();
-        this.props.toggleSidelines(e);
+        this.props.toggleSidebar(e);
     }
 
     render() {
@@ -24,10 +24,10 @@ export default class Header extends React.Component {
 
                 <div 
                     className={this.props.isSidebarOpen ? "js-menu sidebar-open" : "js-menu"}
-                    onClick={this.toggleSidelines}
+                    onClick={this.toggleSidebar}
                 >
-                    <i data-feather="settings" className="js-open"></i>
-                    <i data-feather="x" className="js-close"></i>
+                    <FeatherIcon icon="settings" className="js-open" />
+                    <FeatherIcon icon="x" className="js-close" />
                 </div>
             </nav>
         );

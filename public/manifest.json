@@ -21,5 +21,8 @@
     "chrome_url_overrides" : {
       "newtab": "index.html"
     },
+    "permissions": [
+      "geolocation"
+    ],
     "author": "Juwan Petty <jchpetty@gmail.com> (juwanpetty.com)"
   }

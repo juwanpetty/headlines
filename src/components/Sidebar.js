@@ -1,18 +1,18 @@
 import React from 'react';
-
+import FeatherIcon from 'feather-icons-react'; 
 import Sources from './Sources';
 import Settings from './Settings';
 
 export default class Sidebar extends React.Component {
     constructor(props) {
         super(props);
-        this.toggleSidelines = this.toggleSidelines.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
         this.preventBubbling = this.preventBubbling.bind(this);
     }
 
-    toggleSidelines(e) {
+    toggleSidebar(e) {
         e.stopPropagation();
-        this.props.toggleSidelines(e);
+        this.props.toggleSidebar(e);
     }
 
     preventBubbling(e) {
@@ -40,14 +40,14 @@ export default class Sidebar extends React.Component {
                             <p 
                                 onClick={() => this.togglePanel('sources')}
                                 className={this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>
-                                <i data-feather="chevron-left" className="navigation__icon navigation__icon--left"></i>
+                                <FeatherIcon icon="chevron-left" className="navigation__icon navigation__icon--left" />
                                 Sources
                             </p>
                             <p 
                                 onClick={() => this.togglePanel('settings')}
                                 className={!this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>
                                 Settings
-                                <i data-feather="chevron-right" className="navigation__icon navigation__icon--right"></i>
+                                <FeatherIcon icon="chevron-right" className="navigation__icon navigation__icon--right" />
                             </p>
                         </div>
 
@@ -67,10 +67,19 @@ export default class Sidebar extends React.Component {
 
                             <Settings 
                                 sourcesPanel={this.props.sourcesPanel} 
-                                showWeather={this.props.showWeather}
+
                                 weatherUnit={this.props.weatherUnit}
-                                toggleShowWeather={this.props.toggleShowWeather}
                                 toggleWeatherUnit={this.props.toggleWeatherUnit}
+
+                                articleLink={this.props.articleLink}
+                                toggleArticleLink={this.props.toggleArticleLink}
+
+                                showWeather={this.props.showWeather}
+                                toggleShowWeather={this.props.toggleShowWeather}
+
+                                showArticles={this.props.showArticles}
+                                toggleShowArticles={this.props.toggleShowArticles}
+                                
                                 allowGeolocation={this.props.allowGeolocation}
                             />
                         </div>
@@ -86,7 +95,7 @@ export default class Sidebar extends React.Component {
                         type="button" 
                         className="btn action js-done" 
                         value="Done" 
-                        onClick={this.toggleSidelines}
+                        onClick={this.toggleSidebar}
                     >
                     Done
                     </button>
