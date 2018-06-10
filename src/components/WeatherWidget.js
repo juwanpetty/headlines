@@ -3,6 +3,7 @@ import React from 'react';
 export default class WeatherWidget extends React.Component {
     constructor(props) {
         super(props);
+        this.allowGeolocation = this.allowGeolocation.bind(this)
         this.state = {
             weather: [],
             weatherError: null,
@@ -20,10 +21,28 @@ export default class WeatherWidget extends React.Component {
             navigator.geolocation.getCurrentPosition((position) => {
                 this.fetchWeather(position.coords.latitude, position.coords.longitude);
                 this.fetchWeatherLocation(position.coords.latitude, position.coords.longitude);
+            }, (error) => {
+                switch(error.code) {
+                    case error.PERMISSION_DENIED:
+                        console.log("User denied the request for Geolocation.");
+                        this.allowGeolocation();
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        console.log("Location information is unavailable.")
+                        break;
+                    case error.TIMEOUT:
+                        console.log("The request to get user location timed out.")
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        console.log("An unknown error occurred.")
+                        break;
+                }
             });
-        } else {
-            // not allowed or no browser support
         }
+    }
+
+    allowGeolocation() {
+        this.props.allowGeolocation();
     }
 
     fetchWeather(latitude, longitude) {

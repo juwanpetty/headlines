@@ -71,6 +71,7 @@ export default class Sidebar extends React.Component {
                                 weatherUnit={this.props.weatherUnit}
                                 toggleShowWeather={this.props.toggleShowWeather}
                                 toggleWeatherUnit={this.props.toggleWeatherUnit}
+                                allowGeolocation={this.props.allowGeolocation}
                             />
                         </div>
 

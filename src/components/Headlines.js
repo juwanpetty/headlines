@@ -19,6 +19,7 @@ export default class Headlines extends React.Component {
         this.toggleSidelinesOnBodyClick = this.toggleSidelinesOnBodyClick.bind(this)
         this.toggleShowWeather = this.toggleShowWeather.bind(this)
         this.toggleWeatherUnit = this.toggleWeatherUnit.bind(this)
+        this.allowGeolocation = this.allowGeolocation.bind(this)
         this.state = {
             storedSources: [],
             passedSources: [],
@@ -32,7 +33,8 @@ export default class Headlines extends React.Component {
             userSettings: {},
             sourcesPanel: true,
             showWeather: true,
-            weatherUnit: 'us'
+            weatherUnit: 'us',
+            allowGeolocation: true
         };
     }
 
@@ -218,6 +220,12 @@ export default class Headlines extends React.Component {
         }
     }
 
+    allowGeolocation() {
+        this.setState({ 
+            allowGeolocation: false 
+        });
+    }
+
     fetchSources() {
         fetch(`https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`)
                 .then(res => res.json())
@@ -266,6 +274,7 @@ export default class Headlines extends React.Component {
                     toggleSidelines={this.toggleSidelines}
                     showWeather={this.state.showWeather}
                     weatherUnit={this.state.weatherUnit}
+                    allowGeolocation={this.allowGeolocation}
                 />
 
                 <main>
@@ -293,6 +302,7 @@ export default class Headlines extends React.Component {
                     weatherUnit={this.state.weatherUnit}
                     toggleShowWeather={this.toggleShowWeather}
                     toggleWeatherUnit={this.toggleWeatherUnit}
+                    allowGeolocation={this.state.allowGeolocation}
                 />
             </div>
         );
