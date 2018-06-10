@@ -47,7 +47,7 @@ export default class Headlines extends React.Component {
             showArticles: true,
             articleLink: 'same-window',
 
-            allowGeolocation: true
+            allowGeolocation: ''
         };
     }
 
@@ -277,9 +277,9 @@ export default class Headlines extends React.Component {
         }
     }
 
-    allowGeolocation() {
+    allowGeolocation(message) {
         this.setState({ 
-            allowGeolocation: false 
+            allowGeolocation: message 
         });
     }
 

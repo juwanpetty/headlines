@@ -25,7 +25,7 @@ export default class WeatherWidget extends React.Component {
                 switch(error.code) {
                     case error.PERMISSION_DENIED:
                         console.log("User denied the request for Geolocation.");
-                        this.allowGeolocation();
+                        this.allowGeolocation("Allow access to your location to enable the weather functionality");
                         break;
                     case error.POSITION_UNAVAILABLE:
                         console.log("Location information is unavailable.")
@@ -38,15 +38,17 @@ export default class WeatherWidget extends React.Component {
                         break;
                 }
             });
+        } else {
+            this.allowGeolocation("Geolocation is not supported in this browser");
         }
     }
 
-    allowGeolocation() {
-        this.props.allowGeolocation();
+    allowGeolocation(message) {
+        this.props.allowGeolocation(message);
     }
 
     fetchWeather(latitude, longitude) {
-        fetch(`https://api.darksky.net/forecast/47e0ed37c8462d76eaa20c4a9688f807/${latitude},${longitude}?exclude=minutely,hourly,daily,flags`)
+        fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/47e0ed37c8462d76eaa20c4a9688f807/${latitude},${longitude}?exclude=minutely,hourly,daily,flags`)
             .then(res => res.json())
             .then((result) => {
                 this.setState({
@@ -62,7 +64,7 @@ export default class WeatherWidget extends React.Component {
     }
 
     fetchWeatherLocation(latitude, longitude) {
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAsE6Kr4sVkKR6bUTbGlaFZ3qwiDZvFUAs`)
+        fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAsE6Kr4sVkKR6bUTbGlaFZ3qwiDZvFUAs`)
             .then(res => res.json())
             .then((result) => {
 

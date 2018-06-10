@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Headlines",
     "description": "Replace your new tab page with the latest news based on the sources you choose.",
-    "version": "0.2.22",
+    "version": "0.2.23",
     "browser_action": {
       "default_icon": {
         "16": "./icons/icon-16.png",

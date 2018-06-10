@@ -9,11 +9,11 @@ export default class Settings extends React.Component {
         return (
             <div className={!this.props.sourcesPanel ? 'settings__container' : 'settings__container settings__container--hidden'}>
                 {
-                    !this.props.allowGeolocation && 
+                    this.props.allowGeolocation && 
                     (
                         <MessageBar 
                             type="generic"  
-                            message="Allow access to your location to enable the weather functionality"    
+                            message={this.props.allowGeolocation}    
                         />
                     )
                 }
