@@ -1,13 +1,7 @@
 .weather__widget {
     display: flex;
     padding-top: 1.2rem;
-    opacity: 0.9;
-    transition-duration: 150ms;
-    transition-timing-function: cubic-bezier(.07,.95,0,1);
-
-    &--hidden {
-        opacity: 0.01;
-    }
+    animation: fadeIn 5s cubic-bezier(.07,.95,0,1);
 }
 
 .weather__temperature {
@@ -36,4 +30,9 @@
     font-size: 1.6rem;
     margin: 0;
     line-height: 100%;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

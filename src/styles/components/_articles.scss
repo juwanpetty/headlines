@@ -44,6 +44,8 @@
     box-shadow: 0 0.1rem 0.4rem 0 rgba(0, 0, 0, 0.01);
     transition: box-shadow 150ms; 
 
+    animation: fadeIn 3s cubic-bezier(.07,.95,0,1);
+
     * {margin: 0;}
 
     @media screen and (min-width: 827px) {
@@ -166,4 +168,9 @@
         font-size: 1.2rem;
         color: $gray;
     }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
