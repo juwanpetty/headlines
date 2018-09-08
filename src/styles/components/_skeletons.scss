@@ -69,6 +69,14 @@
             height: 1.5rem;
             margin-bottom: 0.8rem;
             animation: pulse 1s infinite ease-in-out;
+
+            &:nth-child(even) {
+                width: 85%;
+            }
+
+            &:nth-child(odd) {
+                width: 40%;
+            }
         }
 
         &--title {

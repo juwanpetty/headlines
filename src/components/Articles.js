@@ -9,7 +9,7 @@ export default class Articles extends React.Component {
 
         if (articleError) {
             return <div >Error: {error.message}</div>;
-        } else if (!articleIsLoaded) {
+        } else if (true) {
             return (
                 <div className={this.props.showArticles ? "articles" : "articles articles--hidden"}>
                     <ArticleSkeleton />
