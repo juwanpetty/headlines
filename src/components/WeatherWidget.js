@@ -1,5 +1,7 @@
 import React from 'react';
 
+import WeatherSkeleton from './WeatherSkeleton';
+
 export default class WeatherWidget extends React.Component {
     constructor(props) {
         super(props);
@@ -91,7 +93,7 @@ export default class WeatherWidget extends React.Component {
         if (this.state.weatherError) {
             return <div className={this.props.showWeather ? "weather__widget" : "weather__widget weather__widget--hidden"}>Error: {this.state.weatherError}</div>;
         } else if (!this.state.weatherIsLoaded) {
-            return <div className="weather__widget"></div>;
+            return <WeatherSkeleton />;
         } else {
             return (
                 <div className={this.props.showWeather ? "weather__widget" : "weather__widget weather__widget--hidden"}>

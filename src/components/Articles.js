@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Article from './Article';
+import ArticleSkeleton from './ArticleSkeleton';
 
 export default class Articles extends React.Component {
     render() {
@@ -9,7 +10,13 @@ export default class Articles extends React.Component {
         if (articleError) {
             return <div >Error: {error.message}</div>;
         } else if (!articleIsLoaded) {
-            return <div className={this.props.showArticles ? "articles" : "articles articles--hidden"}>Loading...</div>;
+            return (
+                <div className={this.props.showArticles ? "articles" : "articles articles--hidden"}>
+                    <ArticleSkeleton />
+                    <ArticleSkeleton />
+                    <ArticleSkeleton />
+                </div>
+            );
         } else {
             return (
                 <section className="section">
