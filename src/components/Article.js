@@ -1,4 +1,5 @@
 import React from 'react';
+import DOMPurify from 'dompurify';
 
 const relativeDate = require('relative-date');
 const startCase = require('lodash/startcase');
@@ -24,9 +25,15 @@ export default class Article extends React.Component {
     }
 
     render() {
-        const { source, title, description, url, author, publishedAt } = this.props.article;
+        let { source, title, description, url, author, publishedAt } = this.props.article;
         let { urlToImage } = this.props.article;
         let articleImage = urlToImage;
+
+        title = '<p>Greeting: &quot;Hello, World!&quot;</p>';
+        description = '<p>Greeting: &quot;Hello, Description!&quot;</p>'
+
+        title = DOMPurify.sanitize(title);
+        description = DOMPurify.sanitize(description);
 
         if (urlToImage === null || urlToImage === 'self') {
             urlToImage = "./assets/placeholder.jpg";
@@ -43,7 +50,7 @@ export default class Article extends React.Component {
                         <p className="article__source">{source.name}</p>
                         <div className="article__overflow">
                             <h3 className="article__title" dangerouslySetInnerHTML={{ __html: title }}></h3>
-                            <p className="article__description">{description}</p>
+                            <p className="article__description" dangerouslySetInnerHTML={{ __html: description }}></p>
                         </div>
                         <div className="article__social">
                             <p>{startCase(this.relativeTime(publishedAt))} {!author || author.length > 20 ? "" : ' — ' + author }</p>
