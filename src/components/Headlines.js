@@ -6,6 +6,7 @@ import Header from './Header'
 import Search from './Search'
 import Articles from './Articles'
 import Sidebar from './Sidebar'
+import Clock from './Clock'
 
 export default class Headlines extends React.Component {
     constructor(props) {
@@ -27,6 +28,8 @@ export default class Headlines extends React.Component {
         this.toggleArticleLink = this.toggleArticleLink.bind(this)
 
         this.allowGeolocation = this.allowGeolocation.bind(this)
+
+        this.toggleShowClock = this.toggleShowClock.bind(this)
         this.state = {
             storedSources: [],
             passedSources: [],
@@ -47,7 +50,9 @@ export default class Headlines extends React.Component {
             showArticles: true,
             articleLink: 'same-window',
 
-            allowGeolocation: ''
+            allowGeolocation: '',
+
+            showClock: true,
         };
     }
 
@@ -86,6 +91,16 @@ export default class Headlines extends React.Component {
             });
         } else {
             localStorage.setItem('articleLink', 'same-window');
+        }
+
+        if (localStorage.showClock) {
+            if (localStorage.getItem('showClock') === 'true') {
+                this.setState({ showClock: true });
+            } else {
+                this.setState({ showClock: false });
+            }
+        } else {
+            localStorage.setItem('showClock', true);
         }
 
         try {
@@ -156,6 +171,10 @@ export default class Headlines extends React.Component {
 
         if (prevState.articleLink !== this.state.articleLink) {
             localStorage.setItem('articleLink', this.state.articleLink);
+        }
+
+        if (prevState.showClock !== this.state.showClock) {
+            localStorage.setItem('showClock', this.state.showClock);
         }
     };
 
@@ -283,6 +302,12 @@ export default class Headlines extends React.Component {
         });
     }
 
+    toggleShowClock() {
+        this.setState((prevState) => ({ 
+            showClock: !(prevState.showClock)
+        }));
+    }
+
     fetchSources() {
         fetch(`https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`)
                 .then(res => res.json())
@@ -336,6 +361,7 @@ export default class Headlines extends React.Component {
                 />
 
                 <main>
+                    <Clock showClock={this.state.showClock} />
                     <Search />
                     <Articles 
                         storedSources={this.state.storedSources}
@@ -374,6 +400,9 @@ export default class Headlines extends React.Component {
                     toggleShowArticles={this.toggleShowArticles}
 
                     allowGeolocation={this.state.allowGeolocation}
+
+                    showClock={this.state.showClock}
+                    toggleShowClock={this.toggleShowClock}
                 />
             </div>
         );
