@@ -29,9 +29,6 @@ export default class Article extends React.Component {
         let { urlToImage } = this.props.article;
         let articleImage = urlToImage;
 
-        title = '<p>Greeting: &quot;Hello, World!&quot;</p>';
-        description = '<p>Greeting: &quot;Hello, Description!&quot;</p>'
-
         title = DOMPurify.sanitize(title);
         description = DOMPurify.sanitize(description);
 
