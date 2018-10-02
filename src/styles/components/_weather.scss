@@ -2,6 +2,15 @@
     display: flex;
     padding-top: 1.2rem;
     animation: fadeIn 5s cubic-bezier(.07,.95,0,1);
+
+    opacity: 0.9;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(.07,.95,0,1);
+
+    &--hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 .weather__temperature {
