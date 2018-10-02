@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class WeatherSettings extends React.Component {
+export default class ArticleSettings extends React.Component {
     render() {
         return (
             <div className="settings article__settings">
