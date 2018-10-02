@@ -8,9 +8,9 @@ const ArticleSkeleton = props =>
             </div>
 
             <div className="article__details">
-                <p className="article__source">
+                <div className="article__source">
                     <div className="article__source--line"></div>
-                </p>
+                </div>
                 <div className="article__overflow">
                     <div className="article__overflow--title"></div>
                     <div className="article__overflow--line"></div>
