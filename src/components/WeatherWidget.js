@@ -22,7 +22,6 @@ export default class WeatherWidget extends React.Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 this.fetchWeather(position.coords.latitude, position.coords.longitude);
-                this.fetchWeatherLocation(position.coords.latitude, position.coords.longitude);
             }, (error) => {
                 switch(error.code) {
                     case error.PERMISSION_DENIED:
@@ -50,11 +49,12 @@ export default class WeatherWidget extends React.Component {
     }
 
     fetchWeather(latitude, longitude) {
-        fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/47e0ed37c8462d76eaa20c4a9688f807/${latitude},${longitude}?exclude=minutely,hourly,daily,flags`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=d2baab033029d23257d1f1c79b0aedb5&units=imperial`)
             .then(res => res.json())
             .then((result) => {
                 this.setState({
                     weatherIsLoaded: true,
+                    weatherLocation: result.name, 
                     weather: result
                 });
             }, (error) => {
@@ -62,28 +62,6 @@ export default class WeatherWidget extends React.Component {
                     weatherIsLoaded: false,
                     weatherError: error.message
                 });
-            })
-    }
-
-    fetchWeatherLocation(latitude, longitude) {
-        fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAsE6Kr4sVkKR6bUTbGlaFZ3qwiDZvFUAs`)
-            .then(res => res.json())
-            .then((result) => {
-
-                const location = result.results[0].address_components;
-
-                for (let i = 0; i < location.length; i++) {
-
-                    if (location[i].types.includes('political')) {
-                        this.setState({
-                            weatherLocation: location[i].long_name
-                        });
-                        break;
-                    }
-
-                }
-            }, (error) => {
-                
             })
     }
 
@@ -100,10 +78,10 @@ export default class WeatherWidget extends React.Component {
         } else {
             return (
                 <div className={this.props.showWeather ? "weather__widget" : "weather__widget weather__widget--hidden"}>
-                    <h2 className="weather__temperature">{this.props.weatherUnit === 'us' ? Math.trunc(weather.currently.temperature) : Math.trunc((weather.currently.temperature - 32) / 1.8)}</h2>
+                    <h2 className="weather__temperature">{this.props.weatherUnit === 'us' ? Math.trunc(weather.main.temp) : Math.trunc((weather.main.temp - 32) / 1.8)}</h2>
                     <div className="weather__details">
                         <p className="weather__location">{this.state.weatherLocation}</p>
-                        <p className="weather__condition">{weather.currently.summary}</p>
+                        <p className="weather__condition">{weather.weather[0].main}</p>
                     </div>
                 </div>
             );
