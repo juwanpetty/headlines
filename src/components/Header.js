@@ -23,7 +23,7 @@ export default class Header extends React.Component {
                 />
 
                 <div 
-                    className={this.props.isSidebarOpen ? "js-menu sidebar-open" : "js-menu"}
+                    className={this.props.isSidebarOpen ? "svg__wrapper js-menu sidebar-open" : "svg__wrapper js-menu"}
                     onClick={this.toggleSidebar}
                 >
                     <FeatherIcon icon="settings" className="js-open" />

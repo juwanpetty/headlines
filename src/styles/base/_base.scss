@@ -25,19 +25,3 @@ ol, ul, li {
     margin: 0;
     padding: 0;
 }
-
-svg {
-    width: 2.0rem;
-    height: 2.0rem;
-
-    fill: none;
-
-    stroke: $gray;
-    stroke-width: 2;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-
-    &.cursor {
-        cursor: pointer;
-    }
-}
