@@ -1,16 +1,4 @@
 .js-menu {
-    width: 3.5rem;
-    height: 3.6rem;
-
-    padding: 0.8rem 0.8rem 0.4rem;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    pointer-events: visible;
-
-    &:hover {
-        background: $lightgray;
-    }
-
     .js-close {display: none;}
 
     &.sidebar-open {
