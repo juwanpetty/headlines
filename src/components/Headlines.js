@@ -30,6 +30,8 @@ export default class Headlines extends React.Component {
         this.allowGeolocation = this.allowGeolocation.bind(this)
 
         this.toggleShowClock = this.toggleShowClock.bind(this)
+        
+        this.handleUpdateReadingList = this.handleUpdateReadingList.bind(this)
         this.state = {
             storedSources: [],
             passedSources: [],
@@ -53,6 +55,8 @@ export default class Headlines extends React.Component {
             allowGeolocation: '',
 
             showClock: true,
+
+            readingList: '{}'
         };
     }
 
@@ -101,6 +105,14 @@ export default class Headlines extends React.Component {
             }
         } else {
             localStorage.setItem('showClock', true);
+        }
+
+        if (localStorage.readingList) {
+            this.setState({ 
+                readingList: localStorage.getItem('readingList')
+            });
+        } else {
+            localStorage.setItem('readingList', '{}');
         }
 
         try {
@@ -175,6 +187,10 @@ export default class Headlines extends React.Component {
 
         if (prevState.showClock !== this.state.showClock) {
             localStorage.setItem('showClock', this.state.showClock);
+        }
+
+        if (prevState.readingList.length !== this.state.readingList.length) {
+            localStorage.setItem('readingList', this.state.readingList);
         }
     };
 
@@ -308,6 +324,12 @@ export default class Headlines extends React.Component {
         }));
     }
 
+    handleUpdateReadingList(string) {
+        this.setState({
+            readingList: string
+        });
+    }
+
     fetchSources() {
         fetch(`https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`)
                 .then(res => res.json())
@@ -372,6 +394,9 @@ export default class Headlines extends React.Component {
 
                         showArticles={this.state.showArticles}
                         articleLink={this.state.articleLink}
+
+                        readingList={this.state.readingList}
+                        handleUpdateReadingList={this.handleUpdateReadingList}
                     />
                 </main>
 
