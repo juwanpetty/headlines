@@ -1,7 +1,7 @@
 import React from 'react';
 import FeatherIcon from 'feather-icons-react'; 
-import Sources from './Sources';
-import Settings from './Settings';
+import Sources from './components/Sources/Sources';
+import Settings from './components/Settings/Settings';
 
 export default class Sidebar extends React.Component {
     constructor(props) {

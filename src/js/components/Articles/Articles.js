@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Article from './Article';
-import ArticleSkeleton from './ArticleSkeleton';
+import Article from './components/Article/Article';
+import ArticleSkeleton from './components/EmptyState/ArticleSkeleton';
 
 export default class Articles extends React.Component {
     render() {

@@ -2,7 +2,7 @@ const startCase = require('lodash/startcase');
 
 import React from 'react';
 
-import Source from './Source';
+import Source from './components/Source/Source';
 
 export default class Sources extends React.Component {
     render() {

@@ -1,7 +1,10 @@
 .vscode/
 
 public/bundle.js
-public/index.html
+build/
+dist/
+
+.cache/
 
 # scss
 .sass-cache/

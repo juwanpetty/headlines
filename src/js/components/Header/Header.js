@@ -1,6 +1,6 @@
 import React from 'react';
 import FeatherIcon from 'feather-icons-react'; 
-import WeatherWidget from './WeatherWidget';
+import WeatherWidget from './components/WeatherWidget/WeatherWidget';
 
 export default class Header extends React.Component {
     constructor(props) {

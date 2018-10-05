@@ -1,6 +1,6 @@
 import React from 'react';
 
-import WeatherSkeleton from './WeatherSkeleton';
+import WeatherSkeleton from './components/WeatherSkeleton/WeatherSkeleton';
 
 export default class WeatherWidget extends React.Component {
     constructor(props) {

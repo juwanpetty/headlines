@@ -1,9 +1,9 @@
 import React from 'react';
 
-import WeatherSettings from './WeatherSettings';
-import ArticleSettings from './ArticleSettings';
-import ClockSettings from './ClockSettings';
-import MessageBar from './MessageBar';
+import WeatherSettings from './components/WeatherSettings/WeatherSettings';
+import ArticleSettings from './components/ArticleSettings/ArticleSettings';
+import ClockSettings from './components/ClockSettings/ClockSettings';
+import MessageBar from '../../../MessageBar';
 
 export default class Settings extends React.Component {
     render() {

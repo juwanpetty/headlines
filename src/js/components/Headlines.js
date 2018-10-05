@@ -2,11 +2,11 @@ const shuffle = require('lodash/shuffle');
 
 import React from 'react';
 
-import Header from './Header'
-import Search from './Search'
-import Articles from './Articles'
-import Sidebar from './Sidebar'
-import Clock from './Clock'
+import Header from './Header/Header'
+import Search from './Search/Search'
+import Articles from './Articles/Articles'
+import Sidebar from './Sidebar/Sidebar'
+import Clock from './Clock/Clock'
 
 export default class Headlines extends React.Component {
     constructor(props) {
