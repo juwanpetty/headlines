@@ -1,4 +1,5 @@
 import React from 'react';
+import AddToReadingList from './AddToReadingList/AddToReadingList';
 import DOMPurify from 'dompurify';
 
 const relativeDate = require('relative-date');
@@ -25,6 +26,8 @@ export default class Article extends React.Component {
     }
 
     render() {
+        delete this.props.article['content'];
+
         let { source, title, description, url, author, publishedAt } = this.props.article;
         let { urlToImage } = this.props.article;
         let articleImage = urlToImage;
@@ -38,6 +41,11 @@ export default class Article extends React.Component {
 
         return (
             <li className="article__item">
+                <AddToReadingList 
+                    article={this.props.article} 
+                    readingList={this.props.readingList}
+                    handleUpdateReadingList={this.props.handleUpdateReadingList}
+                />
                 <a href={url} target={this.props.articleLink === "same-window" ? "_top" : "_blank"}>
                     <div className="article__image__container">
                         <img onLoad={this.checkImageSize} src={urlToImage} alt={title} className={articleImage ? "article__image" : "article__image image-border"} />
