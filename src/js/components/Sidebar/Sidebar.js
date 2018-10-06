@@ -3,6 +3,8 @@ import FeatherIcon from 'feather-icons-react';
 import Sources from './components/Sources/Sources';
 import Settings from './components/Settings/Settings';
 
+import styles from './Sidebar.scss';
+
 export default class Sidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -27,32 +29,32 @@ export default class Sidebar extends React.Component {
         return (
             <div>
                 <aside 
-                    className={this.props.isSidebarOpen ? "js-sidebar" : "js-sidebar hidden"}
+                    className={this.props.isSidebarOpen ? styles.Sidebar : styles.SidebarHidden}
                     onClick={this.preventBubbling}
                 >
                     <form>
-                        <div className="sidebar__header">
-                            <h3 className="sidebar__title">Sources</h3>
-                            <p className="sidebar__subtitle">Choose what you see on the page.</p>
+                        <div className={styles.Header}>
+                            <h3 className={styles.Title}>Sources</h3>
+                            <p className={styles.Subtitle}>Choose what you see on the page.</p>
                         </div>
 
-                        <div className="sidebar__navigation">
+                        <div className={styles.Navigation}>
                             <p 
                                 onClick={() => this.togglePanel('sources')}
-                                className={this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>
-                                <FeatherIcon icon="chevron-left" className="navigation__icon navigation__icon--left" />
+                                className={this.props.sourcesPanel ? styles.Selected : styles.NavigationButton}>
+                                <FeatherIcon icon="chevron-left" className={styles.IconLeft} />
                                 Sources
                             </p>
                             <p 
                                 onClick={() => this.togglePanel('settings')}
-                                className={!this.props.sourcesPanel ? 'navigation__button navigation__button--selected' : 'navigation__button'}>
+                                className={!this.props.sourcesPanel ? styles.Selected : styles.NavigationButton}>
                                 Settings
-                                <FeatherIcon icon="chevron-right" className="navigation__icon navigation__icon--right" />
+                                <FeatherIcon icon="chevron-right" className={styles.IconRight} />
                             </p>
                         </div>
 
-                        <div className="sidebar__container">
-                            <div className={this.props.sourcesPanel ? 'sidebar__container__inner' : 'sidebar__container__inner sidebar__container__inner--hidden'}>
+                        <div className={styles.Container}>
+                            <div className={this.props.sourcesPanel ? styles.ContainerInner : styles.ContainerInnerHidden}>
                                 <Sources 
                                     sources={this.props.sources}
                                     sourceIsLoaded={this.props.sourceIsLoaded}
@@ -62,7 +64,7 @@ export default class Sidebar extends React.Component {
                                     handleAddSource={this.props.handleAddSource}
                                 />
                                 
-                                <p className="attribution">Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
+                                <p className={styles.Attribution}>Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
                             </div>
 
                             <Settings 
@@ -91,7 +93,7 @@ export default class Sidebar extends React.Component {
                 </aside>
 
                 <div 
-                    className={this.props.isSidebarOpen ? "sidebar__footer" : "sidebar__footer hidden"}
+                    className={this.props.isSidebarOpen ? styles.Footer : styles.FooterHidden}
                     onClick={this.preventBubbling}
                 >
                     <button 

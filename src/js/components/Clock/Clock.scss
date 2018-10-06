@@ -1,0 +1,21 @@
+$black:         #2b2b2b;
+
+.Clock {
+    margin-bottom: 8rem;
+    
+    opacity: 0.9;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(.07,.95,0,1);
+}
+
+.Hidden {
+    @extend .Clock;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ClockText {
+    margin: 0;
+    color: $black;
+    font-size: 8rem;
+}

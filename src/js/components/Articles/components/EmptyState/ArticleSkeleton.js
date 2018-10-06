@@ -1,23 +1,25 @@
 import React from 'react';
 
+import styles from './ArticleSkeleton.scss';
+
 const ArticleSkeleton = props => 
     (
-        <li className="article__skeleton">
-            <div className="article__image__container">
-                <div className="article__image__container--image"></div>
+        <li className={styles.Skeleton}>
+            <div className={styles.ImageWrapper}>
+                <div className={styles.Image}></div>
             </div>
 
-            <div className="article__details">
-                <div className="article__source">
-                    <div className="article__source--line"></div>
+            <div>
+                <div className={styles.Source}>
+                    <div className={styles.SkeletonLine}></div>
                 </div>
-                <div className="article__overflow">
-                    <div className="article__overflow--title"></div>
-                    <div className="article__overflow--line"></div>
-                    <div className="article__overflow--line"></div>
+                <div className={styles.Overflow}>
+                    <div className={styles.SkeletonTitle}></div>
+                    <div className={styles.SkeletonLine}></div>
+                    <div className={styles.SkeletonLine}></div>
                 </div>
-                <div className="article__social">
-                    <div className="article__social--line"></div>
+                <div className={styles.Footer}>
+                    <div className={styles.SkeletonLine}></div>
                 </div>
             </div>
         </li>

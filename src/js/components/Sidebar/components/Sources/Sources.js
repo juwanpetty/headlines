@@ -3,6 +3,7 @@ const startCase = require('lodash/startcase');
 import React from 'react';
 
 import Source from './components/Source/Source';
+import styles from './Sources.scss';
 
 export default class Sources extends React.Component {
     render() {
@@ -17,7 +18,7 @@ export default class Sources extends React.Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <div className="js-sources">
+                <div className={styles.Sources}>
                     {
                         // go through each category
                         categories.map((category, index) => { 
@@ -28,8 +29,8 @@ export default class Sources extends React.Component {
     
                             return (
                                 <div key={index}>
-                                    <h3>{startCase(category)}</h3>
-                                    <div className="source__group">
+                                    <h3 className={styles.Title}>{startCase(category)}</h3>
+                                    <div className={styles.SourceGroup}>
                                         { 
                                             filteredSources.map((source, index) => {
                                                 return <Source 

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import WeatherSkeleton from './components/WeatherSkeleton/WeatherSkeleton';
+import styles from './WeatherWidget.scss';
 
 export default class WeatherWidget extends React.Component {
     constructor(props) {
@@ -69,19 +70,19 @@ export default class WeatherWidget extends React.Component {
         let weather = this.state.weather;
 
         if (this.state.weatherError) {
-            return <div className={this.props.showWeather ? "weather__widget" : "weather__widget weather__widget--hidden"}>Error: {this.state.weatherError}</div>;
+            return <div className={this.props.showWeather ? styles.WeatherWidget : styles.WeatherWidgetHidden}>Error: {this.state.weatherError}</div>;
         } else if (!this.state.weatherIsLoaded) {
             return (
-                <div className={this.props.showWeather ? "weather__widget" : "weather__widget weather__widget--hidden"}>
+                <div className={this.props.showWeather ? styles.WeatherWidget : styles.WeatherWidgetHidden}>
                     <WeatherSkeleton />
                 </div>);
         } else {
             return (
-                <div className={this.props.showWeather ? "weather__widget" : "weather__widget weather__widget--hidden"}>
-                    <h2 className="weather__temperature">{this.props.weatherUnit === 'us' ? Math.trunc(weather.main.temp) : Math.trunc((weather.main.temp - 32) / 1.8)}</h2>
-                    <div className="weather__details">
-                        <p className="weather__location">{this.state.weatherLocation}</p>
-                        <p className="weather__condition">{weather.weather[0].main}</p>
+                <div className={this.props.showWeather ? styles.WeatherWidget : styles.WeatherWidgetHidden}>
+                    <h2 className={styles.Temperature}>{this.props.weatherUnit === 'us' ? Math.trunc(weather.main.temp) : Math.trunc((weather.main.temp - 32) / 1.8)}</h2>
+                    <div className={styles.Details}>
+                        <p className={styles.Location}>{this.state.weatherLocation}</p>
+                        <p className={styles.Condition}>{weather.weather[0].main}</p>
                     </div>
                 </div>
             );

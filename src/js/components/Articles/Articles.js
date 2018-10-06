@@ -3,6 +3,8 @@ import React from 'react';
 import Article from './components/Article/Article';
 import ArticleSkeleton from './components/EmptyState/ArticleSkeleton';
 
+import styles from './Articles.scss';
+
 export default class Articles extends React.Component {
     render() {
         const { articleError, articleIsLoaded, articles } = this.props;
@@ -11,7 +13,7 @@ export default class Articles extends React.Component {
             return <div >Error: {error.message}</div>;
         } else if (!articleIsLoaded) {
             return (
-                <div className={this.props.showArticles ? "articles" : "articles articles--hidden"}>
+                <div className={this.props.showArticles ? styles.Normal : styles.Hidden}>
                     <ArticleSkeleton />
                     <ArticleSkeleton />
                     <ArticleSkeleton />
@@ -19,9 +21,9 @@ export default class Articles extends React.Component {
             );
         } else {
             return (
-                <section className="section">
-                    <div className="section__wrapper">
-                        <ul className={this.props.showArticles ? "articles" : "articles articles--hidden"}>
+                <section className={styles.Section}>
+                    <div className={styles.SectionWrapper}>
+                        <ul className={this.props.showArticles ? styles.Normal : styles.Hidden}>
                             {
                                 articles.map((article, index) => {
                                     return <Article key={index} article={article} articleLink={this.props.articleLink} />

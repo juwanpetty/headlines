@@ -1,12 +1,14 @@
 import React from 'react';
 
+import styles from './Search.scss';
+
 const Search = props => 
     (
-        <div className="search">
+        <div className={styles.Search}>
             <form method="get" action="http://www.google.com/search?q=">
-                <div className="search__wrapper">
-                    <input type="text" className="searchbar" placeholder="Search the Web" name="q" autoComplete="off" id="search" />
-                    <label className="search__icon" htmlFor="search"><i data-feather="search"></i></label>
+                <div className={styles.Wrapper}>
+                    <input type="text" className={styles.SearchBar} placeholder="Search the Web" name="q" autoComplete="off" id="search" />
+                    <label className={styles.Icon} htmlFor="search"><i data-feather="search"></i></label>
                     <button type="submit"><i data-feather="arrow-right"></i></button>
                 </div>
             </form>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './Source.scss';
+
 export default class Source extends React.Component {
     constructor(props) {
         super(props);
@@ -34,11 +36,11 @@ export default class Source extends React.Component {
                     id={id} 
                     value={name} 
                     type="checkbox" 
-                    className="source__input"
+                    className={styles.Input}
                     defaultChecked={isChecked}
                     onClick={this.handleIsChecked}
                 />
-                <label htmlFor={id}>{name}</label>
+                <label className={styles.Label} htmlFor={id}>{name}</label>
             </div>
         );
     };

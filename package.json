@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/juwanpetty/headlines#readme",
   "devDependencies": {
+    "autoprefixer": "^9.1.5",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "dompurify": "^1.0.8",
     "lodash": "^4.17.10",
     "parcel-bundler": "^1.10.1",
+    "postcss-modules": "^1.4.1",
     "sass": "^1.14.1"
   },
   "dependencies": {

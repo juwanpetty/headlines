@@ -8,6 +8,8 @@ import Articles from './Articles/Articles'
 import Sidebar from './Sidebar/Sidebar'
 import Clock from './Clock/Clock'
 
+import styles from './Headlines.scss';
+
 export default class Headlines extends React.Component {
     constructor(props) {
         super(props);
@@ -360,7 +362,7 @@ export default class Headlines extends React.Component {
                     allowGeolocation={this.allowGeolocation}
                 />
 
-                <main>
+                <main className={styles.Main}>
                     <Clock showClock={this.state.showClock} />
                     <Search />
                     <Articles 

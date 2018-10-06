@@ -5,10 +5,12 @@ import ArticleSettings from './components/ArticleSettings/ArticleSettings';
 import ClockSettings from './components/ClockSettings/ClockSettings';
 import MessageBar from '../../../MessageBar';
 
+import styles from './Settings.scss';
+
 export default class Settings extends React.Component {
     render() {
         return (
-            <div className={!this.props.sourcesPanel ? 'settings__container' : 'settings__container settings__container--hidden'}>
+            <div className={!this.props.sourcesPanel ? styles.SettingsContainer : styles.SettingsContainerHidden}>
                 {this.props.allowGeolocation && (
                     <MessageBar 
                         type="generic"  

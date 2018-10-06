@@ -1,0 +1,51 @@
+$black:         #2b2b2b;
+$gray:          #b7b7b7;
+
+.WeatherWidget {
+    display: flex;
+    padding-top: 1.2rem;
+
+    opacity: 0.9;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(.07,.95,0,1);
+}
+
+.WeatherWidgetHidden {
+    @extend .WeatherWidget;
+    
+    opacity: 0;
+    pointer-events: none;
+}
+
+.Temperature {
+    color: $black;
+    font-size: 4.8rem;
+    margin: 0;
+    margin-right: 1.6rem;
+    line-height: 100%;
+}
+
+.Details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Location {
+    color: $black;
+    font-size: 1.6rem;
+    margin: 0;
+    line-height: 100%;
+}
+
+.Condition {
+    color: $gray;
+    font-size: 1.6rem;
+    margin: 0;
+    line-height: 100%;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

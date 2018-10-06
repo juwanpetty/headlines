@@ -2,6 +2,8 @@ import React from 'react';
 import FeatherIcon from 'feather-icons-react'; 
 import WeatherWidget from './components/WeatherWidget/WeatherWidget';
 
+import styles from './Header.scss';
+
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +17,7 @@ export default class Header extends React.Component {
 
     render() {
         return (
-            <nav>
+            <nav className={styles.Navigation}>
                 <WeatherWidget
                     showWeather={this.props.showWeather}
                     weatherUnit={this.props.weatherUnit}
@@ -23,11 +25,14 @@ export default class Header extends React.Component {
                 />
 
                 <div 
-                    className={this.props.isSidebarOpen ? "svg__wrapper js-menu sidebar-open" : "svg__wrapper js-menu"}
+                    className={styles.Icon}
                     onClick={this.toggleSidebar}
                 >
-                    <FeatherIcon icon="settings" className="js-open" />
-                    <FeatherIcon icon="x" className="js-close" />
+                {
+                    this.props.isSidebarOpen 
+                        ? <FeatherIcon icon="x" />
+                        : <FeatherIcon icon="settings" />
+                }
                 </div>
             </nav>
         );
