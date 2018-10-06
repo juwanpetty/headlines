@@ -8,6 +8,15 @@ $gray:          #b7b7b7;
     opacity: 0.9;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(.07,.95,0,1);
+
+    // no highlighting
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
 }
 
 .WeatherWidgetHidden {
