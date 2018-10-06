@@ -1,9 +1,5 @@
 .vscode/
 
-public/bundle.js
-build/
-dist/
-
 .cache/
 
 # scss
