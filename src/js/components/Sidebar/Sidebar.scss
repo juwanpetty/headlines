@@ -142,3 +142,22 @@ $blue:          #007aff;
         stroke: $darkgray;
     }
 }
+
+.Button {
+    background-color: $offwhite;
+    border: 0.1rem solid $lightgray;
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+    color: inherit;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    padding: 1.0rem 3.0rem;
+    white-space: nowrap;
+}
+
+.ActionButton {
+    @extend .Button;
+    background: $blue;
+    border: solid 0.1rem $blue;
+    color: white;
+}

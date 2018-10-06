@@ -98,7 +98,7 @@ export default class Sidebar extends React.Component {
                 >
                     <button 
                         type="button" 
-                        className="btn action js-done" 
+                        className={styles.ActionButton} 
                         value="Done" 
                         onClick={this.toggleSidebar}
                     >
