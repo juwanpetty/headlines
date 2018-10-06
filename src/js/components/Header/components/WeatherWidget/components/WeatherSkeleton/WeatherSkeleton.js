@@ -1,12 +1,14 @@
 import React from 'react';
 
+import styles from './WeatherSkeleton.scss';
+
 const WeatherSkeleton = props => 
 (
-    <div className="weather__skeleton">
-        <h2 className="weather__temperature"></h2>
-        <div className="weather__details">
-            <div className="weather__location"></div>
-            <div className="weather__condition"></div>
+    <div className={styles.Skeleton}>
+        <h2 className={styles.Temperature}></h2>
+        <div className>
+            <div className={styles.Location}></div>
+            <div className={styles.Condition}></div>
         </div>
     </div>
 );

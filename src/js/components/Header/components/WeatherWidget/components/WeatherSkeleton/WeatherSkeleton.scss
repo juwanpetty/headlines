@@ -1,0 +1,35 @@
+.Skeleton {
+    display: flex;
+    padding-top: 1.2rem;
+}
+
+.Temperature {
+    width: 5.5rem;
+    height: 4.8rem;
+    margin-right: 1.6rem;
+    animation: pulse 1s infinite ease-in-out;
+}
+
+.Location {
+    width: 10rem;
+    height: 1.6rem;
+    animation: pulse 1s infinite ease-in-out;
+}
+
+.Condition {
+    width: 12rem;
+    height: 1.6rem;
+    animation: pulse 1s infinite ease-in-out;
+}
+    
+@keyframes pulse {
+    0% {
+        background-color: rgba(165, 165, 165, 0.1)
+    }
+    50% {
+        background-color: rgba(165, 165, 165, 0.3)
+    }
+    100% {
+        background-color: rgba(165, 165, 165, 0.1)
+    }
+}
