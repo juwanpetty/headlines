@@ -3,6 +3,7 @@ import DOMPurify from 'dompurify';
 import relativeDate from 'relative-date';
 import startCase from 'lodash/startcase';
 
+import AddToReadingList from './components/AddToReadingList/AddToReadingList';
 import styles from './Article.scss';
 
 export default class Article extends React.Component {
@@ -26,6 +27,8 @@ export default class Article extends React.Component {
     }
 
     render() {
+        delete this.props.article['content'];
+        
         let { source, title, description, url, author, publishedAt } = this.props.article;
         let { urlToImage } = this.props.article;
         let articleImage = urlToImage;
@@ -39,6 +42,11 @@ export default class Article extends React.Component {
 
         return (
             <li className={styles.Card}>
+                <AddToReadingList 
+                        article={this.props.article} 
+                        readingList={this.props.readingList}
+                        handleUpdateReadingList={this.props.handleUpdateReadingList}
+                />
                 <a href={url} target={this.props.articleLink === "same-window" ? "_top" : "_blank"}>
                     <div className={styles.ImageWrapper}>
                         <img onLoad={this.checkImageSize} src={urlToImage} alt={title} className={articleImage ? styles.Image : styles.ImageBorder}/>
