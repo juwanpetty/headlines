@@ -25,7 +25,8 @@
       "scripts": ["background.js"]
     },    
     "permissions": [
-      "geolocation"
+      "geolocation",
+      "tabs"
     ],
     "author": "Juwan Petty <jchpetty@gmail.com> (juwanpetty.com)"
   }

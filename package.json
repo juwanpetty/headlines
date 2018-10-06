@@ -4,7 +4,7 @@
   "description": "Replace your new tab page with the latest news based on the sources you choose.",
   "main": "src/js/app.js",
   "scripts": {
-    "build": "parcel build src/index.html --public-url ./",
+    "build": "parcel build src/index.html",
     "watch": "parcel src/index.html watch"
   },
   "repository": {
