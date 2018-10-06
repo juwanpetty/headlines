@@ -31,7 +31,9 @@ export default class Settings extends React.Component {
                 />
 
                 <ClockSettings 
+                    toggleHourFormat={this.props.toggleHourFormat}
                     toggleShowClock={this.props.toggleShowClock}
+                    hourFormat={this.props.hourFormat}
                     showClock={this.props.showClock} 
                 />
 
