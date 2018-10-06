@@ -85,7 +85,9 @@ export default class Sidebar extends React.Component {
                                 allowGeolocation={this.props.allowGeolocation}
 
                                 showClock={this.props.showClock}
+                                hourFormat={this.props.hourFormat}
                                 toggleShowClock={this.props.toggleShowClock}
+                                toggleHourFormat={this.props.toggleHourFormat}
                             />
                         </div>
 

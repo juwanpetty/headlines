@@ -32,6 +32,7 @@ export default class Headlines extends React.Component {
         this.allowGeolocation = this.allowGeolocation.bind(this)
 
         this.toggleShowClock = this.toggleShowClock.bind(this)
+        this.toggleHourFormat = this.toggleHourFormat.bind(this)
         this.state = {
             storedSources: [],
             passedSources: [],
@@ -55,6 +56,7 @@ export default class Headlines extends React.Component {
             allowGeolocation: '',
 
             showClock: true,
+            hourFormat: '12',
         };
     }
 
@@ -103,6 +105,14 @@ export default class Headlines extends React.Component {
             }
         } else {
             localStorage.setItem('showClock', true);
+        }
+
+        if (localStorage.hourFormat) {
+            this.setState({ 
+                hourFormat: localStorage.getItem('hourFormat')
+            });
+        } else {
+            localStorage.setItem('hourFormat', '12');
         }
 
         try {
@@ -177,6 +187,10 @@ export default class Headlines extends React.Component {
 
         if (prevState.showClock !== this.state.showClock) {
             localStorage.setItem('showClock', this.state.showClock);
+        }
+
+        if (prevState.hourFormat !== this.state.hourFormat) {
+            localStorage.setItem('hourFormat', this.state.hourFormat);
         }
     };
 
@@ -310,6 +324,18 @@ export default class Headlines extends React.Component {
         }));
     }
 
+    toggleHourFormat(format) {
+        if (format === '12') {
+            this.setState({ 
+                hourFormat: '12' 
+            });
+        } else if (format === '24') {
+            this.setState({ 
+                hourFormat: '24' 
+            });
+        }
+    }
+
     fetchSources() {
         fetch(`https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`)
                 .then(res => res.json())
@@ -363,7 +389,10 @@ export default class Headlines extends React.Component {
                 />
 
                 <main className={styles.Main}>
-                    <Clock showClock={this.state.showClock} />
+                    <Clock 
+                        showClock={this.state.showClock} 
+                        hourFormat={this.state.hourFormat}
+                    />
                     <Search />
                     <Articles 
                         storedSources={this.state.storedSources}
@@ -404,7 +433,9 @@ export default class Headlines extends React.Component {
                     allowGeolocation={this.state.allowGeolocation}
 
                     showClock={this.state.showClock}
+                    hourFormat={this.state.hourFormat}
                     toggleShowClock={this.toggleShowClock}
+                    toggleHourFormat={this.toggleHourFormat}
                 />
             </div>
         );
