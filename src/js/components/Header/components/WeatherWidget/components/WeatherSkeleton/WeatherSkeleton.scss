@@ -6,8 +6,15 @@
 .Temperature {
     width: 5.5rem;
     height: 4.8rem;
+    margin: 0;
     margin-right: 1.6rem;
     animation: pulse 1s infinite ease-in-out;
+}
+
+.InfoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .Location {

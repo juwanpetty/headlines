@@ -6,7 +6,7 @@ const WeatherSkeleton = props =>
 (
     <div className={styles.Skeleton}>
         <h2 className={styles.Temperature}></h2>
-        <div className>
+        <div className={styles.InfoWrapper}>
             <div className={styles.Location}></div>
             <div className={styles.Condition}></div>
         </div>
