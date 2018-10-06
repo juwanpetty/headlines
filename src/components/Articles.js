@@ -24,15 +24,7 @@ export default class Articles extends React.Component {
                         <ul className={this.props.showArticles ? "articles" : "articles articles--hidden"}>
                             {
                                 articles.map((article, index) => {
-                                    return (
-                                        <Article 
-                                            key={index} 
-                                            article={article} 
-                                            articleLink={this.props.articleLink} 
-                                            readingList={this.props.readingList}
-                                            handleUpdateReadingList={this.props.handleUpdateReadingList}
-                                        />
-                                    )
+                                    return <Article key={index} article={article} articleLink={this.props.articleLink} />
                                 })
                             }
                         </ul>
