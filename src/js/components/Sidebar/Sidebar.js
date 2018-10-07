@@ -1,7 +1,8 @@
 import React from 'react';
-import FeatherIcon from 'feather-icons-react'; 
+
 import Sources from './components/Sources/Sources';
 import Settings from './components/Settings/Settings';
+import Navigation from './components/Navigation/Navigation';
 
 import styles from './Sidebar.scss';
 
@@ -21,10 +22,6 @@ export default class Sidebar extends React.Component {
         e.stopPropagation();
     }
 
-    togglePanel(panel) {
-        this.props.togglePanel(panel);
-    } 
-
     render() {
         return (
             <div>
@@ -38,20 +35,10 @@ export default class Sidebar extends React.Component {
                             <p className={styles.Subtitle}>Choose what you see on the page.</p>
                         </div>
 
-                        <div className={styles.Navigation}>
-                            <p 
-                                onClick={() => this.togglePanel('sources')}
-                                className={this.props.sourcesPanel ? styles.Selected : styles.NavigationButton}>
-                                <FeatherIcon icon="chevron-left" className={styles.IconLeft} />
-                                Sources
-                            </p>
-                            <p 
-                                onClick={() => this.togglePanel('settings')}
-                                className={!this.props.sourcesPanel ? styles.Selected : styles.NavigationButton}>
-                                Settings
-                                <FeatherIcon icon="chevron-right" className={styles.IconRight} />
-                            </p>
-                        </div>
+                        <Navigation
+                            sourcesPanel={this.props.sourcesPanel}
+                            togglePanel={this.props.togglePanel}
+                        />
 
                         <div className={styles.Container}>
                             <div className={this.props.sourcesPanel ? styles.ContainerInner : styles.ContainerInnerHidden}>
