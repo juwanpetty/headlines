@@ -101,48 +101,6 @@ $blue:          #007aff;
     transform: translateX(-359px);
 }
 
-.Navigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 3.2rem;
-}
-
-.NavigationButton {
-    margin: 0;
-    color: $blue;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-.Icon {
-    @extend .NavigationButton;
-    stroke: $blue;
-    margin-top: 0.2rem;
-}
-
-.IconLeft {
-    @extend .Icon;
-    margin-right: 1.6rem;
-}
-
-.IconRight {
-    @extend .Icon;
-    margin-left: 1.6rem;
-}
-
-.Selected {
-    @extend .NavigationButton;
-    color: $darkgray;
-    cursor: default;
-
-    svg {
-        stroke: $darkgray;
-    }
-}
-
 .Button {
     background-color: $offwhite;
     border: 0.1rem solid $lightgray;
