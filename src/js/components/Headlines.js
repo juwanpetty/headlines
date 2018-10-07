@@ -47,7 +47,7 @@ export default class Headlines extends React.Component {
             articleError: null,
 
             isSidebarOpen: false,
-            sourcesPanel: true,
+            sourcesPanel: 'sources',
 
             showWeather: true,
             weatherUnit: 'us',
@@ -281,15 +281,9 @@ export default class Headlines extends React.Component {
     }
 
     togglePanel(panel) {
-        if (panel === 'sources') {
-            this.setState({ 
-                sourcesPanel: true 
-            });
-        } else if (panel === 'settings') {
-            this.setState({ 
-                sourcesPanel: false 
-            });
-        }
+        this.setState({ 
+            sourcesPanel: panel 
+        });
     }
 
     toggleShowWeather() {

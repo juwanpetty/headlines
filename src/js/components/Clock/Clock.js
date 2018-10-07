@@ -25,17 +25,30 @@ export default class Clock extends React.Component {
             date: new Date()
         });
     }
+    
+    formatDate(hourFormat) {
+        let date = new Date();
+        let hour = date.getHours();
+
+        if (hourFormat === '24' && (hour === 0 || hour === 23)) {
+            hour += 1;
+        }
+
+        let minutes = date.getMinutes();
+        minutes = minutes < 10 ? `0${minutes}` : minutes;
+        
+        const period = hour >= 12 ? 'PM' : 'AM';
+
+        const time = `${hour}:${minutes} ${period}`;
+        
+        return time;
+      }
 
     render() {
-        const hourFormat = this.props.hourFormat === '12' ? true : false;
-        const is24Hour = !hourFormat;
-        const currentHour = this.state.date.getHours();
-
         return (
             <div className={this.props.showClock ? styles.Clock : styles.Hidden}>
                 <h2 className={styles.ClockText}>
-                    {this.state.date.toLocaleTimeString([], {hour12: hourFormat, hour: '2-digit', minute:'2-digit'})}
-                    {is24Hour ? (currentHour >= 12 ? ' PM': ' AM') : null}
+                    {this.formatDate(this.props.hourFormat)}
                 </h2>
             </div>
         );
