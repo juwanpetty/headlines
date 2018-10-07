@@ -34,6 +34,10 @@ export default class Clock extends React.Component {
             hour += 1;
         }
 
+        if (hourFormat === '12') {
+            hour -= 12;
+        }
+
         let minutes = date.getMinutes();
         minutes = minutes < 10 ? `0${minutes}` : minutes;
         
