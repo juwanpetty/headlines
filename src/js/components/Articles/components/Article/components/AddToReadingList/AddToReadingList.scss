@@ -1,0 +1,40 @@
+$gray:          #b7b7b7;
+$darkgray:      #5e5e5e;
+
+.IconWrapper {
+    width: 3.5rem;
+    height: 3.6rem;
+
+    padding: 0.8rem 0.8rem 0.4rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    pointer-events: visible;
+
+    &:hover {
+        background: none;
+    }
+}
+
+.Icon {
+    @extend .IconWrapper;
+    position: absolute;
+    right: 0;
+    bottom: 0.2rem;
+
+    &:hover {
+        svg {
+            stroke: $darkgray;
+        }
+    }
+
+    svg {
+        fill: none;
+        stroke: $gray;
+        stroke-width: 1;
+    }
+}
+
+svg.Added {
+    fill: $darkgray;
+    stroke: $darkgray;
+}

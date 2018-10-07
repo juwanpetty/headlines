@@ -3,8 +3,8 @@ import DOMPurify from 'dompurify';
 import relativeDate from 'relative-date';
 import startCase from 'lodash/startcase';
 
-import AddToReadingList from './components/AddToReadingList/AddToReadingList';
-import styles from './Article.scss';
+import RemoveBoomark from './components/RemoveBoomark/RemoveBoomark';
+import styles from './ReadingList.scss';
 
 export default class Article extends React.Component {
     constructor(props) {
@@ -27,8 +27,6 @@ export default class Article extends React.Component {
     }
 
     render() {
-        delete this.props.article['content'];
-        
         let { source, title, description, url, author, publishedAt } = this.props.article;
         let { urlToImage } = this.props.article;
         let articleImage = urlToImage;
@@ -41,27 +39,14 @@ export default class Article extends React.Component {
         }
 
         return (
-            <li className={styles.Card}>
-                <AddToReadingList 
+            <li className={styles.Bookmark}>
+                <RemoveBoomark 
                         article={this.props.article} 
                         readingList={this.props.readingList}
                         handleUpdateReadingList={this.props.handleUpdateReadingList}
                 />
                 <a href={url} target={this.props.articleLink === "same-window" ? "_top" : "_blank"}>
-                    <div className={styles.ImageWrapper}>
-                        <img onLoad={this.checkImageSize} src={urlToImage} alt={title} className={articleImage ? styles.Image : styles.ImageBorder}/>
-                    </div>
-
-                    <div>
-                        <p className={styles.Source}>{source.name}</p>
-                        <div className={styles.Overflow}>
-                            <h3 className={styles.Title} dangerouslySetInnerHTML={{ __html: title }}></h3>
-                            <p className={styles.Description} dangerouslySetInnerHTML={{ __html: description }}></p>
-                        </div>
-                        <div className={styles.Footer}>
-                            <p>{startCase(this.relativeTime(publishedAt))} {!author || author.length > 20 ? "" : ' — ' + author }</p>
-                        </div>
-                    </div>
+                    <p>{title}</p>
                 </a>
             </li>
         );

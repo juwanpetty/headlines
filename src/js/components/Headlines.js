@@ -33,6 +33,8 @@ export default class Headlines extends React.Component {
 
         this.toggleShowClock = this.toggleShowClock.bind(this)
         this.toggleHourFormat = this.toggleHourFormat.bind(this)
+
+        this.handleUpdateReadingList = this.handleUpdateReadingList.bind(this)
         this.state = {
             storedSources: [],
             passedSources: [],
@@ -57,6 +59,8 @@ export default class Headlines extends React.Component {
 
             showClock: true,
             hourFormat: '12',
+
+            readingList: '{}'
         };
     }
 
@@ -113,6 +117,14 @@ export default class Headlines extends React.Component {
             });
         } else {
             localStorage.setItem('hourFormat', '12');
+        }
+
+        if (localStorage.readingList) {
+            this.setState({ 
+                readingList: localStorage.getItem('readingList')
+            });
+        } else {
+            localStorage.setItem('readingList', '{}');
         }
 
         try {
@@ -191,6 +203,10 @@ export default class Headlines extends React.Component {
 
         if (prevState.hourFormat !== this.state.hourFormat) {
             localStorage.setItem('hourFormat', this.state.hourFormat);
+        }
+
+        if (prevState.readingList.length !== this.state.readingList.length) {
+            localStorage.setItem('readingList', this.state.readingList);
         }
     };
 
@@ -330,6 +346,12 @@ export default class Headlines extends React.Component {
         }
     }
 
+    handleUpdateReadingList(string) {
+        this.setState({
+            readingList: string
+        });
+    }
+
     fetchSources() {
         fetch(`https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`)
                 .then(res => res.json())
@@ -397,6 +419,9 @@ export default class Headlines extends React.Component {
 
                         showArticles={this.state.showArticles}
                         articleLink={this.state.articleLink}
+
+                        readingList={this.state.readingList}
+                        handleUpdateReadingList={this.handleUpdateReadingList}
                     />
                 </main>
 
@@ -430,6 +455,9 @@ export default class Headlines extends React.Component {
                     hourFormat={this.state.hourFormat}
                     toggleShowClock={this.toggleShowClock}
                     toggleHourFormat={this.toggleHourFormat}
+
+                    readingList={this.state.readingList}
+                    handleUpdateReadingList={this.handleUpdateReadingList}
                 />
             </div>
         );
