@@ -29,6 +29,39 @@ $blue:          #007aff;
     }
 }
 
+.Container {
+    height: calc(100vh - 24.8rem);
+    width: 31.9rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.ContainerInner {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    overflow-y: hidden;
+
+    transform: translateX(0);
+    
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(.07,.95,0,1);
+
+    will-change: transform;
+}
+
+.Panel {
+    width: 31.9rem;
+    height: 100%;
+    margin-right: 4rem;
+}
+
+.Panel > div {
+    width: 31.9rem;
+    height: calc(100vh - 24.8rem);
+    overflow-y: auto;
+}
+
 .SidebarHidden {
     @extend .Sidebar;
     transform: translateX(40.0rem);
@@ -74,33 +107,6 @@ $blue:          #007aff;
     }
 }
 
-.Container {
-    height: 100%;
-    height: calc(100vh - 24.8rem);
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-}
-
-.ContainerInner {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    transform: translateX(0);
-    will-change: transform;
-    transition-duration: 150ms;
-    transition-timing-function: cubic-bezier(.07,.95,0,1);
-
-    &--hidden {
-        transform: translateX(-359px);
-    }
-}
-
-.ContainerInnerHidden {
-    @extend .ContainerInner;
-    transform: translateX(-359px);
-}
-
 .Button {
     background-color: $offwhite;
     border: 0.1rem solid $lightgray;
@@ -118,4 +124,20 @@ $blue:          #007aff;
     background: $blue;
     border: solid 0.1rem $blue;
     color: white;
+}
+
+.ShowSources {
+    transform: translateX(0);
+}
+
+.ShowReadingList {
+    transform: translateX(-35.9rem);
+}
+
+.ShowSettings {
+    transform: translateX(-71.8rem);
+}
+
+.ShowAbout {
+    transform: translateX(-107.7rem);
 }
