@@ -22,11 +22,38 @@ export default class AddToReadingList extends React.Component {
         isBookmarked ? this.setState({ checked: true }) : this.setState({ checked: false });
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.readingList.length !== this.props.readingList.length) {
+            const article = this.props.article;
+            const readingList = JSON.parse(this.props.readingList);
+
+            const isBookmarked = readingList.hasOwnProperty(article.url);
+            if (!isBookmarked) {
+                this.setState({ checked: false })
+            } else {
+                this.setState({ checked: true })
+            }
+        }
+
+        if (prevProps.article.title.length !== this.props.article.title.length) {
+            const article = this.props.article;
+            const readingList = JSON.parse(this.props.readingList);
+
+            const isBookmarked = readingList.hasOwnProperty(article.url);
+            if (!isBookmarked) {
+                this.setState({ checked: false })
+            } else {
+                this.setState({ checked: true })
+            }
+        }
+    }
+
+
     toggleBookmark() {
         const article = this.props.article;
         const isChecked = !this.state.checked;
         const readingList = JSON.parse(this.props.readingList);
-        const maxNum = 2;
+        const maxNum = 10;
 
         this.setState((prevState) => ({
             checked: !(prevState.checked)
@@ -47,7 +74,6 @@ export default class AddToReadingList extends React.Component {
         } else {
             isChecked ? this.addBookmark(article) : this.removeBookmark(article); 
         }
-
     }
 
     addBookmark(article) {

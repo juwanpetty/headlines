@@ -455,6 +455,9 @@ export default class Headlines extends React.Component {
                     hourFormat={this.state.hourFormat}
                     toggleShowClock={this.toggleShowClock}
                     toggleHourFormat={this.toggleHourFormat}
+
+                    readingList={this.state.readingList}
+                    handleUpdateReadingList={this.handleUpdateReadingList}
                 />
             </div>
         );

@@ -54,12 +54,15 @@ $blue:          #007aff;
     width: 31.9rem;
     height: 100%;
     margin-right: 4rem;
+    position: relative;
 }
 
 .Panel > div {
     width: 31.9rem;
     height: calc(100vh - 24.8rem);
     overflow-y: auto;
+    position: absolute;
+    top: 0;
 }
 
 .SidebarHidden {

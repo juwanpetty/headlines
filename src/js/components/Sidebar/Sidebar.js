@@ -3,6 +3,7 @@ import React from 'react';
 import Sources from './components/Sources/Sources';
 import Settings from './components/Settings/Settings';
 import Navigation from './components/Navigation/Navigation';
+import ReadingLists from './components/ReadingLists/ReadingLists';
 
 import styles from './Sidebar.scss';
 
@@ -77,7 +78,11 @@ export default class Sidebar extends React.Component {
 
                                 <div className={styles.Panel}>
                                     <div>
-                                        <p className={styles.Attribution}>Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
+                                        <ReadingLists
+                                            readingList={this.props.readingList}
+                                            articleLink={this.props.articleLink}
+                                            handleUpdateReadingList={this.props.handleUpdateReadingList}
+                                        />
                                     </div>
                                 </div>
 
