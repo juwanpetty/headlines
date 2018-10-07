@@ -30,12 +30,16 @@ export default class Clock extends React.Component {
         let date = new Date();
         let hour = date.getHours();
 
+        let customHour;
+
         if (hourFormat === '24' && (hour === 0 || hour === 23)) {
-            hour += 1;
+            customHour = hour;
+            customHour += 1;
         }
 
         if (hourFormat === '12') {
-            hour -= 12;
+            customHour = hour;
+            customHour -= 12;
         }
 
         let minutes = date.getMinutes();
@@ -43,7 +47,7 @@ export default class Clock extends React.Component {
         
         const period = hour >= 12 ? 'PM' : 'AM';
 
-        const time = `${hour}:${minutes} ${period}`;
+        const time = `${customHour}:${minutes} ${period}`;
         
         return time;
       }
