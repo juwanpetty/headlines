@@ -23,6 +23,24 @@ export default class Sidebar extends React.Component {
     }
 
     render() {
+        let showPanel;
+        switch(this.props.sourcesPanel) {
+            case 'sources':
+                showPanel = styles.ShowSources;
+                break;
+            case 'bookmark':
+                showPanel = styles.ShowReadingList;
+                break;
+            case 'settings':
+                showPanel = styles.ShowSettings;
+                break;
+            case 'about':
+                showPanel = styles.ShowAbout;
+                break;
+            default:
+                showPanel = styles.ShowSources;
+        } 
+
         return (
             <div>
                 <aside 
@@ -41,43 +59,54 @@ export default class Sidebar extends React.Component {
                         />
 
                         <div className={styles.Container}>
-                            <div className={this.props.sourcesPanel ? styles.ContainerInner : styles.ContainerInnerHidden}>
-                                <Sources 
-                                    sources={this.props.sources}
-                                    sourceIsLoaded={this.props.sourceIsLoaded}
-                                    sourceError={this.props.sourceError}
-                                    storedSources={this.props.storedSources} 
-                                    handleDeleteSource={this.props.handleDeleteSource}
-                                    handleAddSource={this.props.handleAddSource}
-                                />
+                            <div className={styles.ContainerInner + " " + showPanel}>
+                                <div className={styles.Panel}>
+                                    <div>
+                                        <Sources 
+                                            sources={this.props.sources}
+                                            sourceIsLoaded={this.props.sourceIsLoaded}
+                                            sourceError={this.props.sourceError}
+                                            storedSources={this.props.storedSources} 
+                                            handleDeleteSource={this.props.handleDeleteSource}
+                                            handleAddSource={this.props.handleAddSource}
+                                        />
                                 
-                                <p className={styles.Attribution}>Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
+                                        <p className={styles.Attribution}>Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
+                                    </div>
+                                </div>
+
+                                <div className={styles.Panel}>
+                                    <div>
+                                        <p className={styles.Attribution}>Powered by <a href="https://newsapi.org/">NewsAPI.org</a></p>
+                                    </div>
+                                </div>
+
+                                <div className={styles.Panel}>
+                                    <Settings 
+                                        sourcesPanel={this.props.sourcesPanel} 
+
+                                        weatherUnit={this.props.weatherUnit}
+                                        toggleWeatherUnit={this.props.toggleWeatherUnit}
+
+                                        articleLink={this.props.articleLink}
+                                        toggleArticleLink={this.props.toggleArticleLink}
+
+                                        showWeather={this.props.showWeather}
+                                        toggleShowWeather={this.props.toggleShowWeather}
+
+                                        showArticles={this.props.showArticles}
+                                        toggleShowArticles={this.props.toggleShowArticles}
+                                        
+                                        allowGeolocation={this.props.allowGeolocation}
+
+                                        showClock={this.props.showClock}
+                                        hourFormat={this.props.hourFormat}
+                                        toggleShowClock={this.props.toggleShowClock}
+                                        toggleHourFormat={this.props.toggleHourFormat}
+                                    />
+                                </div>
                             </div>
-
-                            <Settings 
-                                sourcesPanel={this.props.sourcesPanel} 
-
-                                weatherUnit={this.props.weatherUnit}
-                                toggleWeatherUnit={this.props.toggleWeatherUnit}
-
-                                articleLink={this.props.articleLink}
-                                toggleArticleLink={this.props.toggleArticleLink}
-
-                                showWeather={this.props.showWeather}
-                                toggleShowWeather={this.props.toggleShowWeather}
-
-                                showArticles={this.props.showArticles}
-                                toggleShowArticles={this.props.toggleShowArticles}
-                                
-                                allowGeolocation={this.props.allowGeolocation}
-
-                                showClock={this.props.showClock}
-                                hourFormat={this.props.hourFormat}
-                                toggleShowClock={this.props.toggleShowClock}
-                                toggleHourFormat={this.props.toggleHourFormat}
-                            />
                         </div>
-
                     </form>
                 </aside>
 
