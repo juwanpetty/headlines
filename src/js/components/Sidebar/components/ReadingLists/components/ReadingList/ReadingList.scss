@@ -47,6 +47,11 @@ $lightgray:     #ededed;
     transition: box-shadow 150ms; 
 }
 
+.ImageBorder {
+    @extend .Image;
+    border: 0.1rem solid $lightgray;
+}
+
 .Overflow {
     overflow: hidden;
     min-height: 5.5rem;

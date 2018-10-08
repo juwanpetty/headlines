@@ -18,7 +18,8 @@ export default class AddToReadingList extends React.Component {
         const article = this.props.article;
         const readingList = JSON.parse(this.props.readingList);
 
-        const isBookmarked = readingList.hasOwnProperty(article.url);
+        const isBookmarked = readingList.hasOwnProperty(article.title);
+
         isBookmarked ? this.setState({ checked: true }) : this.setState({ checked: false });
     }
 
@@ -27,7 +28,7 @@ export default class AddToReadingList extends React.Component {
             const article = this.props.article;
             const readingList = JSON.parse(this.props.readingList);
 
-            const isBookmarked = readingList.hasOwnProperty(article.url);
+            const isBookmarked = readingList.hasOwnProperty(article.title);
             if (!isBookmarked) {
                 this.setState({ checked: false })
             } else {
@@ -39,7 +40,7 @@ export default class AddToReadingList extends React.Component {
             const article = this.props.article;
             const readingList = JSON.parse(this.props.readingList);
 
-            const isBookmarked = readingList.hasOwnProperty(article.url);
+            const isBookmarked = readingList.hasOwnProperty(article.title);
             if (!isBookmarked) {
                 this.setState({ checked: false })
             } else {
@@ -81,14 +82,14 @@ export default class AddToReadingList extends React.Component {
         let readingList = JSON.parse(this.props.readingList);
 
         article['timestamp'] = timeStamp;
-        readingList[article.url] = article;
+        readingList[article.title] = article;
         readingList = JSON.stringify(readingList);
 
         this.props.handleUpdateReadingList(readingList);
     }
 
     removeBookmark(article) {
-        const id = article.url;
+        const id = article.title;
         let readingList = JSON.parse(this.props.readingList);
         delete readingList[id];
 
