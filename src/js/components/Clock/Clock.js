@@ -26,33 +26,28 @@ export default class Clock extends React.Component {
         });
     }
     
-    formatDate(hourFormat) {
+    formatDate(hourFormat = false) {
+        hourFormat = Boolean(hourFormat === '12');
+
         let date = new Date();
+        let dateString = date.toLocaleTimeString([], {hour12: hourFormat, hour: '2-digit', minute: '2-digit'});
         let hour = date.getHours();
 
-        let customHour;
-
-        if (hourFormat === '24' && (hour === 0 || hour === 23)) {
-            customHour = hour;
-            customHour += 1;
-        }
-
-        if (hourFormat === '12') {
-            customHour = hour;
-            customHour -= 12;
-        } else {
-            customHour = hour;
-        }
-
-        let minutes = date.getMinutes();
-        minutes = minutes < 10 ? `0${minutes}` : minutes;
-        
         const period = hour >= 12 ? 'PM' : 'AM';
 
-        const time = `${customHour}:${minutes} ${period}`;
-        
-        return time;
-      }
+        if (hourFormat)
+            return dateString;
+
+        if (hour === 0)
+            hour = 24;
+
+        dateString = dateString.split(':');
+        dateString[0] = hour;
+        dateString = dateString.join(':');
+
+        dateString = `${dateString} ${period}`;
+        return dateString;
+    }
 
     render() {
         return (

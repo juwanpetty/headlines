@@ -12,9 +12,8 @@ export default class RemoveBoomark extends React.Component {
 
     removeBookmark() {
         const article = this.props.article;
-        console.log(article);
 
-        const id = article.url;
+        const id = article.title;
         let readingList = JSON.parse(this.props.readingList);
         delete readingList[id];
 
