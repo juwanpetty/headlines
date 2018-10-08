@@ -21,8 +21,6 @@ $blue:          #007aff;
     transition: 0.1s cubic-bezier(0, 0, 0, 1);
     transition-property: transform;
 
-    p {font-size: 1.4rem;}
-
     form {
         position: relative;
         padding-bottom: 8.0rem;
@@ -73,6 +71,10 @@ $blue:          #007aff;
 .Title {
     font-size: 2.1rem;
     margin-top: 0;
+}
+
+.Subtitle {
+    font-size: 1.4rem;
 }
 
 .Footer {
