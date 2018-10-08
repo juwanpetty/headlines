@@ -5,7 +5,20 @@ import styles from './ReadingLists.scss';
 
 export default class ReadingLists extends React.Component {
     render() {
-        const readingList = JSON.parse(this.props.readingList);
+        let readingList = JSON.parse(this.props.readingList);
+        Object.keys(readingList).reverse();
+
+        function reverseList(obj) {
+            let newObj = {}
+            let revObj = Object.keys(obj).reverse();
+            revObj.forEach(i => { 
+              newObj[i] = obj[i];
+            });
+
+            return newObj;
+        }
+
+        readingList = reverseList(readingList);
         
         return (
             Object.keys(readingList).map((e, index) => {

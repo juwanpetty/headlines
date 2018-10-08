@@ -45,9 +45,25 @@ export default class Article extends React.Component {
                         readingList={this.props.readingList}
                         handleUpdateReadingList={this.props.handleUpdateReadingList}
                 />
-                <a href={url} target={this.props.articleLink === "same-window" ? "_top" : "_blank"}>
-                    <p>{title}</p>
-                </a>
+                <div className={styles.Card}>
+                    <div>
+                        <p className={styles.Source}>{source.name}</p>
+                        <div className={styles.Overflow}>
+                            <a href={url} target={this.props.articleLink === "same-window" ? "_top" : "_blank"}>
+                                <h3 className={styles.Title} dangerouslySetInnerHTML={{ __html: title }}></h3>
+                            </a>
+                        </div>
+                        <div className={styles.Footer}>
+                            <p>{startCase(this.relativeTime(publishedAt))} {!author || author.length > 20 ? "" : ' — ' + author }</p>
+                        </div>
+                    </div>
+
+                    <div className={styles.ImageWrapper}>
+                        <a href={url} target={this.props.articleLink === "same-window" ? "_top" : "_blank"}>
+                            <img onLoad={this.checkImageSize} src={urlToImage} alt={title} className={articleImage ? styles.Image : styles.ImageBorder}/>
+                        </a>
+                    </div>
+                </div>
             </li>
         );
     }
