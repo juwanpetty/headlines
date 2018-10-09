@@ -79,7 +79,7 @@ export default class WeatherWidget extends React.Component {
         } else {
             return (
                 <div className={this.props.showWeather ? styles.WeatherWidget : styles.WeatherWidgetHidden}>
-                    <h2 className={styles.Temperature}>{this.props.weatherUnit === 'us' ? Math.trunc(weather.main.temp) : Math.trunc((weather.main.temp - 32) / 1.8)}</h2>
+                    <h2 className={styles.Temperature}>{this.props.weatherUnit === 'us' ? Math.trunc(weather.main.temp) : Math.trunc((weather.main.temp - 32) / 1.8)}º</h2>
                     <div className={styles.Details}>
                         <p className={styles.Location}>{this.state.weatherLocation}</p>
                         <p className={styles.Condition}>{weather.weather[0].main}</p>
