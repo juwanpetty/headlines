@@ -5,9 +5,14 @@ import styles from './SourcesTags.scss';
 
 export default class SourcesTags extends React.Component {
     removeTag(event) {
-        const sourceId = event.target.data.id;
+        const sourceId = event.target.dataset.sourceId;
 
         console.log(sourceId);
+
+        // if there is only one source left don't allow source to be removed
+        if (this.props.storedSources.length == 1)
+            return;
+
         // this.props.handleDeleteSource(sourceId);
     }
 
@@ -28,7 +33,7 @@ export default class SourcesTags extends React.Component {
                                                     <p>{source.name}</p>
                                                     <div 
                                                         className={styles.Icon}
-                                                        data-id={source.id}
+                                                        data-source-id={source.id}
                                                         onClick={this.removeTag}
                                                     >
                                                         <FeatherIcon icon="x" />
