@@ -4,16 +4,19 @@ import FeatherIcon from 'feather-icons-react';
 import styles from './SourcesTags.scss';
 
 export default class SourcesTags extends React.Component {
-    removeTag(event) {
-        const sourceId = event.target.dataset.sourceId;
+    constructor(props) {
+        super(props);
+        this.removeTag= this.removeTag.bind(this);
+    }
 
-        console.log(sourceId);
+    removeTag(event) {
+        const sourceId = event.currentTarget.dataset.sourceId;
 
         // if there is only one source left don't allow source to be removed
         if (this.props.storedSources.length == 1)
             return;
 
-        // this.props.handleDeleteSource(sourceId);
+        this.props.handleDeleteSource(sourceId);
     }
 
     render() {
