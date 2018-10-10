@@ -37,7 +37,7 @@ export default class Source extends React.Component {
                     value={name} 
                     type="checkbox" 
                     className={styles.Input}
-                    defaultChecked={isChecked}
+                    checked={isChecked}
                     onClick={this.handleIsChecked}
                 />
                 <label className={styles.Label} htmlFor={id}>{name}</label>
