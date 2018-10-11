@@ -33,7 +33,7 @@ export default class Clock extends React.Component {
         let dateString = date.toLocaleTimeString([], {hour12: hourFormat, hour: '2-digit', minute: '2-digit'});
         let hour = date.getHours();
 
-        const period = hour >= 12 ? 'PM' : 'AM';
+        // const period = hour >= 12 ? 'PM' : 'AM';
 
         if (hourFormat)
             return dateString;
@@ -45,7 +45,7 @@ export default class Clock extends React.Component {
         dateString[0] = hour;
         dateString = dateString.join(':');
 
-        dateString = `${dateString} ${period}`;
+        dateString = `${dateString}`;
         return dateString;
     }
 
