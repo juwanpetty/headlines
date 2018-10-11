@@ -78,10 +78,8 @@ export default class AddToReadingList extends React.Component {
     }
 
     addBookmark(article) {
-        const timeStamp = new Date().getTime();
         let readingList = JSON.parse(this.props.readingList);
 
-        article['timestamp'] = timeStamp;
         readingList[article.title] = article;
         readingList = JSON.stringify(readingList);
 
