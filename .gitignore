@@ -1,5 +1,12 @@
 .vscode/
 
+dist/
+
+!assets/
+!icons/
+!background.js
+!manifest.json
+
 .cache/
 
 # scss
