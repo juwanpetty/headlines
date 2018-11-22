@@ -18,7 +18,7 @@ export default class TopSites extends Component {
     try {
       chrome.topSites.get(data => {
         this.setState({
-          sites: data.slice(0, 6)
+          sites: data.slice(0, 3)
         });
       });
     } catch (error) {
