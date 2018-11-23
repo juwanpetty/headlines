@@ -9,15 +9,23 @@ import styles from './Article.scss';
 export default class Article extends React.Component {
     constructor(props) {
         super(props);
-        this.checkImageSize = this.checkImageSize.bind(this);
+        this.isValidImage = this.isValidImage.bind(this);
         this.relativeTime = this.relativeTime.bind(this);
     }
 
-    checkImageSize(e) {
+    isValidImage(e) {
+        let { urlToImage } = this.props.article;
+        let articleImage = urlToImage;
+
+        if (!articleImage.includes("http")) {
+            e.target.classList.add("image-border");
+            return (e.target.src = "assets/placeholder.jpg");
+        }
+
         // displays placeholder if img is 1px (IGN)
         if (e.target.naturalWidth <= 100) {
-            e.target.classList.add('image-border');
-            return e.target.src = "assets/placeholder.jpg";
+            e.target.classList.add("image-border");
+            return (e.target.src = "assets/placeholder.jpg");
         }
     }
 
@@ -28,7 +36,7 @@ export default class Article extends React.Component {
 
     render() {
         delete this.props.article['content'];
-        
+
         let { source, title, description, url, author, publishedAt } = this.props.article;
         let { urlToImage } = this.props.article;
         let articleImage = urlToImage;
@@ -42,14 +50,14 @@ export default class Article extends React.Component {
 
         return (
             <li className={styles.Card}>
-                <AddToReadingList 
-                        article={this.props.article} 
-                        readingList={this.props.readingList}
-                        handleUpdateReadingList={this.props.handleUpdateReadingList}
+                <AddToReadingList
+                    article={this.props.article}
+                    readingList={this.props.readingList}
+                    handleUpdateReadingList={this.props.handleUpdateReadingList}
                 />
                 <a href={url} target={this.props.articleLink === "same-window" ? "_top" : "_blank"}>
                     <div className={styles.ImageWrapper}>
-                        <img onLoad={this.checkImageSize} src={urlToImage} alt={title} className={articleImage ? styles.Image : styles.ImageBorder}/>
+                        <img onLoad={this.isValidImage} src={urlToImage} alt={title} className={articleImage ? styles.Image : styles.ImageBorder} />
                     </div>
 
                     <div>
@@ -59,7 +67,7 @@ export default class Article extends React.Component {
                             <p className={styles.Description} dangerouslySetInnerHTML={{ __html: description }}></p>
                         </div>
                         <div className={styles.Footer}>
-                            <p>{startCase(this.relativeTime(publishedAt))} {!author || author.length > 20 ? "" : ' — ' + author }</p>
+                            <p>{startCase(this.relativeTime(publishedAt))} {!author || author.length > 20 ? "" : ' — ' + author}</p>
                         </div>
                     </div>
                 </a>
