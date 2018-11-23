@@ -2,11 +2,12 @@ const shuffle = require('lodash/shuffle');
 
 import React from 'react';
 
-import Header from './Header/Header'
-import Search from './Search/Search'
-import Articles from './Articles/Articles'
-import Sidebar from './Sidebar/Sidebar'
-import Clock from './Clock/Clock'
+import Header from './Header/Header';
+import Search from './Search/Search';
+import Articles from './Articles/Articles';
+import Sidebar from './Sidebar/Sidebar';
+import Clock from './Clock/Clock';
+import TopSites from './TopSites/TopSites';
 
 import styles from './Headlines.scss';
 
@@ -423,6 +424,8 @@ export default class Headlines extends React.Component {
                         readingList={this.state.readingList}
                         handleUpdateReadingList={this.handleUpdateReadingList}
                     />
+
+                    <TopSites />
                 </main>
 
                 <Sidebar 
