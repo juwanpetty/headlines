@@ -38,10 +38,10 @@ export default class Search extends React.Component {
 
     handleSearchEngine(e) {
         this.setState({
-            currentSearchEngine: e.target.textContent
+            currentSearchEngine: e.target.closest('li').children[1].textContent
         });
 
-        this.toggleDropdown();
+       this.toggleDropdown();
     }
 
     render() {
