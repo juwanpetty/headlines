@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
 const ellipsize = require('ellipsize');
 const favicon = require('favicon');
@@ -11,28 +11,26 @@ export default class TopSites extends Component {
 
     this.state = {
       sites: [],
-    }
+    };
   }
-  
+
   componentDidMount() {
     try {
       chrome.topSites.get(data => {
         this.setState({
-          sites: data.slice(0, 3)
+          sites: data.slice(0, 3),
         });
       });
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 
   handleDomainFavicon(url) {
-      // favicon(url, function(err, faviconUrl) {
-      //   console.log(faviconUrl);
-      //   console.log(err)
-      // });
+    // favicon(url, function(err, faviconUrl) {
+    //   console.log(faviconUrl);
+    //   console.log(err)
+    // });
 
-      return `${url}/favicon.ico`
+    return url.endsWith('/') ? `${url}favicon.ico` : `${url}/favicon.ico`;
   }
 
   render() {
@@ -40,19 +38,24 @@ export default class TopSites extends Component {
 
     return (
       <ul className={styles.Sites}>
-        {sites && sites.map(site => {
-          return (
-            <li key={site.title}>
-              <a href={site.url} className={styles.Site}>
-                <div className={styles.Favicon}>
-                  <img onLoad={this.checkImageSize} src={this.handleDomainFavicon(site.url)} alt=""/>
-                </div>
+        {sites &&
+          sites.map(site => {
+            return (
+              <li key={site.title}>
+                <a href={site.url} className={styles.Site}>
+                  <div className={styles.Favicon}>
+                    <img
+                      onLoad={this.checkImageSize}
+                      src={this.handleDomainFavicon(site.url)}
+                      alt=""
+                    />
+                  </div>
 
-                <p className={styles.Title}>{ellipsize(site.title, 25)}</p>
-              </a>
-            </li>
-          );
-        })}
+                  <p className={styles.Title}>{ellipsize(site.title, 25)}</p>
+                </a>
+              </li>
+            );
+          })}
       </ul>
     );
   }
