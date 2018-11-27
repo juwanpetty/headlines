@@ -17,13 +17,13 @@ export default class Article extends React.Component {
   isValidImage(e) {
     // displays placeholder if img is 1px (IGN)
     if (e.target.naturalWidth <= 100) {
-      e.target.classList.add('image-border');
+      e.target.classList.add(styles.ImageBorder);
       return (e.target.src = 'assets/placeholder.jpg');
     }
   }
 
   handleImageError(e) {
-    e.target.classList.add('image-border');
+    e.target.classList.add(styles.ImageBorder);
     return (e.target.src = 'assets/placeholder.jpg');
   }
 
