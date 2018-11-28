@@ -50,12 +50,11 @@ export default class WeatherWidget extends React.Component {
     }
 
     fetchWeather(latitude, longitude) {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=d2baab033029d23257d1f1c79b0aedb5&units=imperial`)
+        fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/47e0ed37c8462d76eaa20c4a9688f807/${latitude},${longitude}?exclude=minutely,hourly,flags`)
             .then(res => res.json())
             .then((result) => {
                 this.setState({
                     weatherIsLoaded: true,
-                    weatherLocation: result.name, 
                     weather: result
                 });
             }, (error) => {
@@ -79,10 +78,12 @@ export default class WeatherWidget extends React.Component {
         } else {
             return (
                 <div className={this.props.showWeather ? styles.WeatherWidget : styles.WeatherWidgetHidden}>
-                    <h2 className={styles.Temperature}>{this.props.weatherUnit === 'us' ? Math.trunc(weather.main.temp) : Math.trunc((weather.main.temp - 32) / 1.8)}º</h2>
+                    <h2 className={styles.Temperature}>{this.props.weatherUnit === 'us' ? Math.trunc(weather.currently.temperature) : Math.trunc((weather.currently.temperature - 32) / 1.8)}º</h2>
                     <div className={styles.Details}>
-                        <p className={styles.Location}>{this.state.weatherLocation}</p>
-                        <p className={styles.Condition}>{weather.weather[0].main}</p>
+                        <p className={styles.Location}>
+                            {this.props.weatherUnit === 'us' ? Math.trunc(weather.daily.data[0].temperatureLow) : Math.trunc((weather.daily.data[0].temperatureLow - 32) / 1.8)}º / {this.props.weatherUnit === 'us' ? Math.trunc(weather.daily.data[0].temperatureHigh) : Math.trunc((weather.daily.data[0].temperatureHigh - 32) / 1.8)}º
+                        </p>
+                        <p className={styles.Condition}>{weather.currently.summary}</p>
                     </div>
                 </div>
             );
