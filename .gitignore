@@ -1,11 +1,14 @@
 .vscode/
 
-dist/
+# !icons/
+# !background.js
+# !manifest.json
+# !dist/assets/search
+# !dist/*/files/private
 
-!assets/
-!icons/
-!background.js
-!manifest.json
+dist/\app*
+dist/\style*
+dist/\index*
 
 .cache/
 
