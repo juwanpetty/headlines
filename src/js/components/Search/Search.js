@@ -40,18 +40,18 @@ export default class Search extends React.Component {
         const search = {
             "Google": {
                 "searchParams": "http://www.google.com/search?q=",
-                "src": "assets/search/google.svg"
+                "src": "assets/search/google.png"
             },
             "DuckDuckGo": {
                 "searchParams": "https://duckduckgo.com/?q=",
-                "src": "assets/search/duckduckgo.svg"
+                "src": "assets/search/duckduckgo.png"
             },
             "Bing": {
                 "searchParams": "http://www.bing.com/search?q=",
-                "src": "assets/search/bing.svg"
+                "src": "assets/search/bing.png"
             }
         };
-        
+
         return (
             <div className={styles.Search}>
                 <form method="get" action={search[this.state.currentSearchEngine].searchParams}>
@@ -59,7 +59,7 @@ export default class Search extends React.Component {
                         <input type="text" className={styles.SearchBar} placeholder="Search the Web" name="q" autoComplete="off" id="search" />
                         <div className={styles.SearchEngine} htmlFor="search" onClick={this.props.toggleSearchMenu}>
                             <div>
-                                <img src={search[this.state.currentSearchEngine].src} alt={this.state.currentSearchEngine}/>
+                                <img src={search[this.state.currentSearchEngine].src}/>
                             </div>
                         </div>
                         <button type="submit"><i data-feather="arrow-right"></i></button>
