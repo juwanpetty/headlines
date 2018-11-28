@@ -21,11 +21,6 @@ export default class Navigation extends React.Component {
                     className={this.props.sourcesPanel === 'settings' ? styles.Selected : styles.NavigationButton}>
                     Settings
                 </p>
-                <p 
-                    onClick={() => this.props.togglePanel('about')}
-                    className={this.props.sourcesPanel === 'about' ? styles.Selected : styles.NavigationButton}>
-                    About
-                </p>
             </div>
         );
     }

@@ -35,9 +35,6 @@ export default class Sidebar extends React.Component {
             case 'settings':
                 showPanel = styles.ShowSettings;
                 break;
-            case 'about':
-                showPanel = styles.ShowAbout;
-                break;
             default:
                 showPanel = styles.ShowSources;
         } 
