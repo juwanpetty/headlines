@@ -40,15 +40,15 @@ export default class Search extends React.Component {
         const search = {
             "Google": {
                 "searchParams": "http://www.google.com/search?q=",
-                "src": "assets/search/google.png"
+                "src": "assets/search/google.svg"
             },
             "DuckDuckGo": {
                 "searchParams": "https://duckduckgo.com/?q=",
-                "src": "assets/search/duckduckgo.png"
+                "src": "assets/search/duckduckgo.svg"
             },
             "Bing": {
                 "searchParams": "http://www.bing.com/search?q=",
-                "src": "assets/search/bing.png"
+                "src": "assets/search/bing.svg"
             }
         };
         
