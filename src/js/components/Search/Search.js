@@ -5,11 +5,9 @@ import styles from './Search.scss';
 export default class Search extends React.Component { 
     constructor(props) {
         super(props);
-        this.toggleDropdown = this.toggleDropdown.bind(this)
         this.handleSearchEngine = this.handleSearchEngine.bind(this)
 
         this.state = {
-            dropdownOpen: false,
             currentSearchEngine: 'Google'
         }
     }
@@ -29,19 +27,13 @@ export default class Search extends React.Component {
             localStorage.setItem('currentSearchEngine', this.state.currentSearchEngine);
         }
     }
-
-    toggleDropdown() {
-        this.setState((prevState) => ({
-            dropdownOpen: !(prevState.dropdownOpen)
-        }));
-    }
-
+    
     handleSearchEngine(e) {
         this.setState({
             currentSearchEngine: e.target.closest('li').children[1].textContent
         });
 
-       this.toggleDropdown();
+        this.props.toggleSearchMenu();
     }
 
     render() {
@@ -65,7 +57,7 @@ export default class Search extends React.Component {
                 <form method="get" action={search[this.state.currentSearchEngine].searchParams}>
                     <div className={styles.Wrapper}>
                         <input type="text" className={styles.SearchBar} placeholder="Search the Web" name="q" autoComplete="off" id="search" />
-                        <div className={styles.SearchEngine} htmlFor="search" onClick={this.toggleDropdown}>
+                        <div className={styles.SearchEngine} htmlFor="search" onClick={this.props.toggleSearchMenu}>
                             <div>
                                 <img src={search[this.state.currentSearchEngine].src} alt={this.state.currentSearchEngine}/>
                             </div>
@@ -74,7 +66,7 @@ export default class Search extends React.Component {
                     </div>
                 </form>
 
-                {this.state.dropdownOpen && (
+                {this.props.isSearchMenuOpen && (
                     <ul className={styles.Dropdown} onClick={this.handleSearchEngine}>
                         <li>
                             <div className={styles.Container}>

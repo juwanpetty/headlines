@@ -22,7 +22,10 @@ export default class Headlines extends React.Component {
 
         this.toggleSidebar = this.toggleSidebar.bind(this)
         this.togglePanel = this.togglePanel.bind(this)
+        this.closeMenusOnBodyClick = this.closeMenusOnBodyClick.bind(this)
         this.toggleSidebarOnBodyClick = this.toggleSidebarOnBodyClick.bind(this)
+        this.toggleSearchMenuOnBodyClick = this.toggleSearchMenuOnBodyClick.bind(this)
+        this.toggleSearchMenu = this.toggleSearchMenu.bind(this)
 
         this.toggleShowWeather = this.toggleShowWeather.bind(this)
         this.toggleShowArticles = this.toggleShowArticles.bind(this)
@@ -49,6 +52,8 @@ export default class Headlines extends React.Component {
 
             isSidebarOpen: false,
             sourcesPanel: 'sources',
+
+            isSearchMenuOpen: false,
 
             showWeather: true,
             weatherUnit: 'us',
@@ -245,6 +250,17 @@ export default class Headlines extends React.Component {
         }
     };
 
+    toggleSearchMenu() {
+        this.setState((prevState) => ({
+            isSearchMenuOpen: !(prevState.isSearchMenuOpen)
+        }));
+    }
+
+    closeMenusOnBodyClick() {
+        this.toggleSidebarOnBodyClick();
+        this.toggleSearchMenuOnBodyClick();
+    }
+
     toggleSidebarOnBodyClick() {
         // if Sidebar is open, then it has been clicked to be closed
         if (this.state.isSidebarOpen) {
@@ -256,6 +272,15 @@ export default class Headlines extends React.Component {
             if (!this.sameSources(this.state.passedSources.split(','), this.state.storedSources)) {
                 this.fetchArticles(this.state.storedSources.join());
             }
+        }
+    }
+
+    toggleSearchMenuOnBodyClick() {
+        // if Sidebar is open, then it has been clicked to be closed
+        if (this.state.isSearchMenuOpen) {
+            this.setState((prevState) => ({ 
+                isSearchMenuOpen: false 
+            }));
         }
     }
 
@@ -395,7 +420,7 @@ export default class Headlines extends React.Component {
 
     render() {
         return (
-            <div onClick={this.toggleSidebarOnBodyClick}>
+            <div onClick={this.closeMenusOnBodyClick}>
                 <Header 
                     isSidebarOpen={this.state.isSidebarOpen} 
                     toggleSidebar={this.toggleSidebar}
@@ -410,7 +435,10 @@ export default class Headlines extends React.Component {
                         showClock={this.state.showClock} 
                         hourFormat={this.state.hourFormat}
                     />
-                    <Search />
+                    <Search
+                        isSearchMenuOpen={this.state.isSearchMenuOpen} 
+                        toggleSearchMenu={this.toggleSearchMenu} 
+                    />
                     <Articles 
                         storedSources={this.state.storedSources}
                         
