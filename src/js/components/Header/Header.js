@@ -22,6 +22,7 @@ export default class Header extends React.Component {
                     showWeather={this.props.showWeather}
                     weatherUnit={this.props.weatherUnit}
                     allowGeolocation={this.props.allowGeolocation}
+                    showWallpaper={this.props.showWallpaper}
                 />
 
                 <div 

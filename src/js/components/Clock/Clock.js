@@ -50,9 +50,16 @@ export default class Clock extends React.Component {
     }
 
     render() {
+        const wallpaperStyle = {
+            color: 'white',
+            textShadow: '0 0 2.5rem rgba(0,0,0,0.3)',
+        }
+
+        const showWallpaperStyle = this.props.showWallpaper ? wallpaperStyle : undefined;
+
         return (
             <div className={this.props.showClock ? styles.Clock : styles.Hidden}>
-                <h2 className={styles.ClockText}>
+                <h2 className={styles.ClockText} style={showWallpaperStyle}>
                     {this.formatDate(this.props.hourFormat)}
                 </h2>
             </div>

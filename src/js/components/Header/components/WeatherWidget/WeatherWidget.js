@@ -68,6 +68,13 @@ export default class WeatherWidget extends React.Component {
     render() {
         let weather = this.state.weather;
 
+        const wallpaperStyle = {
+            color: 'white',
+            textShadow: '0 0 2.5rem rgba(0,0,0,0.3)',
+        }
+
+        const showWallpaperStyle = this.props.showWallpaper ? wallpaperStyle : undefined;
+
         if (this.state.weatherError) {
             return <div className={this.props.showWeather ? styles.WeatherWidget : styles.WeatherWidgetHidden}>Error: {this.state.weatherError}</div>;
         } else if (!this.state.weatherIsLoaded) {
@@ -78,12 +85,12 @@ export default class WeatherWidget extends React.Component {
         } else {
             return (
                 <div className={this.props.showWeather ? styles.WeatherWidget : styles.WeatherWidgetHidden}>
-                    <h2 className={styles.Temperature}>{this.props.weatherUnit === 'us' ? Math.trunc(weather.currently.temperature) : Math.trunc((weather.currently.temperature - 32) / 1.8)}º</h2>
+                    <h2 className={styles.Temperature} style={showWallpaperStyle}>{this.props.weatherUnit === 'us' ? Math.trunc(weather.currently.temperature) : Math.trunc((weather.currently.temperature - 32) / 1.8)}º</h2>
                     <div className={styles.Details}>
-                        <p className={styles.Location}>
+                        <p className={styles.Location} style={showWallpaperStyle}>
                             {this.props.weatherUnit === 'us' ? Math.trunc(weather.daily.data[0].temperatureLow) : Math.trunc((weather.daily.data[0].temperatureLow - 32) / 1.8)}º / {this.props.weatherUnit === 'us' ? Math.trunc(weather.daily.data[0].temperatureHigh) : Math.trunc((weather.daily.data[0].temperatureHigh - 32) / 1.8)}º
                         </p>
-                        <p className={styles.Condition}>{weather.currently.summary}</p>
+                        <p className={styles.Condition} style={showWallpaperStyle}>{weather.currently.summary}</p>
                     </div>
                 </div>
             );

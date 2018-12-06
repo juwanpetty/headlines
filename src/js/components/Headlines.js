@@ -29,6 +29,7 @@ export default class Headlines extends React.Component {
 
         this.toggleShowWeather = this.toggleShowWeather.bind(this)
         this.toggleShowArticles = this.toggleShowArticles.bind(this)
+        this.toggleShowWallpaper = this.toggleShowWallpaper.bind(this)
 
         this.toggleWeatherUnit = this.toggleWeatherUnit.bind(this)
         this.toggleArticleLink = this.toggleArticleLink.bind(this)
@@ -66,11 +67,17 @@ export default class Headlines extends React.Component {
             showClock: true,
             hourFormat: '12',
 
-            readingList: '{}'
+            readingList: '{}',
+
+            showWallpaper: 'true'
         };
     }
 
     componentDidMount() {
+        if (this.hasOneDayPassed()) {
+            this.fetchWallpaper();
+        }
+
         if (localStorage.showWeather) {
             if (localStorage.getItem('showWeather') === 'true') {
                 this.setState({ showWeather: true });
@@ -79,6 +86,16 @@ export default class Headlines extends React.Component {
             }
         } else {
             localStorage.setItem('showWeather', true);
+        }
+
+        if (localStorage.showWallpaper) {
+            if (localStorage.getItem('showWallpaper') === 'true') {
+                this.setState({ showWallpaper: true });
+            } else {
+                this.setState({ showWallpaper: false });
+            }
+        } else {
+            localStorage.setItem('showWallpaper', true);
         }
 
         if (localStorage.showArticles) {
@@ -191,6 +208,10 @@ export default class Headlines extends React.Component {
             localStorage.setItem('showWeather', this.state.showWeather);
         }
 
+        if (prevState.showWallpaper !== this.state.showWallpaper) {
+            localStorage.setItem('showWallpaper', this.state.showWallpaper);
+        }
+
         if (prevState.showArticles !== this.state.showArticles) {
             localStorage.setItem('showArticles', this.state.showArticles);
         }
@@ -215,6 +236,28 @@ export default class Headlines extends React.Component {
             localStorage.setItem('readingList', this.state.readingList);
         }
     };
+
+    hasOneDayPassed() {
+        let date = new Date().toLocaleDateString();
+
+        if (localStorage.headlinesDate === date) {
+            return false;
+        }
+
+        localStorage.setItem('headlinesDate', date);
+        return true;
+    }
+
+    fetchWallpaper() {
+        fetch("https://source.unsplash.com/2560x1440/?landscspe")
+                .then((result) => {
+                    // make a source localStorage
+                    localStorage.setItem('wallpaper', result.url);
+
+                }, (error) => {
+                    console.error(error);
+                })
+    }
 
     handleAddSource(sourceToAdd) {
         this.setState((prevState) => ({ 
@@ -324,6 +367,12 @@ export default class Headlines extends React.Component {
         }));
     }
 
+    toggleShowWallpaper() {
+        this.setState((prevState) => ({ 
+            showWallpaper: !(prevState.showWallpaper)
+        }));
+    }
+
     toggleWeatherUnit(unit) {
         if (unit === 'si') {
             this.setState({ 
@@ -419,8 +468,16 @@ export default class Headlines extends React.Component {
     };
 
     render() {
+        const headlinesWallpaper = (this.state.showWallpaper ? localStorage.getItem('wallpaper') : null);
+
+        const headlinesStyles = {
+            backgroundPosition: '100% 100%',
+            backgroundImage: `url(${headlinesWallpaper})`,
+            backgroundSize: 'cover'
+        }
+
         return (
-            <div onClick={this.closeMenusOnBodyClick}>
+            <div onClick={this.closeMenusOnBodyClick} style={headlinesStyles}>
                 <Header 
                     isSidebarOpen={this.state.isSidebarOpen} 
                     toggleSidebar={this.toggleSidebar}
@@ -428,12 +485,15 @@ export default class Headlines extends React.Component {
                     showWeather={this.state.showWeather}
                     weatherUnit={this.state.weatherUnit}
                     allowGeolocation={this.allowGeolocation}
+
+                    showWallpaper={this.state.showWallpaper}
                 />
 
                 <main className={styles.Main}>
                     <Clock 
                         showClock={this.state.showClock} 
                         hourFormat={this.state.hourFormat}
+                        showWallpaper={this.state.showWallpaper}
                     />
                     <Search
                         isSearchMenuOpen={this.state.isSearchMenuOpen} 
@@ -479,6 +539,9 @@ export default class Headlines extends React.Component {
 
                     showArticles={this.state.showArticles}
                     toggleShowArticles={this.toggleShowArticles}
+
+                    showWallpaper={this.state.showWallpaper}
+                    toggleShowWallpaper={this.toggleShowWallpaper}
 
                     allowGeolocation={this.state.allowGeolocation}
 

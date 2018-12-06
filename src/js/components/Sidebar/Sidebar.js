@@ -98,6 +98,9 @@ export default class Sidebar extends React.Component {
 
                                         showArticles={this.props.showArticles}
                                         toggleShowArticles={this.props.toggleShowArticles}
+
+                                        showWallpaper={this.props.showWallpaper}
+                                        toggleShowWallpaper={this.props.toggleShowWallpaper}
                                         
                                         allowGeolocation={this.props.allowGeolocation}
 

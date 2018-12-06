@@ -1,0 +1,174 @@
+$gray:          #b7b7b7;
+$blue:          #007aff;
+
+.Settings {
+    padding-left: 3.6rem;
+    margin-bottom: 4.8rem;
+
+    position: relative;
+}
+
+.SettingsDisabled:after {
+    @extend .Settings;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.Group {
+    margin-bottom: 1.6rem;
+}
+
+.Subtitle {
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    line-height: 150%;
+    font-size: 1.4rem;
+}
+  
+.Checkbox input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.Checkbox label::before {
+    content: "";
+    display: inline-block;
+    cursor: pointer;
+    
+    height: 1.6rem;
+    width: 1.6rem;
+    
+    border: 1px solid $gray;   
+    border-radius: 0.3rem;
+}
+
+.Checkbox label::after {
+    content: "";
+    display: inline-block;
+    cursor: pointer;  
+
+    height: 0.7rem;
+    width: 0.9rem;
+    border-left: 0.2rem solid white;
+    border-bottom: 0.2rem solid white;
+    border-radius: 0.2rem;
+    
+    transform: rotate(-45deg);
+}
+
+.Checkbox label {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    position: relative;
+    outline: 0;
+}
+
+.Checkbox label::before,
+.Checkbox label::after {
+    position: absolute;
+}
+
+/*Outer-box*/
+.Checkbox label::before {
+    top: 0.1rem;
+    left: -3.6rem;
+}
+
+/*Checkmark*/
+.Checkbox label::after {
+    left: -3.25rem;
+    top: 0.4rem;
+}
+
+/*Hide the checkmark by default*/
+.Checkbox input[type="checkbox"] + label::after {
+    content: none;
+}
+
+/*Unhide the checkmark on the checked state*/
+.Checkbox input[type="checkbox"]:checked + label::after {
+    content: "";
+}
+
+.Checkbox input[type="checkbox"]:checked + label::before {
+    background: $blue;
+    border: 0.1rem solid $blue; 
+}
+
+.Checkbox input[type="checkbox"]:focus + label::before {
+    outline: none;
+}
+
+.Radio {
+    margin-bottom: 0.8rem;
+    padding-left: 3.6rem;
+}
+
+.Radio input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.Radio label::before {
+    content: "";
+    display: inline-block;
+    
+    height: 1.6rem;
+    width: 1.6rem;
+    
+    border: 0.1rem solid $gray;   
+    border-radius: 50%;
+}
+
+.Radio label::after {
+    content: "";
+    display: inline-block;
+
+    width: 0.8rem;
+    height: 0.8rem;
+
+    border-radius: 50%;
+    background: $blue;
+}
+
+.Radio label {
+    position: relative;
+    font-weight: 700;
+    outline: 0;
+}
+
+.Radio label::before,
+.Radio label::after {
+    position: absolute;
+}
+
+/*Outer-box*/
+.Radio label::before {
+    top: 0.1rem;
+    left: -3.6rem;
+}
+
+/*Checkmark*/
+.Radio label::after {
+    left: -3.2rem;
+    top: 0.5rem;
+}
+
+/*Hide the checkmark by default*/
+.Radio input[type="radio"] + label::after {
+    content: none;
+}
+
+/*Unhide the checkmark on the checked state*/
+.Radio input[type="radio"]:checked + label::after {
+    content: "";
+}
