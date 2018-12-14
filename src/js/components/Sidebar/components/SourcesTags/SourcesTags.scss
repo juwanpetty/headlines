@@ -1,0 +1,68 @@
+$lightgray:     #ededed;
+$gray:          #b7b7b7;
+$darkgray:      #5e5e5e;
+
+.SourceTags {
+    width: 31.9rem;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    padding-bottom: 2.4rem;
+}
+
+.Tag {
+    flex: 0 0 auto;
+    background: $lightgray;
+    border-radius: 0.3rem;
+    padding: 0.4rem;
+
+    p {
+        margin: 0;
+        margin-right: 0.8rem;
+        margin-left: 0.4rem;
+        font-size: 1.4rem;
+        color: $darkgray;
+    }
+
+    &:not(:last-child) {
+        margin-right: 1.6rem;
+    }
+}
+
+.Container {
+    display: grid;
+    grid-template-columns: 1fr 2.5rem;
+}
+
+.IconWrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    cursor: pointer;
+    pointer-events: visible;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: none;
+    }
+}
+
+.Icon {
+    @extend .IconWrapper;
+
+    &:hover {
+        svg {
+            stroke: $darkgray;
+        }
+    }
+
+    svg {
+        fill: none;
+        stroke: $gray;
+        stroke-width: 1.5;
+    }
+}
