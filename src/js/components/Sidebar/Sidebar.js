@@ -3,7 +3,6 @@ import React from 'react';
 import Sources from './components/Sources/Sources';
 import Settings from './components/Settings/Settings';
 import Navigation from './components/Navigation/Navigation';
-import SourcesTags from './components/SourcesTags/SourcesTags';
 import ReadingLists from './components/ReadingLists/ReadingLists';
 
 import styles from './Sidebar.scss';
@@ -61,11 +60,6 @@ export default class Sidebar extends React.Component {
                             <div className={styles.ContainerInner + " " + showPanel}>
                                 <div className={styles.Panel}>
                                     <div>
-                                        <SourcesTags
-                                            handleDeleteSource={this.props.handleDeleteSource}
-                                            storedSources={this.props.storedSources} 
-                                            sources={this.props.sources}
-                                        />
                                         <Sources 
                                             sources={this.props.sources}
                                             sourceIsLoaded={this.props.sourceIsLoaded}

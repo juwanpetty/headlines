@@ -25,11 +25,6 @@ export default class TopSites extends Component {
   }
 
   handleDomainFavicon(url) {
-    // favicon(url, function(err, faviconUrl) {
-    //   console.log(faviconUrl);
-    //   console.log(err)
-    // });
-
     return url.endsWith('/') ? `${url}favicon.ico` : `${url}/favicon.ico`;
   }
 
