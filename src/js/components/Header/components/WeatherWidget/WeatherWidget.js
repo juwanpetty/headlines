@@ -50,9 +50,10 @@ export default class WeatherWidget extends React.Component {
     }
 
     fetchWeather(latitude, longitude) {
-        fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/47e0ed37c8462d76eaa20c4a9688f807/${latitude},${longitude}?exclude=minutely,hourly,flags`)
+        fetch(`https://vast-wildwood-76845.herokuapp.com/weather/?longitude=${longitude}&latitude=${longitude}`)
             .then(res => res.json())
             .then((result) => {
+                console.log(result);
                 this.setState({
                     weatherIsLoaded: true,
                     weather: result
