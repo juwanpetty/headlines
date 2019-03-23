@@ -4,45 +4,45 @@ import ReadingList from './components/ReadingList/ReadingList';
 import EmptyState from './components/EmptyState/EmptyState';
 import styles from './ReadingLists.scss';
 
-export default class ReadingLists extends React.Component {
-    render() {
-        let readingList = JSON.parse(this.props.readingList);
-        const bookmarksExist = Boolean(Object.keys(readingList).length > 0);
-        
-        function reverseList(obj) {
-            let newObj = {}
-            let revObj = Object.keys(obj).reverse();
-            revObj.forEach(i => { 
-              newObj[i] = obj[i];
-            });
+export default function ReadingLists({
+  articleLink,
+  readingList,
+  handleUpdateReadingList,
+}) {
+  let parsedReadingList = JSON.parse(readingList);
+  const bookmarksExist = Boolean(Object.keys(parsedReadingList).length > 0);
 
-            return newObj;
-        }
+  const reverseList = (obj) => {
+    let newObj = {};
+    let revObj = Object.keys(obj).reverse();
+    revObj.forEach((i) => {
+      newObj[i] = obj[i];
+    });
 
-        readingList = reverseList(readingList);
-    
-        if (bookmarksExist) {
-            return (
-                <div>
-                    {
-                        Object.keys(readingList).map((e, index) => {
-                            const article = readingList[e];
-                            
-                            return (
-                                <ReadingList
-                                    key={index}
-                                    article={article}
-                                    articleLink={this.props.articleLink}
-                                    readingList={this.props.readingList}
-                                    handleUpdateReadingList={this.props.handleUpdateReadingList}
-                                />
-                            )
-                        })
-                    }
-                </div>
-            );
-        }  else {
-            return <EmptyState />;
-        }
-    }
+    return newObj;
+  };
+
+  parsedReadingList = reverseList(parsedReadingList);
+
+  if (bookmarksExist) {
+    return (
+      <div>
+        {Object.keys(parsedReadingList).map((e, index) => {
+          const article = parsedReadingList[e];
+
+          return (
+            <ReadingList
+              key={index}
+              article={article}
+              articleLink={articleLink}
+              readingList={parsedReadingList}
+              handleUpdateReadingList={handleUpdateReadingList}
+            />
+          );
+        })}
+      </div>
+    );
+  } else {
+    return <EmptyState />;
+  }
 }
