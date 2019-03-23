@@ -1,61 +1,48 @@
-import React from  'react';
+import React, {useEffect, useState} from 'react';
 
 import styles from './Clock.scss';
 
-export default class Clock extends React.Component {
-    constructor(props) {
-        super(props);
+export default function Clock({showClock, hourFormat}) {
+  const [date, setDate] = useState(new Date());
 
-        this.state = {date: new Date()};
-    }
+  useEffect(() => {
+    const timerID = setInterval(() => tick(), 1000);
 
-    componentDidMount() {
-        this.timerID = setInterval(
-            () => this.tick(),
-            1000
-        );
-    }
-  
-    componentWillUnmount() {
-        clearInterval(this.timerID);
-    }
+    return function cleanup() {
+      clearInterval(timerID);
+    };
+  });
 
-    tick() {
-        this.setState({
-            date: new Date()
-        });
-    }
-    
-    formatDate(hourFormat = false) {
-        hourFormat = Boolean(hourFormat === '12');
+  const tick = () => {
+    setDate(new Date());
+  };
 
-        let date = new Date();
-        let dateString = date.toLocaleTimeString([], {hour12: hourFormat, hour: '2-digit', minute: '2-digit'});
-        let hour = date.getHours();
+  const formatDate = (hourFormat = false) => {
+    hourFormat = Boolean(hourFormat === '12');
 
-        // const period = hour >= 12 ? 'PM' : 'AM';
+    let date = new Date();
+    let dateString = date.toLocaleTimeString([], {
+      hour12: hourFormat,
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+    let hour = date.getHours();
 
-        if (hourFormat)
-            return dateString;
+    if (hourFormat) return dateString;
 
-        if (hour === 0)
-            hour = 24;
+    if (hour === 0) hour = 24;
 
-        dateString = dateString.split(':');
-        dateString[0] = hour;
-        dateString = dateString.join(':');
+    dateString = dateString.split(':');
+    dateString[0] = hour;
+    dateString = dateString.join(':');
 
-        dateString = `${dateString}`;
-        return dateString;
-    }
+    dateString = `${dateString}`;
+    return dateString;
+  };
 
-    render() {
-        return (
-            <div className={this.props.showClock ? styles.Clock : styles.Hidden}>
-                <h2 className={styles.ClockText}>
-                    {this.formatDate(this.props.hourFormat)}
-                </h2>
-            </div>
-        );
-    }
+  return (
+    <div className={showClock ? styles.Clock : styles.Hidden}>
+      <h2 className={styles.ClockText}>{formatDate(hourFormat)}</h2>
+    </div>
+  );
 }

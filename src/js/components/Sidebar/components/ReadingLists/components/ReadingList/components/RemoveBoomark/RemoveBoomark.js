@@ -3,33 +3,25 @@ import FeatherIcon from 'feather-icons-react';
 
 import styles from './RemoveBoomark.scss';
 
-export default class RemoveBoomark extends React.Component {
-    constructor(props) {
-        super(props);
+export default function RemoveBookMark({
+  article,
+  readingList,
+  handleUpdateReadingList,
+}) {
+  const removeBookmark = () => {
+    const id = article.title;
 
-        this.removeBookmark = this.removeBookmark.bind(this);
-    }
+    let parsedReadingList = readingList;
+    delete parsedReadingList[id];
 
-    removeBookmark() {
-        const article = this.props.article;
+    parsedReadingList = JSON.stringify(parsedReadingList);
 
-        const id = article.title;
-        let readingList = JSON.parse(this.props.readingList);
-        delete readingList[id];
+    handleUpdateReadingList(parsedReadingList);
+  };
 
-        readingList = JSON.stringify(readingList);
-
-        this.props.handleUpdateReadingList(readingList);
-    }
-
-    render() {
-        return (
-            <div className={styles.Icon} onClick={this.removeBookmark}>
-                <FeatherIcon 
-                    icon="bookmark"
-                    className={styles.Added}
-                />
-            </div>
-        );
-    }
+  return (
+    <div className={styles.Icon} onClick={removeBookmark}>
+      <FeatherIcon icon="bookmark" className={styles.Added} />
+    </div>
+  );
 }

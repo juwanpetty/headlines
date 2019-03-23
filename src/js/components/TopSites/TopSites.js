@@ -1,57 +1,40 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const ellipsize = require('ellipsize');
-const favicon = require('favicon');
 
 import styles from './TopSites.scss';
 
-export default class TopSites extends Component {
-  constructor(props) {
-    super(props);
+export default function TopSites() {
+  const [sites, setSites] = useState([]);
 
-    this.state = {
-      sites: [],
-    };
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     try {
-      chrome.topSites.get(data => {
-        this.setState({
-          sites: data.slice(0, 3),
-        });
+      chrome.topSites.get((data) => {
+        setSites(data.slice(0, 3));
       });
     } catch (error) {}
-  }
+  }, []);
 
-  handleDomainFavicon(url) {
+  const handleDomainFavicon = (url) => {
     return url.endsWith('/') ? `${url}favicon.ico` : `${url}/favicon.ico`;
-  }
+  };
 
-  render() {
-    const {sites} = this.state;
+  return (
+    <ul className={styles.Sites}>
+      {sites &&
+        sites.map((site) => {
+          return (
+            <li key={site.title}>
+              <a href={site.url} className={styles.Site}>
+                <div className={styles.Favicon}>
+                  <img src={handleDomainFavicon(site.url)} alt={site.url} />
+                </div>
 
-    return (
-      <ul className={styles.Sites}>
-        {sites &&
-          sites.map(site => {
-            return (
-              <li key={site.title}>
-                <a href={site.url} className={styles.Site}>
-                  <div className={styles.Favicon}>
-                    <img
-                      onLoad={this.checkImageSize}
-                      src={this.handleDomainFavicon(site.url)}
-                      alt=""
-                    />
-                  </div>
-
-                  <p className={styles.Title}>{ellipsize(site.title, 25)}</p>
-                </a>
-              </li>
-            );
-          })}
-      </ul>
-    );
-  }
+                <p className={styles.Title}>{ellipsize(site.title, 25)}</p>
+              </a>
+            </li>
+          );
+        })}
+    </ul>
+  );
 }

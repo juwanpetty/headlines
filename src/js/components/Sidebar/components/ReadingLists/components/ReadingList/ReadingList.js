@@ -6,100 +6,85 @@ import startCase from 'lodash/startcase';
 import RemoveBoomark from './components/RemoveBoomark/RemoveBoomark';
 import styles from './ReadingList.scss';
 
-export default class Article extends React.Component {
-  constructor(props) {
-    super(props);
-    this.isValidImage = this.isValidImage.bind(this);
-    this.handleImageError = this.handleImageError.bind(this);
-    this.relativeTime = this.relativeTime.bind(this);
-  }
-
-  isValidImage(e) {
+export default function ReadingList({
+  article,
+  articleLink,
+  readingList,
+  handleUpdateReadingList,
+}) {
+  const isValidImage = (e) => {
     // displays placeholder if img is 1px (IGN)
     if (e.target.naturalWidth <= 100) {
       e.target.classList.add(styles.ImageBorder);
       return (e.target.src = 'assets/placeholder.jpg');
     }
-  }
+  };
 
-  handleImageError(e) {
+  const handleImageError = (e) => {
     e.target.classList.add(styles.ImageBorder);
     return (e.target.src = 'assets/placeholder.jpg');
-  }
+  };
 
-  relativeTime(publishedAt) {
+  const relativeTime = (publishedAt) => {
     var time = new Date(publishedAt).getTime();
     return relativeDate(time);
+  };
+
+  let {source, title, description, url, author, publishedAt} = article;
+  let {urlToImage} = article;
+  let articleImage = urlToImage;
+
+  title = DOMPurify.sanitize(title);
+  description = DOMPurify.sanitize(description);
+
+  if (urlToImage === null || urlToImage === 'self') {
+    urlToImage = './assets/placeholder.jpg';
   }
 
-  render() {
-    let {
-      source,
-      title,
-      description,
-      url,
-      author,
-      publishedAt,
-    } = this.props.article;
-    let {urlToImage} = this.props.article;
-    let articleImage = urlToImage;
-
-    title = DOMPurify.sanitize(title);
-    description = DOMPurify.sanitize(description);
-
-    if (urlToImage === null || urlToImage === 'self') {
-      urlToImage = './assets/placeholder.jpg';
-    }
-
-    return (
-      <li className={styles.Bookmark}>
-        <RemoveBoomark
-          article={this.props.article}
-          readingList={this.props.readingList}
-          handleUpdateReadingList={this.props.handleUpdateReadingList}
-        />
-        <div className={styles.Card}>
-          <div>
-            <p className={styles.Source}>{source.name}</p>
-            <div className={styles.Overflow}>
-              <a
-                href={url}
-                target={
-                  this.props.articleLink === 'same-window' ? '_top' : '_blank'
-                }
-              >
-                <h3
-                  className={styles.Title}
-                  dangerouslySetInnerHTML={{__html: title}}
-                />
-              </a>
-            </div>
-            <div className={styles.Footer}>
-              <p>
-                {startCase(this.relativeTime(publishedAt))}{' '}
-                {!author || author.length > 20 ? '' : ' — ' + author}
-              </p>
-            </div>
-          </div>
-
-          <div className={styles.ImageWrapper}>
+  return (
+    <li className={styles.Bookmark}>
+      <RemoveBoomark
+        article={article}
+        readingList={readingList}
+        handleUpdateReadingList={handleUpdateReadingList}
+      />
+      <div className={styles.Card}>
+        <div>
+          <p className={styles.Source}>{source.name}</p>
+          <div className={styles.Overflow}>
             <a
               href={url}
-              target={
-                this.props.articleLink === 'same-window' ? '_top' : '_blank'
-              }
+              target={articleLink === 'same-window' ? '_top' : '_blank'}
             >
-              <img
-                onLoad={this.isValidImage}
-                onError={this.handleImageError}
-                src={urlToImage}
-                alt={title}
-                className={articleImage ? styles.Image : styles.ImageBorder}
+              <h3
+                className={styles.Title}
+                dangerouslySetInnerHTML={{__html: title}}
               />
             </a>
           </div>
+          <div className={styles.Footer}>
+            <p>
+              {startCase(relativeTime(publishedAt))}{' '}
+              {!author || author.length > 20 ? '' : ' — ' + author}
+            </p>
+          </div>
         </div>
-      </li>
-    );
-  }
+
+        <div className={styles.ImageWrapper}>
+          <a
+            href={url}
+            target={articleLink === 'same-window' ? '_top' : '_blank'}
+          >
+            <img
+              onLoad={isValidImage}
+              onError={handleImageError}
+              src={urlToImage}
+              alt={title}
+              className={articleImage ? styles.Image : styles.ImageBorder}
+            />
+          </a>
+        </div>
+      </div>
+    </li>
+  );
 }
