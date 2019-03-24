@@ -1,51 +1,7 @@
-$lightgray:     #ededed;
-$black:         #2b2b2b;
-
 .Sites {
   width: 100%;
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 4rem 0;
-}
-
-.Site {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 12px 24px;
-  border-radius: 0.3rem;
-  background: #FFFFFF;
-  border: 0.1rem solid $lightgray;
-  box-shadow: 0 0.1rem 0.4rem 0 rgba(0, 0, 0, 0.01);
-  transition: box-shadow 150ms; 
-  text-decoration: none;
-
-  &:hover {
-    box-shadow: 0 0 0 0.5rem $lightgray;
-  }
-}
-
-.Favicon {
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 1.5rem;
-  border-radius: 100%;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-}
-
-.Title {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: 140%;
-  color: $black;
 }

@@ -8,6 +8,10 @@ export default function WeatherWidget({showWeather, weatherUnit}) {
   const [weatherError, setWeatherError] = useState(null);
   const [weatherIsLoaded, setWeatherIsLoaded] = useState(false);
 
+  const API_KEY = '47e0ed37c8462d76eaa20c4a9688f807';
+  const apiUrl = 'https://api.darksky.net/forecast';
+  const flags = 'exclude=hourly, minutely';
+
   useEffect(() => {
     fetchLocation();
   }, []);
@@ -45,7 +49,7 @@ export default function WeatherWidget({showWeather, weatherUnit}) {
 
   const fetchWeather = (latitude, longitude) => {
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/47e0ed37c8462d76eaa20c4a9688f807/${latitude},${longitude}`,
+      `https://cors-anywhere.herokuapp.com/${apiUrl}/${API_KEY}/${latitude},${longitude}?${flags}`,
     )
       .then((res) => res.json())
       .then(

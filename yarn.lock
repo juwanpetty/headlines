@@ -3076,13 +3076,6 @@ fastparse@^1.1.1:
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
   integrity sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==
 
-favicon@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/favicon/-/favicon-0.0.2.tgz#5a650d1e6684d300822ea8fe1f1f2eefcb4d3f91"
-  integrity sha1-WmUNHmaE0wCCLqj+Hx8u78tNP5E=
-  dependencies:
-    request "2.x.x"
-
 feather-icons-react@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/feather-icons-react/-/feather-icons-react-0.2.0.tgz#f61ab6b7926d2f5dd696046c21f51a359236877b"
@@ -5632,7 +5625,7 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.1"
     tough-cookie "^2.3.3"
 
-request@2.x.x, request@^2.72.0, request@^2.87.0:
+request@^2.72.0, request@^2.87.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   integrity sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
