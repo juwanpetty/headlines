@@ -4,7 +4,6 @@ import styles from './TopSites.scss';
 
 export default function TopSites() {
   const [sites, setSites] = useState([]);
-  const [favicon, setFavicon] = useState();
 
   useEffect(() => {
     try {

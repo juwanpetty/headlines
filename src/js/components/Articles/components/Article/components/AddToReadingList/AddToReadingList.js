@@ -1,6 +1,6 @@
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
-
+import Toast from '../../../../../Toast/Toast';
 import styles from './AddToReadingList.scss';
 
 export default class AddToReadingList extends React.Component {
@@ -57,19 +57,24 @@ export default class AddToReadingList extends React.Component {
 
     const isChecked = !checked;
     const parsedReadingList = JSON.parse(readingList);
-    const maxNum = 20;
+    const MAX_NUM = 20;
 
     this.setState((prevState) => ({
       checked: !prevState.checked,
     }));
 
-    if (Object.keys(parsedReadingList).length == maxNum && isChecked) {
+    if (Object.keys(parsedReadingList).length == MAX_NUM && isChecked) {
       // if reached max number of properties in the list
       // and bookmark was just clicked to toggle to true (to add another one)
       // don't allow it to be set to true
 
+      Toast({
+        type: 'warning',
+        message: `There cannot be more than ${MAX_NUM} articles added.`,
+      });
+
       this.setState({checked: false});
-    } else if (Object.keys(parsedReadingList).length == maxNum && !isChecked) {
+    } else if (Object.keys(parsedReadingList).length == MAX_NUM && !isChecked) {
       // if reached max number of properties in the list
       // and bookmark was just clicked to toggle to false (to remove one)
       // remove bookmark from list

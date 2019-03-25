@@ -42,8 +42,9 @@
     "ellipsize": "^0.1.0",
     "feather-icons-react": "^0.2.0",
     "normalize.scss": "^0.1.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": ">=15.0.0",
+    "react-dom": ">=15.0.0",
+    "react-toastify": "^4.5.2",
     "relative-date": "^1.1.3"
   }
 }
