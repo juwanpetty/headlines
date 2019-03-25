@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import Toast from '../../../Toast/Toast';
 import WeatherSkeleton from './components/WeatherSkeleton/WeatherSkeleton';
 import styles from './WeatherWidget.scss';
 
@@ -25,25 +25,56 @@ export default function WeatherWidget({showWeather, weatherUnit}) {
         (error) => {
           switch (error.code) {
             case error.PERMISSION_DENIED:
-              console.error('User denied the request for Geolocation.');
-              allowGeolocation(
-                'Allow access to your location to enable the weather functionality',
-              );
+              Toast({
+                type: 'warning',
+                message:
+                  'Allow access to your location to enable the weather functionality',
+              });
               break;
             case error.POSITION_UNAVAILABLE:
-              console.error('Location information is unavailable.');
+              Toast({
+                type: 'error',
+                message: 'Location information is unavailable.',
+                onAction: () =>
+                  fetchWeather(
+                    position.coords.latitude,
+                    position.coords.longitude,
+                  ),
+                onActionMessage: 'Retry',
+              });
               break;
             case error.TIMEOUT:
-              console.error('The request to get user location timed out.');
+              Toast({
+                type: 'error',
+                message: 'The request to get user location timed out.',
+                onAction: () =>
+                  fetchWeather(
+                    position.coords.latitude,
+                    position.coords.longitude,
+                  ),
+                onActionMessage: 'Retry',
+              });
               break;
             case error.UNKNOWN_ERROR:
-              console.error('An unknown error occurred.');
+              Toast({
+                type: 'error',
+                message: 'An unknown error occurred.',
+                onAction: () =>
+                  fetchWeather(
+                    position.coords.latitude,
+                    position.coords.longitude,
+                  ),
+                onActionMessage: 'Retry',
+              });
               break;
           }
         },
       );
     } else {
-      allowGeolocation('Geolocation is not supported in this browser');
+      Toast({
+        type: 'warning',
+        message: 'Geolocation is not supported in this browser',
+      });
     }
   };
 
@@ -54,13 +85,25 @@ export default function WeatherWidget({showWeather, weatherUnit}) {
       .then((res) => res.json())
       .then(
         (result) => {
-          setWeather(result);
-          setWeatherIsLoaded(true);
+          if (result.error) {
+            console.log(result.error);
+
+            setWeatherError(result.error);
+
+            Toast({
+              type: 'error',
+              message: result.error,
+              onAction: () => fetchWeather(latitude, longitude),
+              onActionMessage: 'Retry',
+            });
+
+            setWeatherIsLoaded(false);
+          } else {
+            setWeather(result);
+            setWeatherIsLoaded(true);
+          }
         },
-        (error) => {
-          setWeatherError(error.message);
-          setWeatherIsLoaded(false);
-        },
+        (error) => {},
       );
   };
 
@@ -71,7 +114,7 @@ export default function WeatherWidget({showWeather, weatherUnit}) {
           showWeather ? styles.WeatherWidget : styles.WeatherWidgetHidden
         }
       >
-        Error: {weatherError}
+        <WeatherSkeleton />
       </div>
     );
   } else if (!weatherIsLoaded) {

@@ -22,13 +22,13 @@ export default function ReadingLists({
     return newObj;
   };
 
-  parsedReadingList = reverseList(parsedReadingList);
+  const reversedReadingList = reverseList(parsedReadingList);
 
   if (bookmarksExist) {
     return (
       <div>
-        {Object.keys(parsedReadingList).map((e, index) => {
-          const article = parsedReadingList[e];
+        {Object.keys(reversedReadingList).map((e, index) => {
+          const article = reversedReadingList[e];
 
           return (
             <ReadingList
