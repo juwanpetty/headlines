@@ -1,132 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Headlines</title>
 
-    <link rel="shortcut icon" type="image/png" href="assets/icons/favicon.png">
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="assets/icons/favicon.png"
+    />
 
-    <link rel="stylesheet" href="css/application.css">
+    <link rel="stylesheet" href="css/application.css" />
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <div class="logo">
-            <img src="assets/icons/logo.jpg" alt="Headlines logo">
-            <h1>Headlines</h1>
-        </div>
+      <div class="logo">
+        <img src="assets/icons/logo.jpg" alt="Headlines logo" />
+        <h1>Headlines</h1>
+      </div>
 
-        <div class="nav-links">
-            <a href="https://twitter.com/intent/tweet?text=Headlines%20-%20An%20open%20source%20news%20tab%20for%20your%20browser%20by%20%40juwanpetty%20http%3A%2F%2Fjuwanpetty.com%2Fheadlines" target="_blank">Tweet</a>
-            <a href="https://github.com/juwanpetty/headlines">Github</a>
-        </div>
+      <div class="nav-links">
+        <a
+          href="https://twitter.com/intent/tweet?text=Headlines%20-%20An%20open%20source%20news%20tab%20for%20your%20browser%20by%20%40juwanpetty%20http%3A%2F%2Fjuwanpetty.com%2Fheadlines"
+          target="_blank"
+          >Tweet</a
+        >
+        <a href="https://github.com/juwanpetty/headlines">Github</a>
+      </div>
     </nav>
 
     <header>
-        <div class="header-content">
-            <h1 class="header-title">An open source news tab for your browser</h1>
-            <p class="header-subtitle">
-                Replace your new tab page with news 
-                based <br> on over <span class="bold">50+ sources</span> you can choose from.
-            </p>
+      <div class="header-content">
+        <h1 class="header-title">An minimal news tab for your browser</h1>
+        <p class="header-subtitle">
+          Replace your new tab page with news based <br />
+          on over <span class="bold">50+ sources</span> you can choose from.
+        </p>
 
-            <div class="header-action">
-                <p>Free to download on your broswer’s store.</p>
-                <div class="action">
-                    <a href="https://chrome.google.com/webstore/detail/headlines/ecgmdohhjabfepiagglidampbkfmmlcm/authuser%3D2" class="btn primary">
-                        <img src="assets/icons/google_chrome.jpg" alt="Google Chrome logo">
-                        Add to Chrome
-                    </a>
-                    <div>
-                        <button class="btn">
-                            <img src="assets/icons/firefox.jpg" alt="Firefox logo">
-                            Add to Firefox
-                        </button>
-                        <p class="label">Coming soon to Firefox</p>
-                    </div>
-                </div>
-            </div>
+        <div class="header-action">
+          <p>Free to download on your broswer’s store.</p>
+          <div class="action">
+            <a
+              href="https://chrome.google.com/webstore/detail/headlines/ecgmdohhjabfepiagglidampbkfmmlcm/authuser%3D2"
+              class="btn primary"
+            >
+              <img
+                src="assets/icons/google_chrome.png"
+                alt="Google Chrome logo"
+              />
+              Add to Chrome
+            </a>
+            <a
+              href="https://addons.mozilla.org/en-US/firefox/addon/headlines-extension/"
+              class="btn primary"
+            >
+              <img src="assets/icons/firefox.png" alt="Firefox logo" />
+              Add to Firefox
+            </a>
+          </div>
         </div>
-        <div class="header-image">
-            <img src="assets/images/preview-cards-min.png" alt="Preview Card">
-        </div>
+      </div>
+      <div class="header-image">
+        <img src="assets/images/preview-cards-min.png" alt="Preview Card" />
+      </div>
     </header>
 
     <section class="carousel">
-        <div class="carousel-header">
-            <p class="label attribution">Sources provided by <a href="https://newsapi.org/">NewsAPI.org</a></p>
-        </div>
-        <div class="slider">
-            <div class="slide"><img src="assets/images/polygon.png"></div>
-            <div class="slide"><img src="assets/images/cnn.png"></div>
-            <div class="slide"><img src="assets/images/engadget.png"></div>
-            <div class="slide"><img src="assets/images/the_verge.png"></div>
-            <div class="slide"><img src="assets/images/espn.png"></div>
-            <div class="slide"><img src="assets/images/buzzfeed.png"></div>
-            <div class="slide"><img src="assets/images/nyt.png"></div>
-            <div class="slide"><img src="assets/images/ng.png"></div>
-            <div class="slide"><img src="assets/images/cbs_news.png"></div>
-        </div>
+      <div class="carousel-header">
+        <p class="label attribution">
+          Sources provided by <a href="https://newsapi.org/">NewsAPI.org</a>
+        </p>
+      </div>
+      <div class="slider">
+        <div class="slide"><img src="assets/images/polygon.png" /></div>
+        <div class="slide"><img src="assets/images/cnn.png" /></div>
+        <div class="slide"><img src="assets/images/engadget.png" /></div>
+        <div class="slide"><img src="assets/images/the_verge.png" /></div>
+        <div class="slide"><img src="assets/images/espn.png" /></div>
+        <div class="slide"><img src="assets/images/buzzfeed.png" /></div>
+        <div class="slide"><img src="assets/images/nyt.png" /></div>
+        <div class="slide"><img src="assets/images/ng.png" /></div>
+        <div class="slide"><img src="assets/images/cbs_news.png" /></div>
+      </div>
     </section>
 
     <section class="preview">
-        <img src="assets/images/screenshot-min.jpg" alt="Headlines screenshot">
+      <img src="assets/images/screenshot-1.png" alt="Headlines screenshot" />
     </section>
 
     <section class="specs">
-        <ul class="specs-list">
-            <li class="specs-item">
-                <i data-feather="sun"></i>
-                <h3>Weather</h3>
-                <p>
-                    Headlines provides accurate and 
-                    up-to-date weather statuses.
-                </p>
-            </li>
-            <li class="specs-item">
-                <i data-feather="search"></i>
-                <h3>Search</h3>
-                <p>
-                    Headlines allows you to easily search 
-                    on the web with Google.
-                </p>
-            </li>
-            <li class="specs-item">
-                <i data-feather="clock"></i>
-                <h3>Screensaver</h3>
-                <p>
-                    When idle, transform your tab into an elegant
-                    minimalist clock.
-                </p>
-            </li>
-        </ul>
+      <ul class="specs-list">
+        <li class="specs-item">
+          <i data-feather="sun"></i>
+          <h3>Weather</h3>
+          <p>
+            Headlines provides accurate and up-to-date weather statuses.
+          </p>
+        </li>
+        <li class="specs-item">
+          <i data-feather="search"></i>
+          <h3>Search</h3>
+          <p>
+            Headlines allows you to easily search on the web with Google.
+          </p>
+        </li>
+        <li class="specs-item">
+          <i data-feather="bookmark"></i>
+          <h3>Bookmark</h3>
+          <p>
+            Bookmark news articles to your reading list to read later.
+          </p>
+        </li>
+      </ul>
     </section>
 
     <section class="action">
-        <h3>Get it now for free</h3>
-        <div>
-            <a href="https://chrome.google.com/webstore/detail/headlines/ecgmdohhjabfepiagglidampbkfmmlcm/authuser%3D2" class="btn primary">
-                <img src="assets/icons/google_chrome.jpg" alt="Google Chrome logo">
-                Add to Chrome
-            </a>
-            <p class="label">Coming soon to Firefox</p>
-        </div>
+      <h3>Get it now for free</h3>
+      <div class="footer-action">
+        <a
+          href="https://chrome.google.com/webstore/detail/headlines/ecgmdohhjabfepiagglidampbkfmmlcm/authuser%3D2"
+          class="btn primary"
+        >
+          <img src="assets/icons/google_chrome.png" alt="Google Chrome logo" />
+          Add to Chrome
+        </a>
+        <a
+          href="https://addons.mozilla.org/en-US/firefox/addon/headlines-extension/"
+          class="btn primary"
+        >
+          <img src="assets/icons/firefox.png" alt="Firefox logo" />
+          Add to Firefox
+        </a>
+      </div>
     </section>
 
     <footer>
-        <p>Made by <a href="https://twitter.com/juwanpetty" class="bold">@juwanpetty</a></p>
+      <p>
+        Made by
+        <a href="https://twitter.com/juwanpetty" class="bold">@juwanpetty</a>
+      </p>
 
-        <div class="footer-links">
-            <a href="mailto:juwan@juwanpetty.com">Contact</a>
-            <a href="https://twitter.com/intent/tweet?text=Headlines%20-%20An%20open%20source%20news%20tab%20for%20your%20browser%20by%20%40juwanpetty%20http%3A%2F%2Fjuwanpetty.com%2Fheadlines" target="_blank">Tweet</a>
-            <a href="https://github.com/juwanpetty/headlines">Github</a>
-        </div>
+      <div class="footer-links">
+        <a href="mailto:juwan@juwanpetty.com">Contact</a>
+        <a
+          href="https://twitter.com/intent/tweet?text=Headlines%20-%20An%20open%20source%20news%20tab%20for%20your%20browser%20by%20%40juwanpetty%20http%3A%2F%2Fjuwanpetty.com%2Fheadlines"
+          target="_blank"
+          >Tweet</a
+        >
+        <a href="https://github.com/juwanpetty/headlines">Github</a>
+      </div>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
