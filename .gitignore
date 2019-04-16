@@ -9,6 +9,7 @@
 dist/\app*
 dist/\style*
 dist/\index*
+dist/\favicon*
 
 .cache/
 
