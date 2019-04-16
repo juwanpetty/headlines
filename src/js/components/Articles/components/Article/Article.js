@@ -2,6 +2,7 @@ import React from 'react';
 import DOMPurify from 'dompurify';
 import relativeDate from 'relative-date';
 import startCase from 'lodash/startcase';
+import Img from 'react-image';
 
 import AddToReadingList from './components/AddToReadingList/AddToReadingList';
 import styles from './Article.scss';
@@ -18,11 +19,6 @@ export default function Article({
       e.target.classList.add(styles.ImageBorder);
       return (e.target.src = 'assets/placeholder.jpg');
     }
-  };
-
-  const handleImageError = (e) => {
-    e.target.classList.add(styles.ImageBorder);
-    return (e.target.src = 'assets/placeholder.jpg');
   };
 
   const relativeTime = (publishedAt) => {
@@ -52,12 +48,17 @@ export default function Article({
       />
       <a href={url} target={articleLink === 'same-window' ? '_top' : '_blank'}>
         <div className={styles.ImageWrapper}>
-          <img
-            onLoad={isValidImage}
-            onError={handleImageError}
-            src={urlToImage}
-            alt={title}
+          <Img
             className={articleImage ? styles.Image : styles.ImageBorder}
+            src={[urlToImage, './assets/placeholder.jpg']}
+            onLoad={isValidImage}
+            loader={
+              <img
+                alt={title}
+                src="./assets/placeholder.jpg"
+                className={styles.ImageBorder}
+              />
+            }
           />
         </div>
 

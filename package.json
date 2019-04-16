@@ -43,6 +43,7 @@
     "normalize.scss": "^0.1.0",
     "react": ">=15.0.0",
     "react-dom": ">=15.0.0",
+    "react-image": "^2.1.1",
     "react-toastify": "^4.5.2",
     "relative-date": "^1.1.3"
   }
