@@ -1,67 +1,69 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import FeatherIcon from 'feather-icons-react';
 import Toast from '../../../../../Toast/Toast';
 import styles from './AddToReadingList.scss';
 
-export default class AddToReadingList extends React.Component {
-  constructor(props) {
-    super(props);
+const AddToReadingList = ({article, readingList, handleUpdateReadingList}) => {
+  const [checked, setChecked] = useState(false);
 
-    this.toggleBookmark = this.toggleBookmark.bind(this);
-    this.state = {
-      checked: false,
-    };
-  }
+  useEffect(() => {
+    const parsedReadingList = JSON.parse(readingList);
+    const isBookmarked = parsedReadingList.hasOwnProperty(article.title);
 
-  componentDidMount() {
-    // check if article has already been bookmarked
-    const {article, readingList} = this.props;
+    if (isBookmarked) {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+  }, []);
+
+  useEffect(() => {
     const parsedReadingList = JSON.parse(readingList);
 
     const isBookmarked = parsedReadingList.hasOwnProperty(article.title);
-
-    isBookmarked
-      ? this.setState({checked: true})
-      : this.setState({checked: false});
-  }
-
-  componentDidUpdate(prevProps) {
-    const {article, readingList} = this.props;
-
-    if (prevProps.readingList.length !== readingList.length) {
-      const parsedReadingList = JSON.parse(readingList);
-
-      const isBookmarked = parsedReadingList.hasOwnProperty(article.title);
-      if (!isBookmarked) {
-        this.setState({checked: false});
-      } else {
-        this.setState({checked: true});
-      }
+    if (!isBookmarked) {
+      setChecked(false);
+    } else {
+      setChecked(true);
     }
+  }, [readingList]);
 
-    if (prevProps.article.title.length !== article.title.length) {
-      const parsedReadingList = JSON.parse(readingList);
+  useEffect(() => {
+    const parsedReadingList = JSON.parse(readingList);
 
-      const isBookmarked = parsedReadingList.hasOwnProperty(article.title);
-      if (!isBookmarked) {
-        this.setState({checked: false});
-      } else {
-        this.setState({checked: true});
-      }
+    const isBookmarked = parsedReadingList.hasOwnProperty(article.title);
+    if (!isBookmarked) {
+      setChecked(false);
+    } else {
+      setChecked(true);
     }
-  }
+  }, [article]);
 
-  toggleBookmark() {
-    const {article, readingList} = this.props;
-    const {checked} = this.state;
+  const addBookmark = (article) => {
+    let parsedReadingList = JSON.parse(readingList);
 
+    parsedReadingList[article.title] = article;
+    parsedReadingList = JSON.stringify(parsedReadingList);
+
+    handleUpdateReadingList(parsedReadingList);
+  };
+
+  const removeBookmark = (article) => {
+    const id = article.title;
+    let parsedReadingList = JSON.parse(readingList);
+    delete parsedReadingList[id];
+
+    parsedReadingList = JSON.stringify(parsedReadingList);
+
+    handleUpdateReadingList(parsedReadingList);
+  };
+
+  const toggleBookmark = () => {
     const isChecked = !checked;
     const parsedReadingList = JSON.parse(readingList);
     const MAX_NUM = 20;
 
-    this.setState((prevState) => ({
-      checked: !prevState.checked,
-    }));
+    setChecked(!checked);
 
     if (Object.keys(parsedReadingList).length == MAX_NUM && isChecked) {
       // if reached max number of properties in the list
@@ -73,48 +75,27 @@ export default class AddToReadingList extends React.Component {
         message: `There cannot be more than ${MAX_NUM} articles added.`,
       });
 
-      this.setState({checked: false});
+      setChecked(false);
     } else if (Object.keys(parsedReadingList).length == MAX_NUM && !isChecked) {
       // if reached max number of properties in the list
       // and bookmark was just clicked to toggle to false (to remove one)
       // remove bookmark from list
 
-      this.removeBookmark(article);
+      removeBookmark(article);
     } else {
-      isChecked ? this.addBookmark(article) : this.removeBookmark(article);
+      if (isChecked) {
+        addBookmark(article);
+      } else {
+        removeBookmark(article);
+      }
     }
-  }
+  };
 
-  addBookmark(article) {
-    const {readingList, handleUpdateReadingList} = this.props;
-    let parsedReadingList = JSON.parse(readingList);
+  return (
+    <div className={styles.Icon} onClick={toggleBookmark}>
+      <FeatherIcon icon="bookmark" className={checked ? styles.Added : ''} />
+    </div>
+  );
+};
 
-    parsedReadingList[article.title] = article;
-    parsedReadingList = JSON.stringify(parsedReadingList);
-
-    handleUpdateReadingList(parsedReadingList);
-  }
-
-  removeBookmark(article) {
-    const {readingList, handleUpdateReadingList} = this.props;
-
-    const id = article.title;
-    let parsedReadingList = JSON.parse(readingList);
-    delete parsedReadingList[id];
-
-    parsedReadingList = JSON.stringify(parsedReadingList);
-
-    handleUpdateReadingList(parsedReadingList);
-  }
-
-  render() {
-    return (
-      <div className={styles.Icon} onClick={this.toggleBookmark}>
-        <FeatherIcon
-          icon="bookmark"
-          className={this.state.checked ? styles.Added : ''}
-        />
-      </div>
-    );
-  }
-}
+export default AddToReadingList;

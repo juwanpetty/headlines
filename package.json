@@ -5,7 +5,7 @@
   "main": "src/js/app.js",
   "scripts": {
     "build": "parcel build src/index.html",
-    "watch": "parcel src/index.html watch"
+    "watch": "parcel src/index.html -p 8000 watch"
   },
   "repository": {
     "type": "git",
