@@ -1,14 +1,15 @@
 import React from "react";
-import { Header, Sidebar, Main, Footer } from "./components/Layout/index";
+import { Header, Sidebar, Content, Footer } from "./components/Layout/index";
+import { Container } from "./App.styles";
 
 export const App = () => {
   return (
-    <div className="App">
+    <Container>
       <Header />
       <Sidebar />
-      <Main />
+      <Content />
       <Footer />
-    </div>
+    </Container>
   );
 };
 
