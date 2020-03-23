@@ -1,26 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
-  html {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-
-    font-size: 62.5%;
-  }
-
-  *, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-  }
-`;
-
 export const color = {
   // palette
   primary: "#007aff",
@@ -37,6 +16,7 @@ export const spacing = {
   padding: {
     xsmall: 8,
     small: 12,
+    xmedium: 16,
     medium: 24,
     large: 40,
     xlarge: 60
@@ -48,7 +28,7 @@ export const spacing = {
 };
 export const typography = {
   family: {
-    primary: `-apple-system, "Inter", "BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+    primary: `-apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`,
     code: `"Fira Code", monospace`
   },
   weight: {
@@ -67,3 +47,26 @@ export const typography = {
     xl1: 8
   }
 };
+
+export const GlobalStyle = createGlobalStyle`
+  html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    font-size: 62.5%;
+  }
+
+  *, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    color: ${color.black};
+    font-family: ${typography.family.primary};
+  }
+`;
