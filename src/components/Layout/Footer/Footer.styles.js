@@ -7,9 +7,8 @@ const Container = styled.div`
   left: 0;
   width: 100%;
   height: 6rem;
-  padding-left: ${spacing.padding.medium}px;
-  padding-right: ${spacing.padding.medium}px;
-  background: lightblue;
+  padding-left: ${spacing.padding.xmedium}px;
+  padding-right: ${spacing.padding.xmedium}px;
   display: flex;
   align-items: center;
   justify-content: space-between;

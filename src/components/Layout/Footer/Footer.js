@@ -2,5 +2,5 @@ import React from "react";
 import { Container } from "./Footer.styles";
 
 export const Footer = () => {
-  return <Container>Footer component</Container>;
+  return <Container></Container>;
 };

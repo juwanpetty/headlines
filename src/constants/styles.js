@@ -9,7 +9,8 @@ export const color = {
   gray9: "#5e5e5e",
   gray8: "#b7b7b7",
   gray7: "#ededed",
-  gray6: "#fafafa"
+  gray6: "#fafafa",
+  white: "#ffffff"
 };
 
 export const spacing = {
@@ -28,10 +29,13 @@ export const spacing = {
 };
 export const typography = {
   family: {
-    primary: `-apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`,
+    primary: `-apple-system, BlinkMacSystemFont, 'Inter', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif`,
     code: `"Fira Code", monospace`
   },
   weight: {
+    light: "300",
     regular: "400",
     medium: "500",
     bold: "700"
@@ -68,5 +72,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     color: ${color.black};
     font-family: ${typography.family.primary};
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 `;
