@@ -70,12 +70,15 @@ const SidebarInnerContainer = styled.div`
   ${({ page }) => (page === "settings" ? `transform: translateX(-718px);` : "")}
 `;
 
-const SourcesList = styled.div`
+const SidebarPage = styled.div`
   width: 319px;
   height: 100%;
   margin-right: 40px;
   position: relative;
+  overflow-y: scroll;
 `;
+
+const SourcesList = styled(SidebarPage)``;
 
 const SourceGroup = styled.div`
   h3 {
@@ -107,21 +110,11 @@ const SourceGroup = styled.div`
   }
 `;
 
-const BookmarkList = styled.div`
-  width: 319px;
-  height: 100%;
-  margin-right: 40px;
-  position: relative;
-`;
+const BookmarkList = styled(SidebarPage)``;
 
 const Bookmark = styled.div``;
 
-const SettingsList = styled.div`
-  width: 319px;
-  height: 100%;
-  margin-right: 40px;
-  position: relative;
-`;
+const SettingsList = styled(SidebarPage)``;
 
 const Settings = styled.div``;
 
