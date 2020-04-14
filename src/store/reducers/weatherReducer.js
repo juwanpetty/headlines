@@ -9,7 +9,7 @@ const weatherReducerDefaultState = {
 };
 
 // Weather Reducer
-const weatherReducer = (state = weatherReducerDefaultState, action) => {
+export const weatherReducer = (state = weatherReducerDefaultState, action) => {
   switch (action.type) {
     case actions.GET_WEATHER:
       return { ...state, loading: true };
@@ -21,5 +21,3 @@ const weatherReducer = (state = weatherReducerDefaultState, action) => {
       return state;
   }
 };
-
-export default weatherReducer;
