@@ -15,7 +15,8 @@ const Container = styled.div`
   border-left: 1px solid ${color.gray7};
   box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
 
-  transform: ${props => (props.visible ? "translateX(0)" : "translate(400px)")};
+  transform: ${(props) =>
+    props.visible ? "translateX(0)" : "translate(400px)"};
   transition: 0.25s;
 `;
 
@@ -78,38 +79,6 @@ const SidebarPage = styled.div`
   overflow-y: scroll;
 `;
 
-const SourcesList = styled(SidebarPage)``;
-
-const SourceGroup = styled.div`
-  h3 {
-    margin: 0 0 16px;
-    font-size: ${typography.size.m1}rem;
-    font-weight: ${typography.weight.bold};
-  }
-
-  input {
-    position: absolute;
-    opacity: 0;
-
-    &:checked + label {
-      background: ${color.primary};
-      border: 1px solid ${color.primary};
-      color: ${color.white};
-    }
-  }
-
-  label {
-    display: block;
-    margin-bottom: 15px;
-    padding: ${spacing.padding.small}px ${spacing.padding.medium}px;
-    font-size: ${typography.size.m1}rem;
-    border: 1px solid ${color.gray7};
-    border-radius: ${spacing.borderRadius.small}px;
-    background-color: ${color.gray6};
-    cursor: pointer;
-  }
-`;
-
 const BookmarkList = styled(SidebarPage)``;
 
 const Bookmark = styled.div``;
@@ -150,12 +119,10 @@ export {
   NavigationItem,
   SidebarContainer,
   SidebarInnerContainer,
-  SourcesList,
-  SourceGroup,
   BookmarkList,
   Bookmark,
   SettingsList,
   Settings,
   Footer,
-  FooterButton
+  FooterButton,
 };

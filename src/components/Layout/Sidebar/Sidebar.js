@@ -1,19 +1,18 @@
 import React, { useState } from "react";
+import { SourceList } from "../../Sources/SourceList/SourceList";
 import {
   Container,
   SidebarHeader,
   Navigation,
   NavigationItem,
   SidebarContainer,
-  SourcesList,
-  SourceGroup,
   BookmarkList,
   Bookmark,
   Footer,
   FooterButton,
   SidebarInnerContainer,
   SettingsList,
-  Settings
+  Settings,
 } from "./Sidebar.styles";
 
 export const Sidebar = ({ onSetSidebarVisible, visible }) => {
@@ -38,58 +37,7 @@ export const Sidebar = ({ onSetSidebarVisible, visible }) => {
       </Navigation>
       <SidebarContainer>
         <SidebarInnerContainer page={page}>
-          <SourcesList>
-            <SourceGroup>
-              <h3>Business</h3>
-              <div>
-                <input
-                  name="source"
-                  id="bloomberg"
-                  type="checkbox"
-                  value="Bloomberg"
-                ></input>
-                <label htmlFor="bloomberg">Bloomberg</label>
-              </div>
-              <div>
-                <input
-                  name="source"
-                  id="business-insider"
-                  type="checkbox"
-                  value="Business Insider"
-                ></input>
-                <label htmlFor="business-insider">Business Insider</label>
-              </div>
-              <div>
-                <input
-                  name="source"
-                  id="cnbc"
-                  type="checkbox"
-                  value="CNBC"
-                ></input>
-                <label htmlFor="cnbc">CNBC</label>
-              </div>
-              <div>
-                <input
-                  name="source"
-                  id="fortune"
-                  type="checkbox"
-                  value="Fortune"
-                ></input>
-                <label htmlFor="fortune">Fortune</label>
-              </div>
-              <div>
-                <input
-                  name="source"
-                  id="the-wall-street-journal"
-                  type="checkbox"
-                  value="The Wall Street Journal"
-                ></input>
-                <label htmlFor="the-wall-street-journal">
-                  The Wall Street Journal
-                </label>
-              </div>
-            </SourceGroup>
-          </SourcesList>
+          <SourceList />
           <BookmarkList>
             <Bookmark>Bookmark</Bookmark>
           </BookmarkList>
