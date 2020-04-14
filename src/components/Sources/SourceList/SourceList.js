@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // Bring in the asynchronous fetchPosts action
-import { fetchSources } from "../../../store/actions/sourcesAction";
+import { fetchSources, sourcesSelector } from "../../../store/slices/sources";
 import { Source } from "../Source/Source";
 
 import { startCase } from "../../../helpers/";
 import { Container, Header } from "./SourceList.module";
 
 export const SourceList = () => {
-  const { sources, loading, hasErrors } = useSelector((state) => state.sources);
+  const { sources, loading, hasErrors } = useSelector(sourcesSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
