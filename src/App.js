@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Header, Sidebar, Content, Footer } from "./components/Layout/index";
 import { Container } from "./App.styles";
 import { GlobalStyle } from "./constants/styles";
 
 export const App = () => {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-
   return (
     <React.Fragment>
       <GlobalStyle />
       <Container>
-        <Header onSetSidebarVisible={setSidebarVisible} />
-        <Sidebar
-          onSetSidebarVisible={setSidebarVisible}
-          visible={sidebarVisible}
-        />
+        <Header />
+        <Sidebar />
         <Content />
         <Footer />
       </Container>

@@ -1,1 +1,2 @@
-export * from "./string";
+export * from "./startCase";
+export * from "./arrayEquals";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MdSettings } from "react-icons/md";
-import { spacing, color, typography } from "../../../constants/styles";
+import { spacing, color } from "../../../constants/styles";
 
 const Container = styled.div`
   position: fixed;
@@ -37,36 +37,4 @@ const SettingButton = styled.button`
   }
 `;
 
-const WeatherContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 16px;
-
-  h2 {
-    font-size: ${typography.size.l2}rem;
-    margin: 0;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  p {
-    font-weight: ${typography.weight.regular};
-    font-size: ${typography.size.s2}rem;
-    line-height: 100%;
-    margin: 0;
-
-    &:first-child {
-      margin-bottom: 8px;
-    }
-
-    &:last-child {
-      color: ${color.gray8};
-    }
-  }
-`;
-
-export { Container, SettingIcon, SettingButton, WeatherContainer };
+export { Container, SettingIcon, SettingButton };

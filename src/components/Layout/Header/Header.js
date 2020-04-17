@@ -1,22 +1,16 @@
 import React from "react";
-import {
-  Container,
-  SettingButton,
-  SettingIcon,
-  WeatherContainer
-} from "./Header.styles";
+import { useDispatch } from "react-redux";
+import { toggleSidebar } from "../../../store/slices/ui";
+import { Weather } from "../../Weather/Weather";
+import { Container, SettingButton, SettingIcon } from "./Header.styles";
 
-export const Header = ({ onSetSidebarVisible }) => {
+export const Header = () => {
+  const dispatch = useDispatch();
+
   return (
     <Container>
-      <WeatherContainer>
-        <h2>53º</h2>
-        <div>
-          <p>59º / 68º</p>
-          <p>Possible Drizzle</p>
-        </div>
-      </WeatherContainer>
-      <SettingButton onClick={() => onSetSidebarVisible(true)}>
+      <Weather />
+      <SettingButton onClick={() => dispatch(toggleSidebar())}>
         <SettingIcon />
       </SettingButton>
     </Container>

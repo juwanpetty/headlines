@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { typography } from "../../../constants/styles";
 
-export const Container = styled.div`
+export const Container = styled.form`
   width: 319px;
   height: 100%;
   margin-right: 40px;
