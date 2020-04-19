@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { equals } from "../../../helpers/";
 import { SourceList } from "../../Sources/SourceList/SourceList";
+import { Articles, Weather, Clock } from "../../Settings/";
 import { useOutsideClick } from "../../../hooks/";
 import { toggleSidebar, uiSelector } from "../../../store/slices/ui";
 import {
@@ -16,7 +17,6 @@ import {
   FooterButton,
   SidebarInnerContainer,
   SettingsList,
-  Settings,
 } from "./Sidebar.styles";
 import {
   sourcesSelector,
@@ -58,13 +58,22 @@ export const Sidebar = () => {
         <p>Choose what you see on the page.</p>
       </SidebarHeader>
       <Navigation>
-        <NavigationItem onClick={() => setPage("sources")}>
+        <NavigationItem
+          active={page === "sources"}
+          onClick={() => setPage("sources")}
+        >
           Sources
         </NavigationItem>
-        <NavigationItem onClick={() => setPage("reading-list")}>
+        <NavigationItem
+          active={page === "reading-list"}
+          onClick={() => setPage("reading-list")}
+        >
           Reading List
         </NavigationItem>
-        <NavigationItem onClick={() => setPage("settings")}>
+        <NavigationItem
+          active={page === "settings"}
+          onClick={() => setPage("settings")}
+        >
           Settings
         </NavigationItem>
       </Navigation>
@@ -75,7 +84,9 @@ export const Sidebar = () => {
             <Bookmark>Bookmark</Bookmark>
           </BookmarkList>
           <SettingsList>
-            <Settings>Settings</Settings>
+            <Articles />
+            <Weather />
+            <Clock />
           </SettingsList>
         </SidebarInnerContainer>
       </SidebarContainer>

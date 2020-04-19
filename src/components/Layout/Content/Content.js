@@ -1,29 +1,15 @@
 import React from "react";
 import { Clock } from "../../Clock/Clock";
 import { ArticleList } from "../../Articles/";
-import {
-  Container,
-  SearchContainer,
-  Search,
-  SearchButton,
-  SearchButtonIcon,
-  SearchEngine,
-  ShortcutList,
-  Shortcut,
-} from "./Content.styles";
+import { Search } from "../../Search/";
+import { Container, ShortcutList, Shortcut } from "./Content.styles";
 
 export const Content = () => {
   return (
     <Container>
       <Clock />
 
-      <SearchContainer>
-        <SearchEngine />
-        <Search type="text" placeholder="Search the web" />
-        <SearchButton>
-          <SearchButtonIcon />
-        </SearchButton>
-      </SearchContainer>
+      <Search />
 
       <ArticleList />
 

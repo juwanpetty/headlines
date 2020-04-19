@@ -47,7 +47,18 @@ const Navigation = styled.ul`
 
 const NavigationItem = styled.li`
   list-style-type: none;
+  font-weight: ${typography.weight.medium};
   font-size: ${typography.size.s2}rem;
+  color: ${color.primary};
+  cursor: pointer;
+
+  ${({ active }) =>
+    active
+      ? `
+    color: ${color.black};
+    cursor: default;
+  `
+      : null}
 `;
 
 const SidebarContainer = styled.div`

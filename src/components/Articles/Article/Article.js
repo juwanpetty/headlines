@@ -1,4 +1,6 @@
 import React from "react";
+import relativeDate from "relative-date";
+import { startCase } from "../../../helpers/";
 import {
   Container,
   Source,
@@ -9,7 +11,19 @@ import {
   Footer,
 } from "./Article.module";
 
-export const Article = ({ title, description, author, source, url }) => {
+export const Article = ({
+  title,
+  description,
+  author,
+  source,
+  url,
+  publishedAt,
+}) => {
+  const relativeTime = (publishedAt) => {
+    var time = new Date(publishedAt).getTime();
+    return relativeDate(time);
+  };
+
   return (
     <Container href={url}>
       <ArticleImage />
@@ -19,7 +33,10 @@ export const Article = ({ title, description, author, source, url }) => {
         <Description>{description}</Description>
       </Overflow>
       <Footer>
-        <p>7 Minutes Ago — {author}</p>
+        <p>
+          {startCase(relativeTime(publishedAt))}{" "}
+          {!author || author.length > 20 ? "" : " — " + author}
+        </p>
       </Footer>
     </Container>
   );

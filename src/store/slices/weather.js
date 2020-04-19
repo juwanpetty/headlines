@@ -26,6 +26,9 @@ const weatherSlice = createSlice({
       state.loading = false;
       state.hasErrors = true;
     },
+    toggleShowWeather: (state) => {
+      state.showWeather = !state.showWeather;
+    },
   },
 });
 
@@ -34,6 +37,7 @@ export const {
   getWeather,
   getWeatherSuccess,
   getWeatherFailure,
+  toggleShowWeather,
 } = weatherSlice.actions;
 
 // A selector

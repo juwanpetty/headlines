@@ -20,9 +20,5 @@ export const Clock = () => {
     );
   };
 
-  return (
-    <Container>
-      <p>{date}</p>
-    </Container>
-  );
+  return <Container>{date}</Container>;
 };

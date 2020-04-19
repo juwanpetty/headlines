@@ -31,6 +31,7 @@ export const ArticleList = () => {
           author={article.author}
           source={article.source.name}
           url={article.url}
+          publishedAt={article.publishedAt}
         />
       ))
     );

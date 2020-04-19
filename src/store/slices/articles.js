@@ -25,6 +25,9 @@ const articlesSlice = createSlice({
       state.loading = false;
       state.hasErrors = true;
     },
+    toggleShowArticles: (state) => {
+      state.showArticles = !state.showArticles;
+    },
   },
 });
 
@@ -33,6 +36,7 @@ export const {
   getArticles,
   getArticlesSuccess,
   getArticlesFailure,
+  toggleShowArticles,
 } = articlesSlice.actions;
 
 // A selector
