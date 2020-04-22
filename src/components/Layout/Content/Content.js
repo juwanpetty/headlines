@@ -2,7 +2,8 @@ import React from "react";
 import { Clock } from "../../Clock/Clock";
 import { ArticleList } from "../../Articles/";
 import { Search } from "../../Search/";
-import { Container, ShortcutList, Shortcut } from "./Content.styles";
+import { ShortcutList } from "../../Shortcuts/";
+import { Container } from "./Content.styles";
 
 export const Content = () => {
   return (
@@ -13,17 +14,7 @@ export const Content = () => {
 
       <ArticleList />
 
-      <ShortcutList>
-        <Shortcut>
-          <p>(2) YouTube</p>
-        </Shortcut>
-        <Shortcut>
-          <p>Dribbble - Discover the...</p>
-        </Shortcut>
-        <Shortcut>
-          <p>Twitter</p>
-        </Shortcut>
-      </ShortcutList>
+      <ShortcutList />
     </Container>
   );
 };
