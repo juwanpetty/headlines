@@ -6,7 +6,9 @@ import { usePosition } from "../../hooks/";
 import { WeatherContainer } from "./Weather.module";
 
 export const Weather = () => {
-  const { weather, loading, hasErrors } = useSelector(weatherSelector);
+  const { weather, weatherUnit, loading, hasErrors } = useSelector(
+    weatherSelector
+  );
   const dispatch = useDispatch();
 
   const { latitude, longitude, error } = usePosition();
@@ -21,10 +23,15 @@ export const Weather = () => {
     if (loading) return <p>Loading weather...</p>;
     if (hasErrors) return <p>Unable to display weather.</p>;
 
+    const weatherTemp =
+      weatherUnit === "imperial"
+        ? weather.current?.temp_f
+        : weather.current?.temp_c;
+
     return (
       weather && (
         <WeatherContainer>
-          <h2>{weather.current?.temp_f}º</h2>
+          <h2>{weatherTemp}º</h2>
           <div>
             <p>{weather.location?.name}</p>
             <p>{weather.current?.condition?.text}</p>
