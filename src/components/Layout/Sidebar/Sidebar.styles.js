@@ -90,10 +90,6 @@ const SidebarPage = styled.div`
   overflow-y: scroll;
 `;
 
-const BookmarkList = styled(SidebarPage)``;
-
-const Bookmark = styled.div``;
-
 const SettingsList = styled(SidebarPage)``;
 
 const Settings = styled.div``;
@@ -130,8 +126,6 @@ export {
   NavigationItem,
   SidebarContainer,
   SidebarInnerContainer,
-  BookmarkList,
-  Bookmark,
   SettingsList,
   Settings,
   Footer,

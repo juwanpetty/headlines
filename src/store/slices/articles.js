@@ -72,8 +72,6 @@ export default articlesSlice.reducer;
 // }
 
 export function fetchArticles(sources) {
-  console.log("These sources will be used to fetch:", sources);
-
   return async (dispatch) => {
     dispatch(getArticles());
 

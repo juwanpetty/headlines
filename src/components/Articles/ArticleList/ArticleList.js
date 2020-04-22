@@ -32,6 +32,7 @@ export const ArticleList = () => {
           source={article.source.name}
           url={article.url}
           publishedAt={article.publishedAt}
+          article={article}
         />
       ))
     );

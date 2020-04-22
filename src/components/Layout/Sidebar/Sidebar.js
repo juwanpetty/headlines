@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { equals } from "../../../helpers/";
 import { SourceList } from "../../Sources/SourceList/SourceList";
+import { BookmarkList } from "../../Bookmarks/BookmarkList/BookmarkList";
 import { Articles, Weather, Clock } from "../../Settings/";
 import { useOutsideClick } from "../../../hooks/";
 import { toggleSidebar, uiSelector } from "../../../store/slices/ui";
@@ -11,8 +12,6 @@ import {
   Navigation,
   NavigationItem,
   SidebarContainer,
-  BookmarkList,
-  Bookmark,
   Footer,
   FooterButton,
   SidebarInnerContainer,
@@ -80,9 +79,7 @@ export const Sidebar = () => {
       <SidebarContainer>
         <SidebarInnerContainer page={page}>
           <SourceList />
-          <BookmarkList>
-            <Bookmark>Bookmark</Bookmark>
-          </BookmarkList>
+          <BookmarkList />
           <SettingsList>
             <Articles />
             <Weather />

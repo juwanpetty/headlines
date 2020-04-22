@@ -56,9 +56,25 @@ export const Footer = styled.div`
   padding: ${spacing.padding.small}px ${spacing.padding.xmedium}px;
   border-top: 1px solid ${color.gray7};
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   p {
     font-size: ${typography.size.s1}rem;
     color: ${color.gray8};
     margin: 0;
+  }
+`;
+
+export const Bookmark = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: ${color.gray8};
   }
 `;

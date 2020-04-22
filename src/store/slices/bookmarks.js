@@ -8,16 +8,18 @@ const bookmarksSlide = createSlice({
   name: "bookmarks",
   initialState,
   reducers: {
-    addBookmark: (state) => {
-      state.bookmarks = "";
+    addBookmark: (state, { payload }) => {
+      state.bookmarks = [...state.bookmarks, payload];
     },
-    removeBookmarks: (state) => {
-      state.bookmarks = "";
+    removeBookmark: (state, { payload }) => {
+      state.bookmarks = state.bookmarks.filter(
+        (bookmark) => bookmark.title !== payload.title
+      );
     },
   },
 });
 
-export const { addBookmark, removeBookmarks } = bookmarksSlide.actions;
+export const { addBookmark, removeBookmark } = bookmarksSlide.actions;
 
 export const bookmarksSelector = (state) => state.bookmarks;
 
