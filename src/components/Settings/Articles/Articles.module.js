@@ -5,6 +5,8 @@ export const Container = styled.div`
   margin-bottom: 32px;
 
   ${({ disabled }) => (disabled ? "opacity: 0.5" : "opacity: 1")};
+  ${({ disabled }) =>
+    disabled ? "pointer-events: none" : "pointer-events: all"};
 `;
 
 export const Header = styled.div`
@@ -16,6 +18,7 @@ export const Header = styled.div`
   grid-template-columns: auto auto;
   grid-column-gap: 32px;
   grid-row-gap: 4px;
+  margin-bottom: 16px;
 
   & > label {
     grid-area: header;

@@ -23,6 +23,7 @@ export const Label = styled.label`
 `;
 
 export const Container = styled.div`
+  pointer-events: all;
   position: relative;
   display: inline-block;
   vertical-align: middle;

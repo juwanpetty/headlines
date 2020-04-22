@@ -24,8 +24,8 @@ import {
 } from "../../../store/slices/sources";
 
 export const Sidebar = () => {
-  const ref = useRef();
-  const [page, setPage] = useState("sources");
+  const sidebarRef = useRef();
+  const [page, setPage] = useState("settings");
 
   const { isSidebarOpen } = useSelector(uiSelector);
   const { userSources, sidebarSources } = useSelector(sourcesSelector);
@@ -45,14 +45,14 @@ export const Sidebar = () => {
     }
   };
 
-  useOutsideClick(ref, () => {
+  useOutsideClick(sidebarRef, () => {
     if (isSidebarOpen) {
       closeSidebar();
     }
   });
 
   return (
-    <Container visible={isSidebarOpen} ref={ref}>
+    <Container visible={isSidebarOpen} ref={sidebarRef}>
       <SidebarHeader>
         <h3>Sources</h3>
         <p>Choose what you see on the page.</p>

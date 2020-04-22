@@ -16,8 +16,8 @@ const clockSlice = createSlice({
     toggleClockView: (state) => {
       state.clockView = !state.clockView;
     },
-    toggleTimeFormat: (state) => {
-      state.timeFormat = !state.timeFormat;
+    updateTimeFormat: (state, { payload }) => {
+      state.timeFormat = payload;
     },
   },
 });
@@ -25,7 +25,7 @@ const clockSlice = createSlice({
 export const {
   toggleShowClock,
   toggleClockView,
-  toggleTimeFormat,
+  updateTimeFormat,
 } = clockSlice.actions;
 
 export const clockSelector = (state) => state.clock;

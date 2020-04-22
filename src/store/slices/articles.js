@@ -6,6 +6,7 @@ export const initialState = {
   showArticles: true,
   loading: false,
   hasErrors: false,
+  openIn: "same-tab", // new-tab
 };
 
 // A slice for articles with the three reducers
@@ -28,6 +29,9 @@ const articlesSlice = createSlice({
     toggleShowArticles: (state) => {
       state.showArticles = !state.showArticles;
     },
+    updateOpenIn: (state, { payload }) => {
+      state.openIn = payload;
+    },
   },
 });
 
@@ -37,6 +41,7 @@ export const {
   getArticlesSuccess,
   getArticlesFailure,
   toggleShowArticles,
+  updateOpenIn,
 } = articlesSlice.actions;
 
 // A selector
