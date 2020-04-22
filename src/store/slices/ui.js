@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
   darkTheme: false,
-  isSidebarOpen: true,
+  isSidebarOpen: false,
 };
 
 const uiSlice = createSlice({
