@@ -5,10 +5,12 @@ import { Container } from "./ShortcutList.module";
 
 export const ShortcutList = () => {
   useEffect(() => {
-    chrome.topSites.get(() => {
-      console.log("topSites:");
-    });
-  });
+    try {
+      chrome.topSites.get((data) => {
+        console.log(data);
+      });
+    } catch (error) {}
+  }, []);
 
   return (
     <Container>
