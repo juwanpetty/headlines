@@ -7,5 +7,6 @@
     "newtab": "index.html"
   },
   "permissions": ["topSites", "geolocation", "tabs"],
-  "author": "Juwan Petty <jchpetty@gmail.com> (juwanpetty.com)"
+  "author": "Juwan Petty <jchpetty@gmail.com> (juwanpetty.com)",
+  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }
