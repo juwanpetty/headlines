@@ -15,7 +15,7 @@ export const Header = styled.div`
     "header toggle"
     "subtitle toggle";
   grid-template-columns: 1fr auto;
-  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   grid-column-gap: 32px;
   grid-row-gap: 4px;
   margin-bottom: 16px;
