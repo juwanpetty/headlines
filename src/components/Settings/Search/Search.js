@@ -28,7 +28,7 @@ export const Search = () => {
           checked={showSearch}
           onChange={() => dispatch(toggleShowSearch())}
         />
-        <p>PLEASE CHANGE ME</p>
+        <p>Search the world wide web.</p>
       </Header>
       <Dropdown
         defaultValue={searchEngine}
