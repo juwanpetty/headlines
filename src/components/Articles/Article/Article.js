@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import {
@@ -19,6 +19,7 @@ import {
   Footer,
   Bookmark,
 } from "./Article.module";
+import placeholder from "../../../assets/article/placeholder.jpg";
 
 export const Article = ({
   title,
@@ -26,11 +27,12 @@ export const Article = ({
   author,
   source,
   url,
+  imageUrl,
   publishedAt,
   article,
 }) => {
   const [checked, setChecked] = useState(false);
-
+  const imageRef = useRef();
   const dispatch = useDispatch();
   const { bookmarks } = useSelector(bookmarksSelector);
   const { openIn } = useSelector(articlesSelector);
@@ -38,6 +40,12 @@ export const Article = ({
   useEffect(() => {
     setChecked(bookmarks.some((bookmark) => bookmark.title === title));
   }, [bookmarks, title]);
+
+  useEffect(() => {
+    if (imageUrl === null || imageUrl === "self") {
+      imageRef.current.src = placeholder;
+    }
+  }, [imageUrl]);
 
   const relativeTime = (publishedAt) => {
     var time = new Date(publishedAt).getTime();
@@ -59,7 +67,9 @@ export const Article = ({
 
   return (
     <Container href={url} target={openIn === "same-tab" ? "_self" : "_blank"}>
-      <ArticleImage />
+      <ArticleImage>
+        <img ref={imageRef} src={imageUrl} alt={title} />
+      </ArticleImage>
       <Source>{source}</Source>
       <Overflow>
         <Title>{title}</Title>

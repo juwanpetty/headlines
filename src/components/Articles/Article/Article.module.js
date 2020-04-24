@@ -14,6 +14,13 @@ export const ArticleImage = styled.div`
   border-radius: ${spacing.borderRadius.small}px;
   margin: 8px 8px 0;
   margin-bottom: 10px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const Source = styled.p`
