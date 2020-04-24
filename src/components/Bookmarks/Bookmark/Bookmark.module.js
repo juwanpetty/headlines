@@ -40,6 +40,7 @@ export const Remove = styled.p`
   font-size: 1.2rem;
   cursor: pointer;
   margin: 0;
+  font-weight: 500;
 
   svg {
     width: 24px;
