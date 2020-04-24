@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Container, Image, Title } from "./Shortcut.module";
 
 export const Shortcut = ({ shortcut }) => {
-  console.log("\n");
-  console.log("Title:", shortcut?.title);
-  console.log("URL:", shortcut?.url);
-  // const { favicon, title, url } = shortcut;
+  const ref = useRef();
 
-  // return <Title>Shortcut Component</Title>;
+  useEffect(() => {
+    if (!shortcut.favicon) {
+      ref.current.srcset = `chrome://favicon/size/16@2x/${shortcut.url}%202x`;
+    }
+  });
 
   return (
     <Container href={shortcut.url}>
-      <Image src={shortcut.favicon} />
+      <Image
+        ref={ref}
+        src={
+          shortcut.favicon
+            ? shortcut.favicon
+            : `chrome://favicon/${shortcut.url}`
+        }
+      />
       <Title>{shortcut.title}</Title>
     </Container>
   );
