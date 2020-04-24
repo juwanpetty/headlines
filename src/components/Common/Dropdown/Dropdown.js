@@ -2,7 +2,7 @@ import React from "react";
 import Select from "react-select";
 import { Container } from "./Dropdown.module";
 
-export const Dropdown = ({ options, placeholder, onChange }) => {
+export const Dropdown = ({ options, defaultValue, placeholder, onChange }) => {
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
@@ -17,6 +17,7 @@ export const Dropdown = ({ options, placeholder, onChange }) => {
   return (
     <Container>
       <Select
+        defaultValue={defaultValue}
         styles={customStyles}
         onChange={onChange}
         options={options}
