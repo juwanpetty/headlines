@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color, typography } from "../../../constants/styles";
 
 export const Container = styled.div`
   width: 400px;
@@ -6,4 +7,28 @@ export const Container = styled.div`
   position: relative;
   overflow-y: scroll;
   padding: 0 40px;
+`;
+
+export const EmptyState = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-size: ${typography.size.s2}rem;
+    line-height: 150%;
+  }
+`;
+
+export const BookmarkIcon = styled.span`
+  display: inline-block;
+  margin: 0 4px;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: ${color.gray8};
+  }
 `;

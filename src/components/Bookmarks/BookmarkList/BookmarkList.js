@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { bookmarksSelector } from "../../../store/slices/bookmarks";
-import { Container } from "./BookmarkList.module";
+import { BsBookmark } from "react-icons/bs";
+import { Container, EmptyState, BookmarkIcon } from "./BookmarkList.module";
 import { Bookmark } from "../";
 
 export const BookmarkList = () => {
@@ -9,7 +10,17 @@ export const BookmarkList = () => {
 
   const renderBookmarks = () => {
     if (bookmarks.length === 0) {
-      return <p>No bookmarks saved</p>;
+      return (
+        <EmptyState>
+          <p>
+            There are no articles saved. Click the
+            <BookmarkIcon>
+              <BsBookmark />
+            </BookmarkIcon>
+            icon to save articles to read later.
+          </p>
+        </EmptyState>
+      );
     }
 
     return bookmarks.map((bookmark) => {
