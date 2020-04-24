@@ -24,7 +24,7 @@ import {
 
 export const Sidebar = () => {
   const sidebarRef = useRef();
-  const [page, setPage] = useState("settings");
+  const [page, setPage] = useState("sources");
 
   const { isSidebarOpen } = useSelector(uiSelector);
   const { userSources, sidebarSources } = useSelector(sourcesSelector);
