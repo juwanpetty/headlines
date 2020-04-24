@@ -5,6 +5,7 @@ import sources from "../slices/sources";
 import weather from "../slices/weather";
 import articles from "../slices/articles";
 import clock from "../slices/clock";
+import search from "../slices/search";
 import ui from "../slices/ui";
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   articles,
   weather,
   clock,
+  search,
   ui,
 });
 
