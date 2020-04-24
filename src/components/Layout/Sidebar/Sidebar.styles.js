@@ -7,21 +7,22 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  overflow-y: hidden;
+  overflow: hidden;
   z-index: 1;
 
   background: ${color.white};
-  padding: ${spacing.padding.large}px;
+  padding: ${spacing.padding.large}px 0;
   border-left: 1px solid ${color.gray7};
   box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
 
   transform: ${(props) =>
     props.visible ? "translateX(0)" : "translate(400px)"};
-  transition: 0.25s;
+  transition: 200ms;
 `;
 
 const SidebarHeader = styled.div`
   margin-bottom: 25px;
+  padding: 0 40px;
 
   h3 {
     margin: 0;
@@ -43,6 +44,7 @@ const Navigation = styled.ul`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 32px;
+  padding: 0 40px;
 `;
 
 const NavigationItem = styled.li`
@@ -63,7 +65,7 @@ const NavigationItem = styled.li`
 
 const SidebarContainer = styled.div`
   height: calc(100vh - 244px);
-  width: 319px;
+  width: 400px;
   overflow: hidden;
   position: relative;
 `;
@@ -77,17 +79,17 @@ const SidebarInnerContainer = styled.div`
   ${({ page }) => (page === "sources" ? `transform: translateX(0);` : "")}
 
   ${({ page }) =>
-    page === "reading-list" ? `transform: translateX(-359px);` : ""}
+    page === "reading-list" ? `transform: translateX(-400px);` : ""}
 
-  ${({ page }) => (page === "settings" ? `transform: translateX(-718px);` : "")}
+  ${({ page }) => (page === "settings" ? `transform: translateX(-800px);` : "")}
 `;
 
 const SidebarPage = styled.div`
-  width: 319px;
+  width: 400px;
   height: 100%;
-  margin-right: 40px;
   position: relative;
   overflow-y: scroll;
+  padding: 0 40px;
 `;
 
 const SettingsList = styled(SidebarPage)``;

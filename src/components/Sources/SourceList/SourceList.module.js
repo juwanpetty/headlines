@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { typography } from "../../../constants/styles";
 
 export const Container = styled.form`
-  width: 319px;
+  width: 400px;
   height: 100%;
-  margin-right: 40px;
   position: relative;
   overflow-y: scroll;
+  padding: 0 40px;
 
   & > div {
     margin-bottom: 3.2rem;
