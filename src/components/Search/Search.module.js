@@ -47,7 +47,6 @@ export const SearchEngine = styled.div`
   height: 31px;
   top: 5px;
   left: 5px;
-  cursor: pointer;
   border: 1px solid ${color.gray7};
   border-radius: ${spacing.borderRadius.small}px;
 `;
