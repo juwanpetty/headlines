@@ -73,8 +73,8 @@ export const Bookmark = styled.div`
   justify-content: center;
 
   svg {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     color: ${color.gray8};
   }
 `;
