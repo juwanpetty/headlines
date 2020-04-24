@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { equals } from "../../../helpers/";
 import { SourceList } from "../../Sources/SourceList/SourceList";
 import { BookmarkList } from "../../Bookmarks/BookmarkList/BookmarkList";
-import { Articles, Weather, Clock } from "../../Settings/";
+import { Articles, Weather, Clock, Search } from "../../Settings/";
 import { useOutsideClick } from "../../../hooks/";
 import { toggleSidebar, uiSelector } from "../../../store/slices/ui";
 import {
@@ -24,7 +24,7 @@ import {
 
 export const Sidebar = () => {
   const sidebarRef = useRef();
-  const [page, setPage] = useState("sources");
+  const [page, setPage] = useState("settings");
 
   const { isSidebarOpen } = useSelector(uiSelector);
   const { userSources, sidebarSources } = useSelector(sourcesSelector);
@@ -83,6 +83,7 @@ export const Sidebar = () => {
           <SettingsList>
             <Articles />
             <Weather />
+            <Search />
             <Clock />
           </SettingsList>
         </SidebarInnerContainer>
