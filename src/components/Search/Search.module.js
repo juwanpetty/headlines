@@ -49,4 +49,14 @@ export const SearchEngine = styled.div`
   left: 5px;
   border: 1px solid ${color.gray7};
   border-radius: ${spacing.borderRadius.small}px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+  }
 `;

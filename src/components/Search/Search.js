@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { searchSelector } from "../../store/slices/search";
 import {
@@ -8,8 +8,12 @@ import {
   SearchButtonIcon,
   SearchEngine,
 } from "./Search.module";
+import googleImg from "../../assets/search/google.png";
+import bingImg from "../../assets/search/bing.png";
+import duckduckgoImg from "../../assets/search/duckduckgo.png";
 
 export const Search = () => {
+  const [searchImg, setSearchImg] = useState(googleImg);
   const { searchEngine } = useSelector(searchSelector);
 
   const searchParams = {
@@ -18,9 +22,27 @@ export const Search = () => {
     bing: "http://www.bing.com/search?q=",
   };
 
+  useEffect(() => {
+    switch (searchEngine.value) {
+      case "google":
+        setSearchImg(googleImg);
+        break;
+      case "bing":
+        setSearchImg(bingImg);
+        break;
+      case "duckduckgo":
+        setSearchImg(duckduckgoImg);
+        break;
+      default:
+        break;
+    }
+  }, [searchEngine]);
+
   return (
     <Container>
-      <SearchEngine />
+      <SearchEngine>
+        <img src={searchImg} alt={`${searchEngine.label} logo`} />
+      </SearchEngine>
       <form method="get" action={searchParams[searchEngine.value]}>
         <SearchInput
           type="text"
