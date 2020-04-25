@@ -13,6 +13,7 @@ import {
   Container,
   Source,
   Title,
+  Image,
   Description,
   Overflow,
   ArticleImage,
@@ -32,6 +33,7 @@ export const Article = ({
   article,
 }) => {
   const [checked, setChecked] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
   const imageRef = useRef();
   const dispatch = useDispatch();
   const { bookmarks } = useSelector(bookmarksSelector);
@@ -65,10 +67,20 @@ export const Article = ({
     }
   };
 
+  const onImageLoad = () => {
+    setImgLoaded(true);
+  };
+
   return (
     <Container href={url} target={openIn === "same-tab" ? "_self" : "_blank"}>
       <ArticleImage>
-        <img ref={imageRef} src={imageUrl} alt={title} />
+        <Image
+          loaded={imgLoaded}
+          ref={imageRef}
+          src={imageUrl}
+          alt={title}
+          onLoad={() => onImageLoad()}
+        />
       </ArticleImage>
       <Source>{source}</Source>
       <Overflow>

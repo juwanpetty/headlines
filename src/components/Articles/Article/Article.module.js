@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import placeholder from "../../../assets/article/placeholder.jpg";
 import { color, spacing, typography } from "../../../constants/styles";
 
 export const Container = styled.a`
@@ -16,11 +17,21 @@ export const ArticleImage = styled.div`
   margin-bottom: 10px;
   overflow: hidden;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  background-image: url(${placeholder});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid ${color.gray7};
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: 150ms;
+  ${({ loaded }) => (loaded ? "opacity: 1;" : "opacity: 0;")};
+  ${({ loaded }) => (loaded ? "filter: blur(0);" : "filter: blur(5px);")}
 `;
 
 export const Source = styled.p`
