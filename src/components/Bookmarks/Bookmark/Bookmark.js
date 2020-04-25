@@ -10,7 +10,7 @@ export const Bookmark = ({
   title,
   publishedAt,
   author,
-  imageURL,
+  imageUrl,
 }) => {
   const dispatch = useDispatch();
 
@@ -28,7 +28,9 @@ export const Bookmark = ({
   return (
     <Container>
       <Title>{title}</Title>
-      <Image />
+      <Image>
+        <img src={imageUrl} alt={title} />
+      </Image>
       <Meta>
         {startCase(relativeTime(publishedAt))}{" "}
         {!author || author.length > 20 ? "" : " — " + author}

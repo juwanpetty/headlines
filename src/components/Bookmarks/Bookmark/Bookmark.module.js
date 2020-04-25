@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color } from "../../../constants/styles";
 
 export const Container = styled.div`
   display: grid;
@@ -32,6 +33,14 @@ export const Image = styled.div`
   height: 75px;
   border-radius: 3px;
   background: #eee;
+  border: 1px solid ${color.gray7};
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const Remove = styled.p`
