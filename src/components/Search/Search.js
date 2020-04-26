@@ -40,11 +40,12 @@ export const Search = () => {
 
   return (
     <Container>
-      <SearchEngine>
+      <SearchEngine htmlFor="searchbar">
         <img src={searchImg} alt={`${searchEngine.label} logo`} />
       </SearchEngine>
       <form method="get" action={searchParams[searchEngine.value]}>
         <SearchInput
+          id="searchbar"
           type="text"
           placeholder="Search the web"
           name="q"

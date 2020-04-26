@@ -18,6 +18,7 @@ export const SearchInput = styled.input`
   width: 100%;
   border: none;
   padding: ${spacing.padding.small}px ${spacing.padding.xmedium}px;
+  padding-left: ${spacing.padding.xsmall}px;
 `;
 
 export const SearchButton = styled.button`
@@ -41,14 +42,12 @@ export const SearchButtonIcon = styled(MdSearch)`
   color: ${color.gray8};
 `;
 
-export const SearchEngine = styled.div`
+export const SearchEngine = styled.label`
   position: absolute;
   width: 40px;
   height: 31px;
   top: 5px;
   left: 5px;
-  border: 1px solid ${color.gray7};
-  border-radius: ${spacing.borderRadius.small}px;
 
   display: flex;
   align-items: center;
