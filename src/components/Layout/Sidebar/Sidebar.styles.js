@@ -79,7 +79,7 @@ const SidebarInnerContainer = styled.div`
   ${({ page }) => (page === "sources" ? `transform: translateX(0);` : "")}
 
   ${({ page }) =>
-    page === "reading-list" ? `transform: translateX(-400px);` : ""}
+    page === "bookmarks" ? `transform: translateX(-400px);` : ""}
 
   ${({ page }) => (page === "settings" ? `transform: translateX(-800px);` : "")}
 `;

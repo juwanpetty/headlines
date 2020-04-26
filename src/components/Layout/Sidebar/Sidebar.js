@@ -53,7 +53,7 @@ export const Sidebar = () => {
   return (
     <Container visible={isSidebarOpen} ref={sidebarRef}>
       <SidebarHeader>
-        <h3>Sources</h3>
+        <h3>Preferences</h3>
         <p>Choose what you see on the page.</p>
       </SidebarHeader>
       <Navigation>
@@ -64,10 +64,10 @@ export const Sidebar = () => {
           Sources
         </NavigationItem>
         <NavigationItem
-          active={page === "reading-list"}
-          onClick={() => setPage("reading-list")}
+          active={page === "bookmarks"}
+          onClick={() => setPage("bookmarks")}
         >
-          Reading List
+          Bookmarks
         </NavigationItem>
         <NavigationItem
           active={page === "settings"}
