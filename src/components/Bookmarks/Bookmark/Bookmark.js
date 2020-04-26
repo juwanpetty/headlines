@@ -3,13 +3,21 @@ import { useDispatch } from "react-redux";
 import { removeBookmark } from "../../../store/slices/bookmarks";
 import relativeDate from "relative-date";
 import { startCase } from "../../../helpers/";
-import { Container, Title, Meta, Image, Remove } from "./Bookmark.module";
+import {
+  Container,
+  Source,
+  Title,
+  Meta,
+  Image,
+  Remove,
+} from "./Bookmark.module";
 
 export const Bookmark = ({
   bookmark,
+  url,
+  source,
   title,
   publishedAt,
-  author,
   imageUrl,
 }) => {
   const dispatch = useDispatch();
@@ -26,14 +34,13 @@ export const Bookmark = ({
   };
 
   return (
-    <Container>
+    <Container href={url} alt={title}>
       <Title>{title}</Title>
       <Image>
         <img src={imageUrl} alt={title} />
       </Image>
       <Meta>
-        {startCase(relativeTime(publishedAt))}{" "}
-        {!author || author.length > 20 ? "" : " — " + author}
+        {startCase(relativeTime(publishedAt))} — <Source>{source}</Source>
       </Meta>
       <Remove onClick={() => onRemoveBookmkark()}>Remove</Remove>
     </Container>

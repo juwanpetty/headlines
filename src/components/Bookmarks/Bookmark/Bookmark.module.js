@@ -1,17 +1,26 @@
 import styled from "styled-components";
 import { color } from "../../../constants/styles";
 
-export const Container = styled.div`
+export const Container = styled.a`
   display: grid;
   grid-template-columns: auto 75px;
   grid-column-gap: 32px;
   grid-row-gap: 16px;
+  text-decoration: none;
 
   &:not(:last-child) {
     margin-bottom: 16px;
     border-bottom: 1px solid #ededed;
     padding-bottom: 16px;
   }
+`;
+
+export const Source = styled.span`
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 12px;
+  color: fafafa;
+  color: #b7b7b7;
 `;
 
 export const Title = styled.div`

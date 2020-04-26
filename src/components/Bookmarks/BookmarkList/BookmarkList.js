@@ -24,11 +24,20 @@ export const BookmarkList = () => {
     }
 
     return bookmarks.map((bookmark) => {
-      const { title, publishedAt, author, urlToImage } = bookmark;
+      const {
+        url,
+        title,
+        publishedAt,
+        author,
+        urlToImage,
+        source: { name },
+      } = bookmark;
 
       return (
         <Bookmark
+          url={url}
           key={title}
+          source={name}
           title={title}
           imageUrl={urlToImage}
           publishedAt={publishedAt}
