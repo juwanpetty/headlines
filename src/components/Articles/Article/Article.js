@@ -34,14 +34,29 @@ export const Article = ({
 }) => {
   const [checked, setChecked] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [published, setPublished] = useState(() => {
+    const time = new Date(publishedAt).getTime();
+    return relativeDate(time);
+  });
+
   const imageRef = useRef();
   const dispatch = useDispatch();
   const { bookmarks } = useSelector(bookmarksSelector);
   const { openIn } = useSelector(articlesSelector);
 
+  // checks if article is bookmarked
   useEffect(() => {
     setChecked(bookmarks.some((bookmark) => bookmark.title === title));
   }, [bookmarks, title]);
+
+  // updates relative publish date every second
+  useEffect(() => {
+    const timerID = setInterval(() => tick(), 1000);
+
+    return function cleanup() {
+      clearInterval(timerID);
+    };
+  });
 
   useEffect(() => {
     if (imageUrl === null || imageUrl === "self") {
@@ -49,8 +64,12 @@ export const Article = ({
     }
   }, [imageUrl]);
 
+  const tick = () => {
+    setPublished(relativeTime(publishedAt));
+  };
+
   const relativeTime = (publishedAt) => {
-    var time = new Date(publishedAt).getTime();
+    const time = new Date(publishedAt).getTime();
     return relativeDate(time);
   };
 
@@ -89,7 +108,7 @@ export const Article = ({
       </Overflow>
       <Footer>
         <p>
-          {startCase(relativeTime(publishedAt))}{" "}
+          {startCase(published)}{" "}
           {!author || author.length > 20 ? "" : " — " + author}
         </p>
         <Bookmark onClick={(e) => onHandleClick(e)}>
