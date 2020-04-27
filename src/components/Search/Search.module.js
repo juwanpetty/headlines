@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MdSearch } from "react-icons/md";
+import { FiSearch } from "react-icons/fi";
 import { typography, spacing, color } from "../../constants/styles";
 
 export const Container = styled.div`
@@ -37,7 +37,7 @@ export const SearchButton = styled.button`
   justify-content: center;
 `;
 
-export const SearchButtonIcon = styled(MdSearch)`
+export const SearchButtonIcon = styled(FiSearch)`
   font-size: ${typography.size.m2}rem;
   color: ${color.gray8};
 `;
