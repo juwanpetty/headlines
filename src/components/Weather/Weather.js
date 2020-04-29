@@ -25,13 +25,13 @@ export const Weather = () => {
 
     const weatherTemp =
       weatherUnit === "imperial"
-        ? weather.current?.temp_f
-        : weather.current?.temp_c;
+        ? `${weather.current?.temp_f}º F`
+        : `${weather.current?.temp_c}º C`;
 
     return (
       weather && (
         <WeatherContainer>
-          <h2>{weatherTemp}º</h2>
+          <h2>{weatherTemp}</h2>
           <div>
             <p>{weather.location?.name}</p>
             <p>{weather.current?.condition?.text}</p>
