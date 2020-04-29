@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWeather, weatherSelector } from "../../store/slices/weather";
 import { usePosition } from "../../hooks/";
+import { isObjectEmpty } from "../../helpers/isObjectEmpty";
 
 import { WeatherContainer } from "./Weather.module";
 
@@ -25,11 +26,11 @@ export const Weather = () => {
 
     const weatherTemp =
       weatherUnit === "imperial"
-        ? `${weather.current?.temp_f}º F`
-        : `${weather.current?.temp_c}º C`;
+        ? `${weather.current?.temp_f}º`
+        : `${weather.current?.temp_c}º`;
 
     return (
-      weather && (
+      !isObjectEmpty(weather) && (
         <WeatherContainer>
           <h2>{weatherTemp}</h2>
           <div>
