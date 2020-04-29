@@ -4,13 +4,20 @@ import {
   toggleShowClock,
   clockSelector,
   updateTimeFormat,
+  updateDateTimeFormat,
 } from "../../../store/slices/clock";
-import { Toggle, Radio, RadioGroup } from "../../Common/";
+import { Toggle, Radio, RadioGroup, Dropdown } from "../../Common/";
 import { Label, Header, Container } from "./Clock.module";
 
 export const Clock = () => {
   const dispatch = useDispatch();
-  const { showClock, timeFormat } = useSelector(clockSelector);
+  const { showClock, timeFormat, dateTimeFormat } = useSelector(clockSelector);
+
+  const clockOptions = [
+    { value: "date-time", label: "Date and Time" },
+    { value: "date-only", label: "Date only" },
+    { value: "time-only", label: "Time only" },
+  ];
 
   return (
     <Container disabled={!showClock}>
@@ -24,6 +31,14 @@ export const Clock = () => {
         />
         <p>Display a clock on the new tab page.</p>
       </Header>
+      <Dropdown
+        defaultValue={dateTimeFormat}
+        options={clockOptions}
+        placeholder="Date and Time format"
+        onChange={(option) => dispatch(updateDateTimeFormat(option))}
+        autoFocus
+      />
+
       <RadioGroup title="Choose an hour format">
         <Radio
           label="12-hour"

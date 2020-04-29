@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Content = styled.h2`
   font-variant-numeric: tabular-nums;
-  font-size: ${typography.size.l2}rem;
+  font-size: ${typography.size.l3}rem;
   margin: 0;
 `;
 

@@ -4,8 +4,9 @@ import { clockSelector } from "../../store/slices/clock";
 import { Container, TimeText, DateText } from "./Clock.module";
 
 export const Clock = () => {
-  const { timeFormat } = useSelector(clockSelector);
+  const { timeFormat, dateTimeFormat } = useSelector(clockSelector);
   const isTimeFormat12Hour = timeFormat === "12" ? true : false;
+
   const [time, setTime] = useState(
     new Date().toLocaleTimeString([], {
       hour: "2-digit",
@@ -13,6 +14,7 @@ export const Clock = () => {
       hour12: isTimeFormat12Hour,
     })
   );
+
   const [date, setDate] = useState(
     new Date().toLocaleDateString("en-US", {
       weekday: "short",
@@ -47,9 +49,19 @@ export const Clock = () => {
     );
   };
 
-  return (
-    <Container>
+  let DateTimeMarkup = (
+    <>
       <TimeText>{time}</TimeText> <span>•</span> <DateText>{date}</DateText>
-    </Container>
+    </>
   );
+
+  if (dateTimeFormat.value === "time-only") {
+    DateTimeMarkup = <TimeText>{time}</TimeText>;
+  }
+
+  if (dateTimeFormat.value === "date-only") {
+    DateTimeMarkup = <DateText>{date}</DateText>;
+  }
+
+  return <Container>{DateTimeMarkup}</Container>;
 };

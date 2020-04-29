@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
   showClock: true,
-  clockView: "digital", // or analog
+  dateTimeFormat: { value: "date-time", label: "Date and Time" }, // or date-only, time-only
   timeFormat: "12", // or 24
 };
 
@@ -13,8 +13,8 @@ const clockSlice = createSlice({
     toggleShowClock: (state) => {
       state.showClock = !state.showClock;
     },
-    toggleClockView: (state) => {
-      state.clockView = !state.clockView;
+    updateDateTimeFormat: (state, { payload }) => {
+      state.dateTimeFormat = payload;
     },
     updateTimeFormat: (state, { payload }) => {
       state.timeFormat = payload;
@@ -24,7 +24,7 @@ const clockSlice = createSlice({
 
 export const {
   toggleShowClock,
-  toggleClockView,
+  updateDateTimeFormat,
   updateTimeFormat,
 } = clockSlice.actions;
 
