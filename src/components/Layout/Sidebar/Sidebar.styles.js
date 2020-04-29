@@ -92,7 +92,11 @@ const SidebarPage = styled.div`
   padding: 0 40px;
 `;
 
-const SettingsList = styled(SidebarPage)``;
+const SettingsList = styled(SidebarPage)`
+  & > div:last-child {
+    margin-bottom: 100px;
+  }
+`;
 
 const Settings = styled.div``;
 
