@@ -8,6 +8,7 @@ export const WeatherContainer = styled.div`
 
   h2 {
     font-size: ${typography.size.l2}rem;
+    font-weight: ${typography.weight.semibold};
     margin: 0;
   }
 

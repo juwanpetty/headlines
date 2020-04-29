@@ -10,7 +10,7 @@ export const color = {
   gray8: "#b7b7b7",
   gray7: "#ededed",
   gray6: "#fafafa",
-  white: "#ffffff"
+  white: "#ffffff",
 };
 
 export const spacing = {
@@ -20,25 +20,26 @@ export const spacing = {
     xmedium: 16,
     medium: 24,
     large: 40,
-    xlarge: 60
+    xlarge: 60,
   },
   borderRadius: {
     xsmall: 1,
-    small: 3
-  }
+    small: 3,
+  },
 };
 export const typography = {
   family: {
     primary: `-apple-system, BlinkMacSystemFont, 'Inter', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif`,
-    code: `"Fira Code", monospace`
+    code: `"Fira Code", monospace`,
   },
   weight: {
     light: "300",
     regular: "400",
     medium: "500",
-    bold: "700"
+    semibold: "600",
+    bold: "700",
   },
   size: {
     s1: 1.2,
@@ -48,8 +49,8 @@ export const typography = {
     l1: 3.2,
     l2: 4.8,
     l3: 6.4,
-    xl1: 8
-  }
+    xl1: 8,
+  },
 };
 
 export const GlobalStyle = createGlobalStyle`
