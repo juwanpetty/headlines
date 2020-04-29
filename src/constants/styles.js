@@ -48,7 +48,7 @@ export const typography = {
     m2: 2.1,
     l1: 3.2,
     l2: 4.0,
-    l3: 6.4,
+    l3: 4.8,
     xl1: 8,
   },
 };
