@@ -27,10 +27,10 @@ export const Bookmark = ({
     return relativeDate(time);
   };
 
-  const onRemoveBookmkark = () => {
-    setTimeout(() => {
-      dispatch(removeBookmark(bookmark));
-    }, 100);
+  const onRemoveBookmkark = (e) => {
+    e.preventDefault();
+
+    dispatch(removeBookmark(bookmark));
   };
 
   return (
@@ -40,9 +40,9 @@ export const Bookmark = ({
         <img src={imageUrl} alt={title} />
       </Image>
       <Meta>
-        {startCase(relativeTime(publishedAt))} — <Source>{source}</Source>
+        <Source>{source}</Source> — {startCase(relativeTime(publishedAt))}
       </Meta>
-      <Remove onClick={() => onRemoveBookmkark()}>Remove</Remove>
+      <Remove onClick={(e) => onRemoveBookmkark(e)}>Remove</Remove>
     </Container>
   );
 };
