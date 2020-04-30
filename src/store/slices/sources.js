@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import shuffle from "shuffle-array";
 import { sourcesData } from "../../mock/sourcesData";
+import { loadState } from "../../helpers/localStorage";
 
 export const initialState = {
   sources: [],
@@ -62,6 +63,17 @@ export default sourcesSlice.reducer;
 //       );
 //       const data = await response.json();
 
+//       const userSourcesExist = loadState().sources.userSources.length > 0;
+
+//       if (!userSourcesExist) {
+//         let shuffledSources = shuffle(data.sources, { copy: true });
+//         shuffledSources = shuffledSources
+//           .slice(0, 3)
+//           .map((source) => source.id);
+
+//         dispatch(updateUserSources(shuffledSources));
+//       }
+
 //       dispatch(getSourcesSuccess(data.sources));
 //     } catch (error) {
 //       dispatch(getSourcesFailure());
@@ -76,16 +88,15 @@ export function fetchSources() {
     try {
       dispatch(getSourcesSuccess(sourcesData.sources));
 
-      // // check if there are any saved sources in localStorage
-      if (!localStorage.getItem("sources")) {
+      const userSourcesExist = loadState().sources.userSources.length > 0;
+
+      if (!userSourcesExist) {
         let shuffledSources = shuffle(sourcesData.sources, { copy: true });
         shuffledSources = shuffledSources
           .slice(0, 3)
           .map((source) => source.id);
 
         dispatch(updateUserSources(shuffledSources));
-      } else {
-        dispatch(updateUserSources(localStorage.getItem("sources")));
       }
     } catch (error) {
       dispatch(getSourcesFailure());
