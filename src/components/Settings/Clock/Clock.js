@@ -14,9 +14,9 @@ export const Clock = () => {
   const { showClock, timeFormat, dateTimeFormat } = useSelector(clockSelector);
 
   const clockOptions = [
-    { value: "date-time", label: "Date and Time" },
-    { value: "date-only", label: "Date only" },
     { value: "time-only", label: "Time only" },
+    { value: "date-only", label: "Date only" },
+    { value: "date-time", label: "Date and Time" },
   ];
 
   return (

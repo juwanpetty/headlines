@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
   showClock: true,
-  dateTimeFormat: { value: "date-time", label: "Date and Time" }, // or date-only, time-only
+  dateTimeFormat: { value: "time-only", label: "Time only" }, // or date-only, time-only
   timeFormat: "12", // or 24
 };
 
