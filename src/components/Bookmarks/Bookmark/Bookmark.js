@@ -1,6 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeBookmark } from "../../../store/slices/bookmarks";
+import { articlesSelector } from "../../../store/slices/articles";
 import relativeDate from "relative-date";
 import { startCase } from "../../../helpers/";
 import {
@@ -21,6 +22,7 @@ export const Bookmark = ({
   imageUrl,
 }) => {
   const dispatch = useDispatch();
+  const { openIn } = useSelector(articlesSelector);
 
   const relativeTime = (publishedAt) => {
     var time = new Date(publishedAt).getTime();
@@ -34,7 +36,11 @@ export const Bookmark = ({
   };
 
   return (
-    <Container href={url} alt={title}>
+    <Container
+      href={url}
+      alt={title}
+      target={openIn === "same-tab" ? "_self" : "_blank"}
+    >
       <Title>{title}</Title>
       <Image>
         <img src={imageUrl} alt={title} />
