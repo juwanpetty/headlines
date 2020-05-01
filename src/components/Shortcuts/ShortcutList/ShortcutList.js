@@ -9,8 +9,6 @@ export const ShortcutList = () => {
   const [shortcuts, setShortcuts] = useState([]);
 
   useEffect(() => {
-    // setShortcuts(shortcutsData.slice(0, 3));
-
     try {
       browser.topSites.get({ includeFavicon: true }, (results) => {
         setShortcuts(results.slice(0, 3));
@@ -26,7 +24,6 @@ export const ShortcutList = () => {
 
   return (
     <Container>
-      {console.log(shortcuts)}
       {shortcuts &&
         shortcuts.map((shortcut) => (
           <Shortcut key={shortcut.title} shortcut={shortcut} />
