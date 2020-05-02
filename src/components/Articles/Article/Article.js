@@ -78,10 +78,8 @@ export const Article = ({
     e.preventDefault();
 
     if (checked) {
-      // remove
       dispatch(removeBookmark(article));
     } else {
-      // add
       dispatch(addBookmark(article));
     }
   };
