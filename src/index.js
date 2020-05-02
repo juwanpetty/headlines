@@ -7,6 +7,7 @@ import { App } from "./App";
 import rootReducer from "./store/reducers";
 import { saveState, loadState } from "./helpers/localStorage";
 import throttle from "lodash.throttle";
+import { deleteKeys } from "./helpers/deleteKeys";
 
 const persistedState = loadState();
 
@@ -17,7 +18,9 @@ const store = configureStore({
 
 store.subscribe(
   throttle(() => {
-    saveState(store.getState());
+    saveState(
+      deleteKeys(store.getState(), ["loading", "hasErrors", "isSidebarOpen"])
+    );
   }, 1000)
 );
 
