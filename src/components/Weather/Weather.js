@@ -7,7 +7,7 @@ import { isObjectEmpty } from "../../helpers/isObjectEmpty";
 import { WeatherContainer } from "./Weather.module";
 
 export const Weather = () => {
-  const { weather, weatherUnit, loading, hasErrors } = useSelector(
+  const { weather, weatherUnit, showWeather, loading, hasErrors } = useSelector(
     weatherSelector
   );
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export const Weather = () => {
 
     return (
       !isObjectEmpty(weather) && (
-        <WeatherContainer>
+        <WeatherContainer visible={showWeather}>
           <h2>{weatherTemp}</h2>
           <div>
             <p>{weather.location?.name}</p>

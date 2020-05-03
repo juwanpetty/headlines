@@ -6,6 +6,9 @@ export const WeatherContainer = styled.div`
   grid-template-columns: auto auto;
   grid-gap: 16px;
 
+  ${({ visible }) => (visible ? `opacity: 1;` : `opacity: 0;`)}
+  transition: opacity 150ms;
+
   h2 {
     font-size: ${typography.size.l2}rem;
     font-weight: ${typography.weight.semibold};
