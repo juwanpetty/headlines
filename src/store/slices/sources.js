@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import shuffle from "shuffle-array";
-import { sourcesData } from "../../mock/sourcesData";
 import { loadState } from "../../helpers/localStorage";
 
 export const initialState = {
@@ -53,51 +52,28 @@ export const sourcesSelector = (state) => state.sources;
 export default sourcesSlice.reducer;
 
 // Asynchronous thunk action
-// export function fetchSources() {
-//   return async (dispatch) => {
-//     dispatch(getSources());
-
-//     try {
-//       const response = await fetch(
-//         `https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`
-//       );
-//       const data = await response.json();
-
-//       const userSourcesExist = loadState().sources.userSources.length > 0;
-
-//       if (!userSourcesExist) {
-//         let shuffledSources = shuffle(data.sources, { copy: true });
-//         shuffledSources = shuffledSources
-//           .slice(0, 3)
-//           .map((source) => source.id);
-
-//         dispatch(updateUserSources(shuffledSources));
-//       }
-
-//       dispatch(getSourcesSuccess(data.sources));
-//     } catch (error) {
-//       dispatch(getSourcesFailure());
-//     }
-//   };
-// }
-
 export function fetchSources() {
   return async (dispatch) => {
     dispatch(getSources());
 
     try {
-      dispatch(getSourcesSuccess(sourcesData.sources));
+      const response = await fetch(
+        `https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`
+      );
+      const data = await response.json();
 
       const userSourcesExist = loadState().sources.userSources.length > 0;
 
       if (!userSourcesExist) {
-        let shuffledSources = shuffle(sourcesData.sources, { copy: true });
+        let shuffledSources = shuffle(data.sources, { copy: true });
         shuffledSources = shuffledSources
           .slice(0, 3)
           .map((source) => source.id);
 
         dispatch(updateUserSources(shuffledSources));
       }
+
+      dispatch(getSourcesSuccess(data.sources));
     } catch (error) {
       dispatch(getSourcesFailure());
     }

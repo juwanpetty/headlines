@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { weatherData } from "../../mock/weatherData";
 
 export const initialState = {
   weather: [],
   showWeather: true,
   weatherUnit: "imperial",
+  lastUpdated: `${new Date()}`,
   loading: false,
   hasErrors: false,
 };
@@ -32,6 +32,9 @@ const weatherSlice = createSlice({
     updateWeahterUnit: (state, { payload }) => {
       state.weatherUnit = payload;
     },
+    updateLastUpdated: (state, { payload }) => {
+      state.lastUpdated = payload;
+    },
   },
 });
 
@@ -42,6 +45,7 @@ export const {
   getWeatherFailure,
   toggleShowWeather,
   updateWeahterUnit,
+  updateLastUpdated,
 } = weatherSlice.actions;
 
 // A selector
@@ -51,30 +55,18 @@ export const weatherSelector = (state) => state.weather;
 export default weatherSlice.reducer;
 
 // // Asynchronous thunk action
-// export function fetchWeather(latitude, longitude, error) {
-//   return async (dispatch) => {
-//     dispatch(getWeather());
-
-//     try {
-//       const response = await fetch(
-//         `http://api.weatherapi.com/v1/current.json?key=48e88fd7d13f45ee93e230521201404&q=${latitude},${longitude}`
-//       );
-//       const data = await response.json();
-
-//       dispatch(getWeatherSuccess(data));
-//     } catch (error) {
-//       dispatch(getWeatherFailure());
-//     }
-//   };
-// }
-
-// Asynchronous thunk action
 export function fetchWeather(latitude, longitude, error) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(getWeather());
 
     try {
-      dispatch(getWeatherSuccess(weatherData));
+      const response = await fetch(
+        `http://api.weatherapi.com/v1/current.json?key=48e88fd7d13f45ee93e230521201404&q=${latitude},${longitude}`
+      );
+      const data = await response.json();
+
+      dispatch(updateLastUpdated(`${new Date()}`));
+      dispatch(getWeatherSuccess(data));
     } catch (error) {
       dispatch(getWeatherFailure());
     }

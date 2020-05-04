@@ -9,7 +9,7 @@ const bookmarksSlide = createSlice({
   initialState,
   reducers: {
     addBookmark: (state, { payload }) => {
-      state.bookmarks = [...state.bookmarks, payload];
+      state.bookmarks = [payload, ...state.bookmarks];
     },
     removeBookmark: (state, { payload }) => {
       state.bookmarks = state.bookmarks.filter(
