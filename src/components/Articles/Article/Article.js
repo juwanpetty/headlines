@@ -107,7 +107,7 @@ export const Article = ({
       <Footer>
         <p>
           {startCase(published)}{" "}
-          {!author || author.length > 20 ? "" : " — " + author}
+          {!author || author.length > 15 ? null : ` — ${author}`}
         </p>
         <Bookmark onClick={(e) => onHandleClick(e)}>
           {checked ? <BsBookmarkFill /> : <BsBookmark />}
