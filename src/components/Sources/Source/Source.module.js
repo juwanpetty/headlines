@@ -17,7 +17,7 @@ export const Container = styled.div`
     display: block;
     margin-bottom: 15px;
     padding: ${spacing.padding.small}px ${spacing.padding.medium}px;
-    font-size: ${typography.size.m1}rem;
+    font-size: ${typography.size.s2}rem;
     border: 1px solid ${color.gray7};
     border-radius: ${spacing.borderRadius.small}px;
     background-color: ${color.gray6};
