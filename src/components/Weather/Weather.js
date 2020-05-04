@@ -7,18 +7,34 @@ import { isObjectEmpty } from "../../helpers/isObjectEmpty";
 import { WeatherContainer } from "./Weather.module";
 
 export const Weather = () => {
-  const { weather, weatherUnit, showWeather, loading, hasErrors } = useSelector(
-    weatherSelector
-  );
+  const {
+    weather,
+    weatherUnit,
+    showWeather,
+    lastUpdated,
+    loading,
+    hasErrors,
+  } = useSelector(weatherSelector);
   const dispatch = useDispatch();
 
   const { latitude, longitude, error } = usePosition();
 
+  const shouldUpdateWeather = (date) => {
+    // 30 minutes // currently 5
+    const halfHour = 1000 * 60 * 30;
+
+    const halfHourAgo = Date.now() - halfHour;
+
+    return Date.parse(date) < halfHourAgo;
+  };
+
   useEffect(() => {
-    if ((latitude && longitude) || error) {
-      dispatch(fetchWeather(latitude, longitude, error));
+    if (shouldUpdateWeather(lastUpdated)) {
+      if ((latitude && longitude) || error) {
+        dispatch(fetchWeather(latitude, longitude, error));
+      }
     }
-  }, [dispatch, latitude, longitude, error]);
+  }, [dispatch, latitude, longitude, error, lastUpdated]);
 
   const renderWeather = () => {
     if (loading) return <p>Loading weather...</p>;
