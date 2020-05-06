@@ -5,6 +5,7 @@ import { usePosition } from "../../hooks/";
 import { isObjectEmpty } from "../../helpers/isObjectEmpty";
 
 import { WeatherContainer } from "./Weather.module";
+import { WeatherSkeleton } from "../Skeletons/";
 
 export const Weather = () => {
   const {
@@ -37,13 +38,13 @@ export const Weather = () => {
   }, [dispatch, latitude, longitude, error, lastUpdated]);
 
   const renderWeather = () => {
-    if (loading) return <p>Loading weather...</p>;
+    if (loading) return <WeatherSkeleton />;
     if (hasErrors) return <p>Unable to display weather.</p>;
 
     const weatherTemp =
       weatherUnit === "imperial"
-        ? `${weather.current?.temp_f}º`
-        : `${weather.current?.temp_c}º`;
+        ? `${Math.trunc(weather.current?.temp_f)}º`
+        : `${Math.trunc(weather.current?.temp_c)}º`;
 
     return (
       !isObjectEmpty(weather) && (

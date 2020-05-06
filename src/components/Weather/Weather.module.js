@@ -10,6 +10,7 @@ export const WeatherContainer = styled.div`
   transition: opacity 150ms;
 
   h2 {
+    font-variant-numeric: tabular-nums;
     font-size: ${typography.size.l2}rem;
     font-weight: ${typography.weight.semibold};
     margin: 0;
