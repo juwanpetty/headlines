@@ -5,6 +5,7 @@ import {
   articlesSelector,
 } from "../../../store/slices/articles";
 import { Article } from "../Article/Article";
+import { ArticleSkeleton } from "../../Skeletons/";
 import { Container } from "./ArticleList.module";
 import { sourcesSelector } from "../../../store/slices/sources";
 
@@ -18,7 +19,15 @@ export const ArticleList = () => {
   }, [dispatch, userSources]);
 
   const renderArticles = () => {
-    if (loading) return <p>Loading articles...</p>;
+    if (loading)
+      return (
+        <>
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+        </>
+      );
+
     if (hasErrors) return <p>Unable to display articles.</p>;
 
     return (
@@ -39,5 +48,5 @@ export const ArticleList = () => {
     );
   };
 
-  return <Container>{renderArticles()}</Container>;
+  return <Container visible={!loading}>{renderArticles()}</Container>;
 };
