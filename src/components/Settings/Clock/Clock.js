@@ -23,12 +23,12 @@ export const Clock = () => {
     <Container disabled={!showClock}>
       <Header>
         <Label htmlfor="clock">Clock</Label>
-        <Toggle
+        {/* <Toggle
           name="clock"
           id="clock"
           checked={showClock}
           onChange={() => dispatch(toggleShowClock())}
-        />
+        /> */}
         <p>Display a clock on the new tab page.</p>
       </Header>
       <Dropdown

@@ -16,12 +16,12 @@ export const Weather = () => {
     <Container disabled={!showWeather}>
       <Header>
         <Label htmlfor="weather">Weather</Label>
-        <Toggle
+        {/* <Toggle
           name="weather"
           id="weather"
           checked={showWeather}
           onChange={() => dispatch(toggleShowWeather())}
-        />
+        /> */}
         <p>Display current weather, updated every 30 minutes.</p>
       </Header>
       <RadioGroup title="Choose a unit">

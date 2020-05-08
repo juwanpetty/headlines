@@ -5,8 +5,14 @@ import {
   updateOpenIn,
   articlesSelector,
 } from "../../../store/slices/articles";
-import { Toggle, Radio, RadioGroup } from "../../Common/";
+import { Toggle, Dropdown } from "../../Common/";
 import { Label, Header, Container } from "./Articles.module";
+
+const articlesOptions = [
+  { value: "same-tab", label: "Same tab" },
+  { value: "new-tab", label: "New tab" },
+  { value: "new-tab-background", label: "New tab (background)" },
+];
 
 export const Articles = () => {
   const dispatch = useDispatch();
@@ -16,32 +22,21 @@ export const Articles = () => {
     <Container disabled={!showArticles}>
       <Header>
         <Label htmlfor="articles">Articles</Label>
-        <Toggle
+        {/* <Toggle
           name="articles"
           id="articles"
           checked={showArticles}
           onChange={() => dispatch(toggleShowArticles())}
-        />
+        /> */}
         <p>Display articles on the new tab page.</p>
       </Header>
-      <RadioGroup title="Articles open in">
-        <Radio
-          label="Same tab"
-          id="same-tab"
-          name="article-link"
-          value="same-tab"
-          checked={openIn === "same-tab"}
-          onChange={() => dispatch(updateOpenIn("same-tab"))}
-        />
-        <Radio
-          label="New tab"
-          id="new-tab"
-          name="article-link"
-          value="new-tab"
-          checked={openIn === "new-tab"}
-          onChange={() => dispatch(updateOpenIn("new-tab"))}
-        />
-      </RadioGroup>
+      <Dropdown
+        defaultValue={openIn}
+        options={articlesOptions}
+        placeholder="Select search engine"
+        onChange={(option) => dispatch(updateOpenIn(option))}
+        autoFocus
+      />
     </Container>
   );
 };

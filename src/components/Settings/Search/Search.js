@@ -22,18 +22,18 @@ export const Search = () => {
     <Container disabled={!showSearch}>
       <Header>
         <Label htmlfor="search">Search</Label>
-        <Toggle
+        {/* <Toggle
           name="search"
           id="search"
           checked={showSearch}
           onChange={() => dispatch(toggleShowSearch())}
-        />
+        /> */}
         <p>Display the search on the new tab page.</p>
       </Header>
       <Dropdown
         defaultValue={searchEngine}
         options={searchEngineOptions}
-        placeholder="Select search engine"
+        placeholder="Choose how articles will open"
         onChange={(option) => dispatch(updateSearchEngine(option))}
         autoFocus
       />
