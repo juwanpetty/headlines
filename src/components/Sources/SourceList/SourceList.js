@@ -11,9 +11,13 @@ import { Container, Header } from "./SourceList.module";
 
 export const SourceList = () => {
   const dispatch = useDispatch();
-  const { sources, userSources, loading, hasErrors } = useSelector(
-    sourcesSelector
-  );
+  const {
+    sources,
+    userSources,
+    sidebarSources,
+    loading,
+    hasErrors,
+  } = useSelector(sourcesSelector);
   const [options, setOptions] = useState(userSources);
 
   // watches option, and updates sidebarSources
@@ -40,10 +44,12 @@ export const SourceList = () => {
   ];
 
   const formUpdate = (e) => {
-    if (e.target.checked) {
+    if (e.target.checked && !options.includes(e.target.id)) {
       setOptions([...options, e.target.id]);
     } else {
-      setOptions(options.filter((option) => option !== e.target.id));
+      if (!(sidebarSources.length - 1 === 0)) {
+        setOptions(options.filter((option) => option !== e.target.id));
+      }
     }
   };
 
