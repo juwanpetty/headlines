@@ -1,3 +1,4 @@
+/* global chrome */
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
@@ -73,7 +74,7 @@ export const Article = ({
     return relativeDate(time);
   };
 
-  const onHandleClick = (e) => {
+  const onHandleBookmark = (e) => {
     // prevent from redirecting to link
     e.preventDefault();
 
@@ -84,12 +85,27 @@ export const Article = ({
     }
   };
 
+  const onHandleClick = (e) => {
+    if (openIn.value === "new-tab-background") {
+      e.preventDefault();
+
+      chrome.tabs.create({
+        active: false,
+        url,
+      });
+    }
+  };
+
   const onImageLoad = () => {
     setImgLoaded(true);
   };
 
   return (
-    <Container href={url} target={openIn === "same-tab" ? "_self" : "_blank"}>
+    <Container
+      href={url}
+      target={openIn.value === "same-tab" ? "_self" : "_blank"}
+      onClick={(e) => onHandleClick(e)}
+    >
       <ArticleImage>
         <Image
           loaded={imgLoaded}
@@ -109,7 +125,7 @@ export const Article = ({
           {startCase(published)}{" "}
           {!author || author.length > 15 ? null : ` — ${author}`}
         </p>
-        <Bookmark onClick={(e) => onHandleClick(e)}>
+        <Bookmark onClick={(e) => onHandleBookmark(e)}>
           {checked ? <BsBookmarkFill /> : <BsBookmark />}
         </Bookmark>
       </Footer>

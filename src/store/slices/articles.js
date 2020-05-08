@@ -5,7 +5,7 @@ export const initialState = {
   showArticles: true,
   loading: false,
   hasErrors: false,
-  openIn: "same-tab", // new-tab
+  openIn: { value: "same-tab", label: "Same tab" }, // new-tab or "new-tab-background"
 };
 
 // A slice for articles with the three reducers
