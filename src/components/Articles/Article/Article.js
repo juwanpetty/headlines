@@ -86,7 +86,9 @@ export const Article = ({
   };
 
   const onHandleClick = (e) => {
-    if (openIn.value === "new-tab-background") {
+    const isBookmarkClicked =
+      e.target.tagName === "path" || e.target.tagName === "svg";
+    if (openIn.value === "new-tab-background" && !isBookmarkClicked) {
       e.preventDefault();
 
       chrome.tabs.create({
