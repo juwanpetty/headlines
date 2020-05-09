@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeBookmark } from "../../../store/slices/bookmarks";
 import { articlesSelector } from "../../../store/slices/articles";
@@ -12,6 +12,7 @@ import {
   Image,
   Remove,
 } from "./Bookmark.module";
+import placeholder from "../../../assets/article/placeholder.jpg";
 
 export const Bookmark = ({
   bookmark,
@@ -21,8 +22,15 @@ export const Bookmark = ({
   publishedAt,
   imageUrl,
 }) => {
+  const imageRef = useRef();
   const dispatch = useDispatch();
   const { openIn } = useSelector(articlesSelector);
+
+  useEffect(() => {
+    if (imageUrl === null || imageUrl === "self") {
+      imageRef.current.src = placeholder;
+    }
+  }, [imageUrl]);
 
   const relativeTime = (publishedAt) => {
     var time = new Date(publishedAt).getTime();
@@ -43,7 +51,7 @@ export const Bookmark = ({
     >
       <Title>{title}</Title>
       <Image>
-        <img src={imageUrl} alt={title} />
+        <img src={imageUrl} alt={title} ref={imageRef} />
       </Image>
       <Meta>
         <Source>{source}</Source> — {startCase(relativeTime(publishedAt))}
