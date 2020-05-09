@@ -30,12 +30,12 @@ export const Weather = () => {
   };
 
   useEffect(() => {
-    if (shouldUpdateWeather(lastUpdated)) {
+    if (shouldUpdateWeather(lastUpdated) || isObjectEmpty(weather)) {
       if ((latitude && longitude) || error) {
         dispatch(fetchWeather(latitude, longitude, error));
       }
     }
-  }, [dispatch, latitude, longitude, error, lastUpdated]);
+  }, [dispatch, latitude, longitude, error, lastUpdated, weather]);
 
   const renderWeather = () => {
     if (loading) return <WeatherSkeleton />;
