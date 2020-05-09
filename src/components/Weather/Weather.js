@@ -21,7 +21,7 @@ export const Weather = () => {
   const { latitude, longitude, error } = usePosition();
 
   const shouldUpdateWeather = (date) => {
-    // 30 minutes // currently 5
+    // 30 minutes
     const halfHour = 1000 * 60 * 30;
 
     const halfHourAgo = Date.now() - halfHour;
