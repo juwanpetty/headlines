@@ -7,6 +7,13 @@ export const Container = styled.a`
   border: 1px solid ${color.gray7};
   border-radius: ${spacing.borderRadius.small}px;
   text-decoration: none;
+
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.01);
+  transition: box-shadow 150ms;
+
+  &:hover {
+    box-shadow: 0 0 0 5px #007aff;
+  }
 `;
 
 export const ArticleImage = styled.div`
