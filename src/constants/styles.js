@@ -11,6 +11,7 @@ export const color = {
   gray7: "#ededed",
   gray6: "#fafafa",
   white: "#ffffff",
+  red: "#ea4335",
 };
 
 export const spacing = {
