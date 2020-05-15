@@ -10,6 +10,13 @@ export const Container = styled.div`
   border: 1px solid ${color.gray7};
   border-radius: ${spacing.borderRadius.small}px;
   margin-bottom: 5rem;
+
+  transition: box-shadow 150ms;
+
+  ${({ isFocus }) =>
+    isFocus
+      ? `box-shadow: 0 0 0 5px #007aff;`
+      : `box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.01);`}
 `;
 
 export const SearchInput = styled.input`

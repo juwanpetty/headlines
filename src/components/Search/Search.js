@@ -13,6 +13,7 @@ import bingImg from "../../assets/search/bing.png";
 import duckduckgoImg from "../../assets/search/duckduckgo.png";
 
 export const Search = () => {
+  const [isFocus, setIsFocus] = useState(false);
   const [searchImg, setSearchImg] = useState(googleImg);
   const { searchEngine } = useSelector(searchSelector);
 
@@ -38,13 +39,18 @@ export const Search = () => {
     }
   }, [searchEngine]);
 
+  const handleOnFocus = () => setIsFocus(true);
+  const handleOnBlur = () => setIsFocus(false);
+
   return (
-    <Container>
+    <Container isFocus={isFocus}>
       <SearchEngine htmlFor="searchbar">
         <img src={searchImg} alt={`${searchEngine.label} logo`} />
       </SearchEngine>
       <form method="get" action={searchParams[searchEngine.value]}>
         <SearchInput
+          onFocus={() => handleOnFocus()}
+          onBlur={() => handleOnBlur()}
           id="searchbar"
           type="text"
           placeholder="Search the web"
