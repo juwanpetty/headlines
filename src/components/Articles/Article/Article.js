@@ -127,7 +127,7 @@ export const Article = ({
           {startCase(published)}{" "}
           {!author || author.length > 15 ? null : ` — ${author}`}
         </p>
-        <Bookmark onClick={(e) => onHandleBookmark(e)}>
+        <Bookmark checked={checked} onClick={(e) => onHandleBookmark(e)}>
           {checked ? <BsBookmarkFill /> : <BsBookmark />}
         </Bookmark>
       </Footer>

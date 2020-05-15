@@ -100,6 +100,6 @@ export const Bookmark = styled.div`
   svg {
     width: 18px;
     height: 18px;
-    color: ${color.gray8};
+    color: ${({ checked }) => (checked ? `${color.red}` : `${color.gray8}`)};
   }
 `;
