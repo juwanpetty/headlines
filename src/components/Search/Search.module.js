@@ -10,7 +10,7 @@ export const Container = styled.div`
   border: 1px solid ${color.gray7};
   border-radius: ${spacing.borderRadius.small}px;
   margin-bottom: 5rem;
-
+  background: ${color.white};
   transition: box-shadow 150ms;
 
   ${({ isFocus }) =>

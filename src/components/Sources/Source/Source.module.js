@@ -20,7 +20,7 @@ export const Container = styled.div`
     font-size: ${typography.size.s2}rem;
     border: 1px solid ${color.gray7};
     border-radius: ${spacing.borderRadius.small}px;
-    background-color: ${color.gray6};
+    background-color: ${color.white};
     cursor: pointer;
   }
 `;

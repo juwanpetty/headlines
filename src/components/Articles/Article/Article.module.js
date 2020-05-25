@@ -3,6 +3,7 @@ import placeholder from "../../../assets/article/placeholder.jpg";
 import { color, spacing, typography } from "../../../constants/styles";
 
 export const Container = styled.a`
+  background: ${color.white};
   list-style-type: none;
   border: 1px solid ${color.gray7};
   border-radius: ${spacing.borderRadius.small}px;

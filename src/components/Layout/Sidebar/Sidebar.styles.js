@@ -10,7 +10,7 @@ const Container = styled.div`
   overflow: hidden;
   z-index: 1;
 
-  background: ${color.white};
+  background: ${color.gray6};
   padding: ${spacing.padding.large}px 0;
   border-left: 1px solid ${color.gray7};
   box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
@@ -109,7 +109,7 @@ const Footer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-  background: ${color.gray6};
+  background: ${color.white};
   border-top: 1px solid ${color.gray7};
   padding: ${spacing.padding.xmedium}px ${spacing.padding.large}px;
 `;

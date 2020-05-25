@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { spacing } from "./constants/styles";
+import { spacing, color } from "./constants/styles";
 
 const Container = styled.div`
+  background: ${color.gray6};
   position: relative;
   padding-top: ${spacing.padding.xlarge}px;
   padding-bottom: ${spacing.padding.xlarge}px;
