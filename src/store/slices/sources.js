@@ -58,7 +58,7 @@ export function fetchSources() {
 
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/sources?country=us&apiKey=9e0f251af2d2433793804d01f677f4ba`
+        `https://newsapi-proxy-server.herokuapp.com/sources`
       );
       const data = await response.json();
 
