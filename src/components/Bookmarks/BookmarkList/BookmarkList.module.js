@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color, typography } from "../../../constants/styles";
+import { typography } from "../../../constants/styles";
 
 export const Container = styled.div`
   width: 400px;
@@ -29,6 +29,6 @@ export const BookmarkIcon = styled.span`
   svg {
     width: 18px;
     height: 18px;
-    color: ${color.gray8};
+    color: ${(props) => props.theme.gray8};
   }
 `;

@@ -5,14 +5,6 @@ export const color = {
   primary: "#007aff",
   red: "#ea4335",
 
-  // monochrome
-  black: "#414141",
-  gray9: "#5e5e5e",
-  gray8: "#b7b7b7",
-  gray7: "#ededed",
-  gray6: "#fafafa",
-  white: "#ffffff",
-
   light: {
     black: "#252525", // 414141
     gray9: "#424242", // 5e5e5e
@@ -20,14 +12,16 @@ export const color = {
     gray7: "#ededed",
     gray6: "#fafafa",
     white: "#ffffff",
+    theme: "light",
   },
   dark: {
-    black: "#ffffff",
-    gray9: "#424242",
+    black: "#EEEEEE",
+    gray9: "#F5F5F5",
     gray8: "#828282",
-    gray7: "#ededed",
+    gray7: "#555555",
     gray6: "#252525",
     white: "#424242",
+    theme: "dark",
   },
 };
 

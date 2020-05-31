@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { color } from "../../../constants/styles";
 
 export const Container = styled.a`
   display: grid;
@@ -24,7 +23,7 @@ export const Source = styled.span`
 `;
 
 export const Title = styled.div`
-  color: #414141;
+  color: ${(props) => props.theme.black};
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 140%;
@@ -42,7 +41,7 @@ export const Image = styled.div`
   height: 75px;
   border-radius: 3px;
   background: #eee;
-  border: 1px solid ${color.gray7};
+  border: 1px solid ${(props) => props.theme.gray7};
   overflow: hidden;
 
   img {
@@ -53,7 +52,7 @@ export const Image = styled.div`
 `;
 
 export const Remove = styled.p`
-  color: #414141;
+  color: ${(props) => props.theme.black};
   align-self: center;
   font-size: 1.2rem;
   cursor: pointer;

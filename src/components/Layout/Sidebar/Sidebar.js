@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { equals } from "../../../helpers/";
 import { SourceList } from "../../Sources/SourceList/SourceList";
 import { BookmarkList } from "../../Bookmarks/BookmarkList/BookmarkList";
-import { Articles, Weather, Clock, Search } from "../../Settings/";
+import { Articles, Weather, Clock, Search, Theme } from "../../Settings/";
 import { useOutsideClick } from "../../../hooks/";
 import { toggleSidebar, uiSelector } from "../../../store/slices/ui";
 import {
@@ -85,6 +85,7 @@ export const Sidebar = () => {
             <Weather />
             <Search />
             <Clock />
+            <Theme />
           </SettingsList>
         </SidebarInnerContainer>
       </SidebarContainer>

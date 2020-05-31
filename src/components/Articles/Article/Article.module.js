@@ -3,9 +3,9 @@ import placeholder from "../../../assets/article/placeholder.jpg";
 import { color, spacing, typography } from "../../../constants/styles";
 
 export const Container = styled.a`
-  background: ${color.white};
+  background: ${(props) => props.theme.white};
   list-style-type: none;
-  border: 1px solid ${color.gray7};
+  border: 1px solid ${(props) => props.theme.gray7};
   border-radius: ${spacing.borderRadius.small}px;
   text-decoration: none;
 
@@ -29,7 +29,7 @@ export const ArticleImage = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border: 1px solid ${color.gray7};
+  border: 1px solid ${(props) => props.theme.gray7};
 `;
 
 export const Image = styled.img`
@@ -43,7 +43,7 @@ export const Image = styled.img`
 `;
 
 export const Source = styled.p`
-  color: ${color.gray8};
+  color: ${(props) => props.theme.gray8};
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -55,7 +55,7 @@ export const Source = styled.p`
 `;
 
 export const Title = styled.h1`
-  color: ${color.black};
+  color: ${(props) => props.theme.black};
   font-size: ${typography.size.s2}rem;
   font-weight: ${typography.weight.medium};
   line-height: 140%;
@@ -64,9 +64,11 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   font-size: ${typography.size.s2}rem;
-  color: ${color.gray9};
+  color: ${(props) => props.theme.gray9};
   line-height: 150%;
   margin: 0 0 32px;
+
+  ${(props) => (props.theme === "dark" ? "opacity: 0.2;" : "opacity: 0.75;")}
 `;
 
 export const Overflow = styled.div`
@@ -80,7 +82,7 @@ export const Overflow = styled.div`
 export const Footer = styled.div`
   width: 100%;
   padding: ${spacing.padding.small}px ${spacing.padding.xmedium}px;
-  border-top: 1px solid ${color.gray7};
+  border-top: 1px solid ${(props) => props.theme.gray7};
 
   display: flex;
   align-items: center;
@@ -88,7 +90,7 @@ export const Footer = styled.div`
 
   p {
     font-size: ${typography.size.s1}rem;
-    color: ${color.gray8};
+    color: ${(props) => props.theme.gray8};
     margin: 0;
   }
 `;
@@ -101,6 +103,8 @@ export const Bookmark = styled.div`
   svg {
     width: 18px;
     height: 18px;
-    color: ${({ checked }) => (checked ? `${color.red}` : `${color.gray8}`)};
+
+    color: ${(props) => props.theme.gray8};
+    color: ${({ checked }) => (checked ? `${color.red};` : "")};
   }
 `;

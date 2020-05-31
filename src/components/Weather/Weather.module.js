@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { typography, color } from "../../constants/styles";
+import { typography } from "../../constants/styles";
 
 export const WeatherContainer = styled.div`
   display: grid;
@@ -33,7 +33,7 @@ export const WeatherContainer = styled.div`
     }
 
     &:last-child {
-      color: ${color.gray8};
+      color: ${(props) => props.theme.gray8};
     }
   }
 `;

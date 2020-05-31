@@ -10,9 +10,9 @@ const Container = styled.div`
   overflow: hidden;
   z-index: 1;
 
-  background: ${color.gray6};
+  background: ${(props) => props.theme.gray6};
   padding: ${spacing.padding.large}px 0;
-  border-left: 1px solid ${color.gray7};
+  border-left: 1px solid ${(props) => props.theme.gray7};
   box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
 
   transform: ${(props) =>
@@ -51,16 +51,19 @@ const NavigationItem = styled.li`
   list-style-type: none;
   font-weight: ${typography.weight.medium};
   font-size: ${typography.size.s2}rem;
-  color: ${color.primary};
+  color: ${(props) => color.primary};
   cursor: pointer;
 
-  ${({ active }) =>
-    active
-      ? `
-    color: ${color.black};
-    cursor: default;
-  `
-      : null}
+  cursor: ${({ active }) => (active ? "default" : "")};
+  color: ${(props) => {
+    const isActive = props.active;
+
+    if (isActive) {
+      return props.theme.black;
+    } else {
+      return color.primary;
+    }
+  }};
 `;
 
 const SidebarContainer = styled.div`
@@ -109,19 +112,19 @@ const Footer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-  background: ${color.white};
-  border-top: 1px solid ${color.gray7};
+  background: ${(props) => props.theme.white};
+  border-top: 1px solid ${(props) => props.theme.gray7};
   padding: ${spacing.padding.xmedium}px ${spacing.padding.large}px;
 `;
 
 const FooterButton = styled.button`
   cursor: pointer;
-  background-color: ${color.gray6};
+  background-color: ${(props) => props.theme.gray6};
   border-radius: ${spacing.borderRadius.small}px;
   font-size: ${typography.size.s2}rem;
   padding: ${spacing.padding.small}px ${spacing.padding.medium}px;
-  background: ${color.primary};
-  color: ${color.white};
+  background: ${(props) => color.primary};
+  color: white;
   border: none;
 `;
 

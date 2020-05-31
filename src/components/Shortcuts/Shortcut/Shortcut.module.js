@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { color, spacing, typography } from "../../../constants/styles";
+import { spacing, typography } from "../../../constants/styles";
 
 export const Container = styled.a`
   list-style-type: none;
-  border: 1px solid ${color.gray7};
+  border: 1px solid ${(props) => props.theme.gray7};
   border-radius: ${spacing.borderRadius.small}px;
   display: grid;
   grid-gap: 16px;
@@ -14,7 +14,7 @@ export const Container = styled.a`
 
 export const Title = styled.p`
   font-size: ${typography.size.s2}rem;
-  color: ${color.black};
+  color: ${(props) => props.theme.black};
   width: 100%;
   white-space: nowrap;
   overflow: hidden;

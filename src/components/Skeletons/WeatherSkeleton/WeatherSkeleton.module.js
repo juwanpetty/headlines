@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { color } from "../../../constants/styles";
 
 export const Container = styled.div`
   display: grid;
@@ -10,7 +9,7 @@ export const Container = styled.div`
     width: 67px;
     height: 48px;
     border-radius: 3px;
-    background: ${color.gray7};
+    background: ${(props) => props.theme.gray7};
   }
 
   & > div:last-child {
@@ -21,7 +20,7 @@ export const Container = styled.div`
     & > div {
       width: 60px;
       height: 15px;
-      background: ${color.gray7};
+      background: ${(props) => props.theme.gray7};
 
       &:last-child {
         width: 30px;

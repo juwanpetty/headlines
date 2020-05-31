@@ -23,7 +23,7 @@ export const Label = styled.label`
     height: 1.6rem;
     width: 1.6rem;
 
-    border: 1px solid ${color.gray8};
+    border: 1px solid ${(props) => props.theme.gray8};
     border-radius: 50%;
 
     /* outer box */

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { FiSearch } from "react-icons/fi";
-import { typography, spacing, color } from "../../constants/styles";
+import { typography, spacing } from "../../constants/styles";
 
 export const Container = styled.div`
   position: relative;
   max-width: 800px;
   width: 100%;
   padding: 0 45px;
-  border: 1px solid ${color.gray7};
+  border: 1px solid ${(props) => props.theme.gray7};
   border-radius: ${spacing.borderRadius.small}px;
   margin-bottom: 5rem;
-  background: ${color.white};
+  background: ${(props) => props.theme.white};
   transition: box-shadow 150ms;
 
   ${({ isFocus }) =>
@@ -21,11 +21,12 @@ export const Container = styled.div`
 
 export const SearchInput = styled.input`
   font-size: ${typography.size.s2}rem;
-  color: ${color.gray9};
+  color: ${(props) => props.theme.gray9};
   width: 100%;
   border: none;
   padding: ${spacing.padding.small}px ${spacing.padding.xmedium}px;
   padding-left: ${spacing.padding.xsmall}px;
+  background: transparent;
 `;
 
 export const SearchButton = styled.button`
@@ -46,7 +47,7 @@ export const SearchButton = styled.button`
 
 export const SearchButtonIcon = styled(FiSearch)`
   font-size: ${typography.size.m2}rem;
-  color: ${color.gray8};
+  color: ${(props) => props.theme.gray8};
 `;
 
 export const SearchEngine = styled.label`

@@ -7,9 +7,18 @@ export const Container = styled.div`
     opacity: 0;
 
     &:checked + label {
-      background: ${color.primary};
-      border: 1px solid ${color.primary};
-      color: ${color.white};
+      background: ${(props) => color.primary};
+      border: 1px solid ${(props) => color.primary};
+
+      color: ${(props) => {
+        const isDark = props.theme.theme;
+
+        if (isDark === "dark") {
+          return color.dark.black;
+        } else {
+          return color.light.white;
+        }
+      }};
     }
   }
 
@@ -18,9 +27,9 @@ export const Container = styled.div`
     margin-bottom: 15px;
     padding: ${spacing.padding.small}px ${spacing.padding.medium}px;
     font-size: ${typography.size.s2}rem;
-    border: 1px solid ${color.gray7};
+    border: 1px solid ${(props) => props.theme.gray7};
     border-radius: ${spacing.borderRadius.small}px;
-    background-color: ${color.white};
+    background-color: ${(props) => props.theme.white};
     cursor: pointer;
   }
 `;

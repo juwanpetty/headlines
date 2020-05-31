@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MdSettings } from "react-icons/md";
-import { spacing, color } from "../../../constants/styles";
+import { spacing } from "../../../constants/styles";
 
 const Container = styled.div`
   position: fixed;
@@ -19,7 +19,7 @@ const Container = styled.div`
 const SettingIcon = styled(MdSettings)`
   width: 20px;
   height: 20px;
-  color: ${color.gray8};
+  color: ${(props) => props.theme.gray8};
 `;
 
 const SettingButton = styled.button`
@@ -33,7 +33,7 @@ const SettingButton = styled.button`
   border: none;
 
   &:hover {
-    background: ${color.gray7};
+    background: ${(props) => props.theme.gray7};
   }
 `;
 

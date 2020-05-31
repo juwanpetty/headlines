@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import placeholder from "../../../assets/article/placeholder.jpg";
-import { color, spacing } from "../../../constants/styles";
+import { spacing } from "../../../constants/styles";
 
 export const Container = styled.div`
   list-style-type: none;
-  border: 1px solid ${color.gray7};
+  border: 1px solid ${(props) => props.theme.gray7};
   border-radius: ${spacing.borderRadius.small}px;
 `;
 
@@ -20,11 +20,11 @@ export const ArticleImage = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border: 1px solid ${color.gray7};
+  border: 1px solid ${(props) => props.theme.gray7};
 `;
 
 export const Source = styled.div`
-  background: ${color.gray7};
+  background: ${(props) => props.theme.gray7};
   width: 86.5px;
   height: 15px;
   border-radius: 0.25rem;
@@ -37,7 +37,7 @@ export const Title = styled.div`
 
   & > div {
     margin-bottom: 8px;
-    background: ${color.gray7};
+    background: ${(props) => props.theme.gray7};
     width: 200px;
     height: 15px;
     border-radius: 0.25rem;
@@ -50,7 +50,7 @@ export const Title = styled.div`
 `;
 
 export const Description = styled.div`
-  background: ${color.gray7};
+  background: ${(props) => props.theme.gray7};
   width: 200px;
   height: 15px;
   border-radius: 0.25rem;
@@ -67,11 +67,11 @@ export const Overflow = styled.div`
 export const Footer = styled.div`
   width: 100%;
   padding: ${spacing.padding.small}px ${spacing.padding.xmedium}px;
-  border-top: 1px solid ${color.gray7};
+  border-top: 1px solid ${(props) => props.theme.gray7};
 `;
 
 export const Published = styled.div`
-  background: ${color.gray7};
+  background: ${(props) => props.theme.gray7};
   width: 140px;
   height: 15px;
   border-radius: 0.25rem;
