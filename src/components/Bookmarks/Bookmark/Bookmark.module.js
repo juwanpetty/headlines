@@ -9,7 +9,7 @@ export const Container = styled.a`
 
   &:not(:last-child) {
     margin-bottom: 16px;
-    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid ${(props) => props.theme.gray7};
     padding-bottom: 16px;
   }
 `;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { spacing, typography } from "../../../constants/styles";
 
 export const Container = styled.a`
+  background: ${(props) => props.theme.white};
   list-style-type: none;
   border: 1px solid ${(props) => props.theme.gray7};
   border-radius: ${spacing.borderRadius.small}px;
