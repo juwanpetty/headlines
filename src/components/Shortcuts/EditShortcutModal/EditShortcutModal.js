@@ -62,6 +62,12 @@ export const EditShortcutModal = ({ shortcut, setShowEdit, isOpen }) => {
     setShowEdit(false);
   };
 
+  const handleOnBlur = () => {
+    if (urlInput.indexOf("://")) {
+      setUrlInput("http://" + urlInput);
+    }
+  };
+
   const errorMarkup = formError ? <p>{formError}</p> : null;
 
   return (
@@ -98,6 +104,7 @@ export const EditShortcutModal = ({ shortcut, setShowEdit, isOpen }) => {
             type="text"
             value={urlInput}
             onChange={(e) => onUrlChange(e)}
+            onBlur={() => handleOnBlur()}
           />
         </InputGroup>
       </form>
