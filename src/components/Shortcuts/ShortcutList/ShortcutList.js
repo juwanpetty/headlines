@@ -11,13 +11,13 @@ export const ShortcutList = () => {
   useEffect(() => {
     try {
       browser.topSites.get({ includeFavicon: true }, (results) => {
-        setShortcuts(results.slice(0, 3));
+        setShortcuts(results.slice(0, 7));
       });
     } catch (error) {}
 
     try {
       chrome.topSites.get((results) => {
-        setShortcuts(results.slice(0, 3));
+        setShortcuts(results.slice(0, 7));
       });
     } catch (error) {}
   }, []);

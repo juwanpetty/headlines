@@ -2,7 +2,7 @@ import React from "react";
 import { Clock } from "../../Clock/Clock";
 import { ArticleList } from "../../Articles/";
 import { Search } from "../../Search/";
-import { ShortcutList } from "../../Shortcuts/";
+import { ShortcutList, ShortcutGrid } from "../../Shortcuts/";
 import { Container } from "./Content.styles";
 
 export const Content = () => {
@@ -15,6 +15,8 @@ export const Content = () => {
       <ArticleList />
 
       <ShortcutList />
+
+      <ShortcutGrid />
     </Container>
   );
 };

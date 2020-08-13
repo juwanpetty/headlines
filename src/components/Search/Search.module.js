@@ -27,6 +27,7 @@ export const SearchInput = styled.input`
   padding: ${spacing.padding.small}px ${spacing.padding.xmedium}px;
   padding-left: ${spacing.padding.xsmall}px;
   background: transparent;
+  outline: none;
 `;
 
 export const SearchButton = styled.button`
