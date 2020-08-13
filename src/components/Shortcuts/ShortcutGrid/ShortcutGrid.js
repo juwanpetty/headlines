@@ -7,14 +7,16 @@ import { Shortcut } from "../Shortcut/Shortcut";
 import { AddShortcutModal } from "../AddShortcutModal/AddShortcutModal";
 
 const AddShortcut = () => {
-  const [showAdd, setShowAdd] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   return (
     <>
-      <AddContainer onClick={() => setShowAdd(true)}>
+      <AddContainer onClick={() => setShowAddModal(true)}>
         <MdAdd />
       </AddContainer>
-      {showAdd && <AddShortcutModal setShowAdd={setShowAdd} isOpen={showAdd} />}
+      {showAddModal && (
+        <AddShortcutModal setShowAdd={setShowAddModal} isOpen={showAddModal} />
+      )}
     </>
   );
 };
