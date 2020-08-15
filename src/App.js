@@ -1,5 +1,11 @@
 import React from "react";
-import { Header, Sidebar, Content, Footer } from "./components/Layout/index";
+import {
+  Header,
+  Sidebar,
+  SidebarModal,
+  Content,
+  Footer,
+} from "./components/Layout/index";
 import { Container } from "./App.styles";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { color, typography } from "./constants/styles";
@@ -43,7 +49,8 @@ export const App = () => {
       <GlobalStyle />
       <Container>
         <Header />
-        <Sidebar />
+        {/* <Sidebar /> */}
+        <SidebarModal />
         <Content />
         <Footer />
       </Container>

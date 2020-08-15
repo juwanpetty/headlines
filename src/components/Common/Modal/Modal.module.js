@@ -25,7 +25,7 @@ export const CloseIcon = styled(MdClose)`
 `;
 
 export const Container = styled.div`
-  width: 400px;
+  min-width: 400px;
   padding: 24px 32px 16px;
   border-radius: 4px;
   background: ${(props) => props.theme.gray6};
