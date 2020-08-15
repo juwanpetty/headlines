@@ -20,10 +20,9 @@ export const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${spacing.padding.small}px ${spacing.padding.xmedium}px;
+  padding: ${spacing.padding.xsmall}px;
   text-decoration: none;
-  width: 90px;
-  height: 90px;
+  height: 75px;
 
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.01);
   transition: box-shadow 150ms;
@@ -35,7 +34,6 @@ export const AddContainer = styled.div`
   svg {
     width: 24px;
     height: 24px;
-    margin-bottom: 8px;
   }
 
   p {

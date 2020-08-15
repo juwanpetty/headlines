@@ -10,11 +10,14 @@ export const Container = styled.a`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: ${spacing.padding.small}px ${spacing.padding.xmedium}px;
+  padding: ${spacing.padding.xsmall}px;
   text-decoration: none;
   position: relative;
-  width: 90px;
-  height: 90px;
+  height: 75px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.01);
   transition: box-shadow 150ms;
@@ -34,6 +37,10 @@ export const Title = styled.p`
   width: 100%;
   margin: 0;
   text-align: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Image = styled.img`
@@ -41,6 +48,7 @@ export const Image = styled.img`
   width: 20px;
   height: 20px;
   align-self: center;
+  top: 20px;
 `;
 
 export const MoreOpitions = styled(MdMoreHoriz)`
@@ -53,4 +61,12 @@ export const MoreOpitions = styled(MdMoreHoriz)`
   z-index: 1;
   opacity: 0;
   transition: 150ms;
+
+  padding: 0 4px;
+  box-sizing: initial;
+  border-radius: 3px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
 `;

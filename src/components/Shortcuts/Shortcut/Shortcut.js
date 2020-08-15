@@ -5,18 +5,16 @@ import { EditShortcutModal } from "../index";
 export const Shortcut = ({ shortcut }) => {
   const ref = useRef();
   const [showEdit, setShowEdit] = useState(false);
-  const [favicon, setFavicon] = useState(null);
 
   useEffect(() => {
-    if (shortcut && shortcut.favicon) {
-      setFavicon(shortcut.favicon);
-    } else {
-      setFavicon("chrome://favicon/size/16@1x/" + shortcut.url);
-    }
+    ref.current.src = `chrome://favicon/size/16@1x/${shortcut.url}`;
+    ref.current.srcset = `
+      chrome://favicon/size/16@1x/${shortcut.url},
+      chrome://favicon/size/16@2x/${shortcut.url} 2x
+    `;
   }, [shortcut]);
 
   const openEdit = (e) => {
-    console.log("openEdit");
     e.preventDefault();
     setShowEdit(true);
   };
@@ -24,7 +22,7 @@ export const Shortcut = ({ shortcut }) => {
   return (
     <>
       <Container href={shortcut.url}>
-        <Image ref={ref} src={favicon} />
+        <Image ref={ref} />
         <MoreOpitions onClick={(e) => openEdit(e)} />
         <Title>{shortcut.title || shortcut.name}</Title>
       </Container>

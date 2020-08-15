@@ -30,7 +30,7 @@ export const ShortcutGrid = () => {
         shortcuts.map((shortcut) => (
           <Shortcut key={shortcut.id} shortcut={shortcut} />
         ))}
-      <AddShortcut />
+      {shortcuts.length < 7 && <AddShortcut />}
     </Container>
   );
 };

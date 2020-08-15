@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
-  shortcuts: [
-    {
-      id: "test123",
-      name: "New Tab",
-      url: "chrome://newtab",
-    },
-  ],
+  shortcuts: [],
   showShortcuts: true,
   openIn: { value: "same-tab", label: "Same tab" }, // new-tab or "new-tab-background"
 };
@@ -17,10 +11,9 @@ const shortcutsSlice = createSlice({
   initialState,
   reducers: {
     addShortcut: (state, { payload }) => {
-      state.shortcuts = [payload, ...state.shortcuts];
+      state.shortcuts = [...state.shortcuts, payload];
     },
     updateShortcut: (state, { payload }) => {
-      console.log("updateShortcut");
       state.shortcuts = state.shortcuts.map((shortcut) => {
         if (shortcut.id === payload.id) {
           return {

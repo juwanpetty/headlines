@@ -63,7 +63,7 @@ export const EditShortcutModal = ({ shortcut, setShowEdit, isOpen }) => {
   };
 
   const handleOnBlur = () => {
-    if (urlInput.indexOf("://")) {
+    if (!urlInput.includes("://")) {
       setUrlInput("http://" + urlInput);
     }
   };
