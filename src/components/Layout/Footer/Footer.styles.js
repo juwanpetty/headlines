@@ -12,7 +12,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${(props) => props.theme.gray6};
 `;
 
 export { Container };
