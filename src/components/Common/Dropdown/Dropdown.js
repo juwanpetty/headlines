@@ -14,10 +14,21 @@ export const Dropdown = ({ options, defaultValue, placeholder, onChange }) => {
       color: theme === "light" ? color.light.gray9 : color.dark.gray9,
       background: theme === "light" ? color.light.white : color.dark.white,
     }),
-    option: (provided, state) => ({
-      ...provided,
-      fontSize: "1.4rem",
-    }),
+    option: (provided, { isDisabled, isSelected, isFocused }) => {
+      return {
+        ...provided,
+        fontSize: "1.4rem",
+        backgroundColor: isDisabled
+          ? null
+          : isSelected
+          ? color.primary
+          : isFocused
+          ? theme === "light"
+            ? "#E8F2FF"
+            : "#6A6A6A"
+          : null,
+      };
+    },
     control: (provided) => ({
       ...provided,
       fontSize: "1.4rem",
