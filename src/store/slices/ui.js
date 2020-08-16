@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
-  theme: "dark", // dark or system
+  theme: "dark", // dark or light
   isSidebarOpen: false,
 };
 
