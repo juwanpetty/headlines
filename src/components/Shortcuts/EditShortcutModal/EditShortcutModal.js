@@ -89,6 +89,7 @@ export const EditShortcutModal = ({ shortcut, setShowEdit, isOpen }) => {
         <InputGroup>
           <Label>Name</Label>
           <Input
+            tabindex="0"
             placeholder="name"
             name="name"
             type="text"
