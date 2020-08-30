@@ -42,9 +42,17 @@ export const Weather = () => {
     if (hasErrors) return <p>Unable to display weather.</p>;
 
     const weatherTemp =
-      weatherUnit === "imperial"
-        ? `${Math.trunc(weather.current?.temp_f)}º`
-        : `${Math.trunc(weather.current?.temp_c)}º`;
+      weatherUnit === "imperial" ? (
+        <>
+          {`${Math.trunc(weather.current?.temp_f)}`}
+          <span>ºF</span>
+        </>
+      ) : (
+        <>
+          {`${Math.trunc(weather.current?.temp_c)}`}
+          <span>ºC</span>
+        </>
+      );
 
     return (
       !isObjectEmpty(weather) && (

@@ -14,6 +14,9 @@ export const WeatherContainer = styled.div`
     font-size: ${typography.size.l2}rem;
     font-weight: ${typography.weight.semibold};
     margin: 0;
+
+    display: flex;
+    align-items: flex-start;
   }
 
   div {
@@ -35,5 +38,11 @@ export const WeatherContainer = styled.div`
     &:last-child {
       color: ${(props) => props.theme.gray8};
     }
+  }
+
+  span {
+    font-size: 20px;
+    margin-left: 4px;
+    margin-top: 4px;
   }
 `;
